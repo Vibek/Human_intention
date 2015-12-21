@@ -1,0 +1,29 @@
+
+#ifndef NI_HAND_VIEWER_H__
+#define NI_HAND_VIEWER_H__
+
+#include "SimpleViewer.h"
+#include "HandTracker.h"
+#include "KinectController.h"
+
+class HandViewer: public SimpleViewer
+{
+public:
+	
+	static SimpleViewer& CreateInstance(xn::Context & context);
+
+	virtual XnStatus Init(int argc, char **argv);
+	virtual XnStatus Run();	//Does not return if successful
+
+protected:
+	HandViewer(xn::Context& context);
+
+	virtual void DisplayPostDraw();
+
+	virtual XnStatus InitOpenGL(int argc, char **argv);
+
+private:
+	HandTracker	m_HandTracker;
+};
+
+#endif //NI_HAND_VIEWER_H__

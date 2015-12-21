@@ -1,0 +1,3 @@
+/home/stefano/catkin_ws/src/find_objects/data/tv.jpg
+/home/stefano/catkin_ws/src/find_objects/data/generatore.jpg
+/home/stefano/catkin_ws/src/find_objects/data/kinect.jpg

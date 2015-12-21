@@ -1,0 +1,32 @@
+<package>
+  <description brief="skeleton_markers">
+    Skeleton Markers: Publish a list of joint markers for viewing in RViz
+  </description>
+  <author>Vibekananda Dutta</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+   <depend package="rospy"/>
+  <depend package="roscpp"/>
+  <depend package="visualization_msgs"/>
+  <depend package="geometry_msgs"/>
+  <depend package="openni_camera"/>
+  <depend package="openni_tracker"/>
+  <depend package="actionlib"/>
+  <depend package="actionlib_msgs"/>
+  <depend package="roslib"/>
+  <rosdep name="libusb-1.0-dev" />
+  <depend package="tf"/>
+  <depend package="kdl"/>
+  <depend package="std_msgs"/>
+  <depend package="sensor_msgs"/>
+  <depend package="geometry_msgs"/>
+  <!--depend package="tinyxml2.6.2"/-->
+  <!--depend package="feature_extraction_package"/-->
+
+  <export>
+    <cpp cflags="-I/usr/include/openni -I/usr/include/nite -I/usr/include/ni"/>
+  </export>
+ 
+</package>
+
+

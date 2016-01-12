@@ -1,0 +1,239 @@
+#ifndef TRAJECTORY_
+#define TRAJECTORY_
+
+#include <GL/glut.h>
+#include <std_msgs/String.h>
+#include <std_msgs/Header.h>
+#include <fstream>
+#include <stdio.h>
+#include "KinectDisplay.h"
+#include "trajectory.h"
+#include <stdlib.h>
+#include <math.h>
+#include <time.h>
+#include <XnV3DVector.h>
+
+#define HISTORY_SIZE		100
+#define HISTORY_DRAW_SIZE	HISTORY_SIZE
+
+struct History {
+	History (int size = HISTORY_SIZE)
+	: m_max_size(size)
+	, m_records(m_max_size)
+	, m_size(0)
+	, m_curr_pos(m_max_size)
+	{
+		m_target_world.X = m_target_world.Y = m_target_world.Z = 0.0f;
+		m_target_screen = m_target_world;
+	}
+
+	int Size() { return m_size; }
+
+	void StoreValue (const XnPoint3D &pt_world, const XnPoint3D &pt_screen)
+	{
+		if (--m_curr_pos < 0) m_curr_pos = m_max_size - 1;
+		m_records [m_curr_pos].value_world = pt_world;
+		m_records [m_curr_pos].value_screen = pt_screen;
+		m_records [m_curr_pos].time = glutGet(GLUT_ELAPSED_TIME);
+
+		if (++m_size > m_max_size) m_size = m_max_size;
+	}
+
+	XnPoint3D GetCurrentWorldPosition() { return m_records[m_curr_pos].value_world; } // in millimeters
+	XnV3DVector GetCurrentScreenPosition() { return m_records[m_curr_pos].value_screen; } // in pixels
+
+	XnPoint3D GetTargetWorldPosition() { return m_target_world; } // in millimeters
+	XnV3DVector GetTargetScreenPosition() { return m_target_screen; } // in pixels
+
+	bool GetValueScreen (int index, XnPoint3D &pt)
+	{
+		if (index < 0 || index > m_size) return false;
+
+		pt = m_records [(m_curr_pos + index) % m_max_size].value_screen;
+		return true;
+	}
+
+	bool GetValueWorld (int index, XnPoint3D &pt)
+	{
+		if (index < 0 || index > m_size) return false;
+
+		pt = m_records [(m_curr_pos + index) % m_max_size].value_screen;
+		return true;
+	}
+
+	XnV3DVector GetCurrentDirectionScreen()
+	{
+		XnV3DVector v1 = m_records[m_curr_pos].value_screen;
+		XnV3DVector v2 = m_records[(m_curr_pos + 1) % m_max_size].value_screen;
+		XnV3DVector v = v1 - v2;
+		v.Normalize();
+		return v;
+	}
+
+	XnV3DVector GetTargetApproachVectorScreen()
+	{
+		XnV3DVector v1 = m_target_screen;
+		XnV3DVector v2 = m_records[m_curr_pos].value_screen;
+		XnV3DVector v = v1 - v2;
+		v.Normalize();
+		return v;
+	}
+
+	float Speed() // in pixels per second
+	{
+		if (m_size < 2) return 0.0f;
+
+		Record &last = m_records[m_curr_pos];
+		Record &prev = m_records[(m_curr_pos + 1) % m_max_size];
+
+		XnV3DVector lastV = last.value_screen;
+		XnV3DVector prevV = prev.value_screen;
+
+		return (lastV - prevV).Magnitude() / ((last.time - prev.time) * 0.001f);
+	}
+
+	bool IsStationary()  {return Speed() < 150;}
+			
+
+	bool IsNearTarget() { return GetDistanceToTarget() < 0.3f; }
+
+	XnFloat *Color()
+	{
+		static XnFloat colors[][3] = {
+			{1, 1, 0}, // yellow
+			{0, 0, 1}, // blue
+			{1, 0, 0}  // red
+		};
+
+		if (IsNearTarget()){ 
+			return colors[2];
+			}
+
+		else if (IsStationary()) {
+			return colors[0];
+			
+				}
+
+		else {  return colors[1];
+			
+				}
+	}
+
+	void SetTarget (XnPoint3D target_world, XnPoint3D target_screen) // position in millimeters
+	{
+		m_target_world = target_world;
+		m_target_screen = target_screen;
+	}
+
+	float GetDistanceToTarget() // distance in meters
+	{
+		XnPoint3D pos = GetCurrentWorldPosition();
+		XnVector3D v;
+		v.X = m_target_world.X - pos.X;
+		v.Y = m_target_world.Y - pos.Y;
+		v.Z = m_target_world.Z - pos.Z;
+		float distance3D = sqrt(v.X * v.X + v.Y * v.Y + v.Z * v.Z);
+		return distance3D * 0.001f;
+	}
+
+	std::vector<XnPoint3D> GetApproachCurveControlPoints()
+	{
+		std::vector<XnPoint3D> points;
+		points.push_back(GetCurrentScreenPosition());
+		points.push_back(GetCurrentScreenPosition() + GetCurrentDirectionScreen() * Speed() * 1.0f);
+		points.push_back(GetTargetScreenPosition() - GetTargetApproachVectorScreen() * 10.0f);
+		points.push_back(GetTargetScreenPosition());
+		return points;
+	}
+
+private:
+	const int m_max_size;
+
+	struct Record
+	{
+		XnPoint3D value_world; // world position in millimeters
+		XnPoint3D value_screen;// screen position in pixels
+		int	  time;
+	};
+	std::vector<Record> m_records;
+
+	int m_size;
+	int m_curr_pos;
+
+	XnPoint3D m_target_world; // in millimeters
+	XnPoint3D m_target_screen; // in pixels
+};
+
+//Function Struct History is called from trajectory.h (file)
+ 
+History g_RightHandPositionHistory;
+History g_LeftHandPositionHistory;
+
+bool GetHistoryForJoint (XnSkeletonJoint eJoint, History **history) {
+	switch (eJoint)
+	{
+	case XN_SKEL_RIGHT_HAND:
+		*history = &g_RightHandPositionHistory;
+		break;
+
+	case XN_SKEL_LEFT_HAND:
+		*history = &g_LeftHandPositionHistory;
+		break;
+
+	default:
+		*history = 0;
+		return false;
+	};
+
+	return true;
+}
+
+void handtrajectory(xn::UserGenerator& userGenerator,
+              xn::DepthGenerator& depthGenerator,
+              XnUserID player, XnSkeletonJoint eJoint, bool updateHistory)
+{
+	XnSkeletonJointPosition joint;
+	userGenerator.GetSkeletonCap().GetSkeletonJointPosition(player, eJoint, joint);
+
+	if (joint.fConfidence < 0.5){
+           return;
+        }
+            
+        XnPoint3D pt_world, pt_screen;
+	pt_world = joint.position;
+        depthGenerator.ConvertRealWorldToProjective(1, &pt_world, &pt_screen);
+      
+	History *history;
+	if (GetHistoryForJoint (eJoint, &history) == false) return;
+
+	if (updateHistory) history->StoreValue (pt_world, pt_screen); // store value in the history
+
+	// Visualize history
+	//
+	XnFloat pVertexBuffer [HISTORY_DRAW_SIZE * sizeof (float) * 3];
+	XnFloat *pVertex = pVertexBuffer;
+
+	// Prepare vertex buffer for drawing
+	XnPoint3D pt;
+	for (int k = 0; k < history->Size(); ++k) {
+		history->GetValueScreen (k, pt);
+
+		*pVertex++ = pt.X;
+		*pVertex++ = pt.Y;
+		*pVertex++ = 0.0f;
+	}
+
+	glColor3f(0.f, 1.f, 0.f);
+	glVertexPointer(3, GL_FLOAT, 0, pVertexBuffer);
+
+	// draw trajectory
+	glLineWidth(2);
+	glDrawArrays(GL_LINE_STRIP, 0, history->Size());
+
+	// draw history points
+	glPointSize(8);
+	glDrawArrays(GL_POINTS, 0, history->Size());
+}
+
+#endif
+

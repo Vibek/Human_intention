@@ -1,10 +1,10 @@
 FILE(REMOVE_RECURSE
   "../msg_gen"
   "../msg_gen"
-  "../src/skeleton_markers/msg"
+  "../src/Human_intention/msg"
   "CMakeFiles/ROSBUILD_genmsg_cpp"
-  "../msg_gen/cpp/include/skeleton_markers/Skeleton.h"
-  "../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h"
+  "../msg_gen/cpp/include/Human_intention/Skeleton.h"
+  "../msg_gen/cpp/include/Human_intention/EnableJointGroup.h"
 )
 
 # Per-language clean rules from dependency scanning.

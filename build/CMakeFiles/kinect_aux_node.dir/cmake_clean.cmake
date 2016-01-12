@@ -1,7 +1,7 @@
 FILE(REMOVE_RECURSE
   "../msg_gen"
   "../msg_gen"
-  "../src/skeleton_markers/msg"
+  "../src/Human_intention/msg"
   "CMakeFiles/kinect_aux_node.dir/src/kinect_aux_node.cpp.o"
   "../bin/kinect_aux_node.pdb"
   "../bin/kinect_aux_node"

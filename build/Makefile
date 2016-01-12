@@ -35,22 +35,19 @@ CMAKE_COMMAND = /usr/bin/cmake
 # The command to remove a file.
 RM = /usr/bin/cmake -E remove -f
 
-# The program to use to edit the cache.
-CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
-
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/vibek/skeleton_markers
+CMAKE_SOURCE_DIR = /home/vibek/Human_intention
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/vibek/skeleton_markers/build
+CMAKE_BINARY_DIR = /home/vibek/Human_intention/build
 
 #=============================================================================
 # Targets provided globally by CMake.
 
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	/usr/bin/cmake-gui -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running interactive CMake command-line interface..."
+	/usr/bin/cmake -i .
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -110,9 +107,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/vibek/skeleton_markers/build/CMakeFiles /home/vibek/skeleton_markers/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/vibek/Human_intention/build/CMakeFiles /home/vibek/Human_intention/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/vibek/skeleton_markers/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/vibek/Human_intention/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -512,6 +509,30 @@ src/KinectDisplay.cpp.s:
 	$(MAKE) -f CMakeFiles/skeleton_tracker.dir/build.make CMakeFiles/skeleton_tracker.dir/src/KinectDisplay.cpp.s
 .PHONY : src/KinectDisplay.cpp.s
 
+src/heatmap.o: src/heatmap.cpp.o
+.PHONY : src/heatmap.o
+
+# target to build an object file
+src/heatmap.cpp.o:
+	$(MAKE) -f CMakeFiles/skeleton_tracker.dir/build.make CMakeFiles/skeleton_tracker.dir/src/heatmap.cpp.o
+.PHONY : src/heatmap.cpp.o
+
+src/heatmap.i: src/heatmap.cpp.i
+.PHONY : src/heatmap.i
+
+# target to preprocess a source file
+src/heatmap.cpp.i:
+	$(MAKE) -f CMakeFiles/skeleton_tracker.dir/build.make CMakeFiles/skeleton_tracker.dir/src/heatmap.cpp.i
+.PHONY : src/heatmap.cpp.i
+
+src/heatmap.s: src/heatmap.cpp.s
+.PHONY : src/heatmap.s
+
+# target to generate assembly for a file
+src/heatmap.cpp.s:
+	$(MAKE) -f CMakeFiles/skeleton_tracker.dir/build.make CMakeFiles/skeleton_tracker.dir/src/heatmap.cpp.s
+.PHONY : src/heatmap.cpp.s
+
 src/kinect_aux_node.o: src/kinect_aux_node.cpp.o
 .PHONY : src/kinect_aux_node.o
 
@@ -603,6 +624,9 @@ help:
 	@echo "... src/KinectDisplay.o"
 	@echo "... src/KinectDisplay.i"
 	@echo "... src/KinectDisplay.s"
+	@echo "... src/heatmap.o"
+	@echo "... src/heatmap.i"
+	@echo "... src/heatmap.s"
 	@echo "... src/kinect_aux_node.o"
 	@echo "... src/kinect_aux_node.i"
 	@echo "... src/kinect_aux_node.s"

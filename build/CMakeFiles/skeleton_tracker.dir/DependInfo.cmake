@@ -4,9 +4,10 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/vibek/skeleton_markers/src/KinectController.cpp" "/home/vibek/skeleton_markers/build/CMakeFiles/skeleton_tracker.dir/src/KinectController.cpp.o"
-  "/home/vibek/skeleton_markers/src/KinectDisplay.cpp" "/home/vibek/skeleton_markers/build/CMakeFiles/skeleton_tracker.dir/src/KinectDisplay.cpp.o"
-  "/home/vibek/skeleton_markers/src/skeleton_tracker.cpp" "/home/vibek/skeleton_markers/build/CMakeFiles/skeleton_tracker.dir/src/skeleton_tracker.cpp.o"
+  "/home/vibek/Human_intention/src/KinectController.cpp" "/home/vibek/Human_intention/build/CMakeFiles/skeleton_tracker.dir/src/KinectController.cpp.o"
+  "/home/vibek/Human_intention/src/KinectDisplay.cpp" "/home/vibek/Human_intention/build/CMakeFiles/skeleton_tracker.dir/src/KinectDisplay.cpp.o"
+  "/home/vibek/Human_intention/src/heatmap.cpp" "/home/vibek/Human_intention/build/CMakeFiles/skeleton_tracker.dir/src/heatmap.cpp.o"
+  "/home/vibek/Human_intention/src/skeleton_tracker.cpp" "/home/vibek/Human_intention/build/CMakeFiles/skeleton_tracker.dir/src/skeleton_tracker.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 

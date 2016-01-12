@@ -11,19 +11,22 @@
 
 class KinectController
 {
-	public:
-  	KinectController();
+  public:
+    KinectController();
+    
     int init(const char* path, bool recording=false);
     int shutdown();
     
     xn::UserGenerator&  getUserGenerator();
     xn::DepthGenerator& getDepthGenerator();
+    xn::ImageGenerator& getImageGenerator();
     xn::Context&        getContext();
     
   public:
 		static xn::Context g_Context;
 		static xn::DepthGenerator g_DepthGenerator;
 		static xn::UserGenerator g_UserGenerator;
+		static xn::ImageGenerator g_ImageGenerator;
                 static xn::HandsGenerator g_HandsGenerator;
 		static XnBool g_bNeedPose;
 		static XnChar g_strPose[20];

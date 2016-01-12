@@ -31,14 +31,11 @@ CMAKE_COMMAND = /usr/bin/cmake
 # The command to remove a file.
 RM = /usr/bin/cmake -E remove -f
 
-# The program to use to edit the cache.
-CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
-
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/vibek/skeleton_markers
+CMAKE_SOURCE_DIR = /home/vibek/Human_intention
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/vibek/skeleton_markers/build
+CMAKE_BINARY_DIR = /home/vibek/Human_intention/build
 
 # Utility rule file for test-results.
 
@@ -46,7 +43,7 @@ CMAKE_BINARY_DIR = /home/vibek/skeleton_markers/build
 include CMakeFiles/test-results.dir/progress.make
 
 CMakeFiles/test-results:
-	/opt/ros/groovy/share/rosunit/cmake/../scripts/summarize_results.py --nodeps skeleton_markers
+	/opt/ros/groovy/share/rosunit/cmake/../scripts/summarize_results.py --nodeps Human_intention
 
 test-results: CMakeFiles/test-results
 test-results: CMakeFiles/test-results.dir/build.make
@@ -61,6 +58,6 @@ CMakeFiles/test-results.dir/clean:
 .PHONY : CMakeFiles/test-results.dir/clean
 
 CMakeFiles/test-results.dir/depend:
-	cd /home/vibek/skeleton_markers/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/vibek/skeleton_markers /home/vibek/skeleton_markers /home/vibek/skeleton_markers/build /home/vibek/skeleton_markers/build /home/vibek/skeleton_markers/build/CMakeFiles/test-results.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/vibek/Human_intention/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/vibek/Human_intention /home/vibek/Human_intention /home/vibek/Human_intention/build /home/vibek/Human_intention/build /home/vibek/Human_intention/build/CMakeFiles/test-results.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/test-results.dir/depend
 

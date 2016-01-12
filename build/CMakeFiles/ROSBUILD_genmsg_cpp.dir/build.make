@@ -31,153 +31,150 @@ CMAKE_COMMAND = /usr/bin/cmake
 # The command to remove a file.
 RM = /usr/bin/cmake -E remove -f
 
-# The program to use to edit the cache.
-CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
-
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/vibek/skeleton_markers
+CMAKE_SOURCE_DIR = /home/vibek/Human_intention
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/vibek/skeleton_markers/build
+CMAKE_BINARY_DIR = /home/vibek/Human_intention/build
 
 # Utility rule file for ROSBUILD_genmsg_cpp.
 
 # Include the progress variables for this target.
 include CMakeFiles/ROSBUILD_genmsg_cpp.dir/progress.make
 
-CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/skeleton_markers/Skeleton.h
-CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h
+CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/Human_intention/Skeleton.h
+CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/Human_intention/EnableJointGroup.h
 
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: ../msg/Skeleton.msg
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/roscpp/rosbuild/scripts/genmsg_cpp.py
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/roslib/cmake/../../../lib/roslib/gendeps
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/std_msgs/msg/Header.msg
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/geometry_msgs/msg/Quaternion.msg
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/geometry_msgs/msg/Vector3.msg
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: ../manifest.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/genmsg/package.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/genpy/package.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/rosgraph/package.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/cpp_common/package.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/rostime/package.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/roscpp_traits/package.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/roscpp_serialization/package.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/message_runtime/package.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/std_msgs/package.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/rosgraph_msgs/package.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/catkin/package.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/rospack/package.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/roslib/package.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/rospy/package.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/rosconsole/package.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/xmlrpcpp/package.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/roscpp/package.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/geometry_msgs/package.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/visualization_msgs/package.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/sensor_msgs/package.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/camera_calibration_parsers/package.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/message_filters/package.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/console_bridge/package.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/class_loader/package.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/pluginlib/package.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/image_transport/package.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/camera_info_manager/package.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/topic_tools/package.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/rosbag/package.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/rosmsg/package.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/rosservice/package.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/dynamic_reconfigure/package.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/bond/package.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/smclib/package.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/bondcpp/package.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/nodelet/package.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/openni_camera/package.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/orocos_kdl/package.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/python_orocos_kdl/package.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/stacks/orocos_kinematics_dynamics/kdl/manifest.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/tf/package.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/stacks/openni_tracker/manifest.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/gencpp/package.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/genlisp/package.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/message_generation/package.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/actionlib_msgs/package.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/rosclean/package.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/rosmaster/package.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/rosout/package.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/rosparam/package.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/roslaunch/package.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/rosunit/package.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/rostest/package.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/actionlib/package.xml
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/vibek/skeleton_markers/build/CMakeFiles $(CMAKE_PROGRESS_1)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/cpp/include/skeleton_markers/Skeleton.h"
-	/opt/ros/groovy/share/roscpp/rosbuild/scripts/genmsg_cpp.py /home/vibek/skeleton_markers/msg/Skeleton.msg
+../msg_gen/cpp/include/Human_intention/Skeleton.h: ../msg/Skeleton.msg
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/roscpp/rosbuild/scripts/genmsg_cpp.py
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/roslib/cmake/../../../lib/roslib/gendeps
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/std_msgs/msg/Header.msg
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/geometry_msgs/msg/Quaternion.msg
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/geometry_msgs/msg/Vector3.msg
+../msg_gen/cpp/include/Human_intention/Skeleton.h: ../manifest.xml
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/genmsg/package.xml
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/genpy/package.xml
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/rosgraph/package.xml
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/cpp_common/package.xml
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/rostime/package.xml
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/roscpp_traits/package.xml
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/roscpp_serialization/package.xml
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/message_runtime/package.xml
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/std_msgs/package.xml
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/rosgraph_msgs/package.xml
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/catkin/package.xml
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/rospack/package.xml
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/roslib/package.xml
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/rospy/package.xml
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/rosconsole/package.xml
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/xmlrpcpp/package.xml
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/roscpp/package.xml
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/geometry_msgs/package.xml
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/visualization_msgs/package.xml
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/sensor_msgs/package.xml
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/camera_calibration_parsers/package.xml
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/message_filters/package.xml
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/console_bridge/package.xml
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/class_loader/package.xml
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/pluginlib/package.xml
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/image_transport/package.xml
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/camera_info_manager/package.xml
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/topic_tools/package.xml
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/rosbag/package.xml
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/rosmsg/package.xml
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/rosservice/package.xml
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/dynamic_reconfigure/package.xml
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/bond/package.xml
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/smclib/package.xml
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/bondcpp/package.xml
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/nodelet/package.xml
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/openni_camera/package.xml
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/orocos_kdl/package.xml
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/stacks/orocos_kinematics_dynamics/python_orocos_kdl/manifest.xml
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/stacks/orocos_kinematics_dynamics/kdl/manifest.xml
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/tf/package.xml
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/stacks/openni_tracker/manifest.xml
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/gencpp/package.xml
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/genlisp/package.xml
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/message_generation/package.xml
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/actionlib_msgs/package.xml
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/rosclean/package.xml
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/rosmaster/package.xml
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/rosout/package.xml
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/rosparam/package.xml
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/roslaunch/package.xml
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/rosunit/package.xml
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/rostest/package.xml
+../msg_gen/cpp/include/Human_intention/Skeleton.h: /opt/ros/groovy/share/actionlib/package.xml
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/vibek/Human_intention/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/cpp/include/Human_intention/Skeleton.h"
+	/opt/ros/groovy/share/roscpp/rosbuild/scripts/genmsg_cpp.py /home/vibek/Human_intention/msg/Skeleton.msg
 
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: ../msg/EnableJointGroup.msg
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/share/roscpp/rosbuild/scripts/genmsg_cpp.py
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/share/roslib/cmake/../../../lib/roslib/gendeps
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: ../manifest.xml
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/share/genmsg/package.xml
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/share/genpy/package.xml
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/share/rosgraph/package.xml
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/share/cpp_common/package.xml
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/share/rostime/package.xml
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/share/roscpp_traits/package.xml
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/share/roscpp_serialization/package.xml
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/share/message_runtime/package.xml
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/share/std_msgs/package.xml
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/share/rosgraph_msgs/package.xml
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/share/catkin/package.xml
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/share/rospack/package.xml
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/share/roslib/package.xml
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/share/rospy/package.xml
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/share/rosconsole/package.xml
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/share/xmlrpcpp/package.xml
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/share/roscpp/package.xml
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/share/geometry_msgs/package.xml
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/share/visualization_msgs/package.xml
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/share/sensor_msgs/package.xml
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/share/camera_calibration_parsers/package.xml
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/share/message_filters/package.xml
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/share/console_bridge/package.xml
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/share/class_loader/package.xml
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/share/pluginlib/package.xml
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/share/image_transport/package.xml
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/share/camera_info_manager/package.xml
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/share/topic_tools/package.xml
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/share/rosbag/package.xml
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/share/rosmsg/package.xml
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/share/rosservice/package.xml
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/share/dynamic_reconfigure/package.xml
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/share/bond/package.xml
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/share/smclib/package.xml
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/share/bondcpp/package.xml
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/share/nodelet/package.xml
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/share/openni_camera/package.xml
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/share/orocos_kdl/package.xml
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/share/python_orocos_kdl/package.xml
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/stacks/orocos_kinematics_dynamics/kdl/manifest.xml
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/share/tf/package.xml
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/stacks/openni_tracker/manifest.xml
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/share/gencpp/package.xml
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/share/genlisp/package.xml
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/share/message_generation/package.xml
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/share/actionlib_msgs/package.xml
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/share/rosclean/package.xml
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/share/rosmaster/package.xml
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/share/rosout/package.xml
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/share/rosparam/package.xml
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/share/roslaunch/package.xml
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/share/rosunit/package.xml
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/share/rostest/package.xml
-../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h: /opt/ros/groovy/share/actionlib/package.xml
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/vibek/skeleton_markers/build/CMakeFiles $(CMAKE_PROGRESS_2)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h"
-	/opt/ros/groovy/share/roscpp/rosbuild/scripts/genmsg_cpp.py /home/vibek/skeleton_markers/msg/EnableJointGroup.msg
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: ../msg/EnableJointGroup.msg
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/share/roscpp/rosbuild/scripts/genmsg_cpp.py
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/share/roslib/cmake/../../../lib/roslib/gendeps
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: ../manifest.xml
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/share/genmsg/package.xml
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/share/genpy/package.xml
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/share/rosgraph/package.xml
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/share/cpp_common/package.xml
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/share/rostime/package.xml
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/share/roscpp_traits/package.xml
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/share/roscpp_serialization/package.xml
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/share/message_runtime/package.xml
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/share/std_msgs/package.xml
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/share/rosgraph_msgs/package.xml
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/share/catkin/package.xml
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/share/rospack/package.xml
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/share/roslib/package.xml
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/share/rospy/package.xml
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/share/rosconsole/package.xml
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/share/xmlrpcpp/package.xml
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/share/roscpp/package.xml
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/share/geometry_msgs/package.xml
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/share/visualization_msgs/package.xml
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/share/sensor_msgs/package.xml
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/share/camera_calibration_parsers/package.xml
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/share/message_filters/package.xml
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/share/console_bridge/package.xml
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/share/class_loader/package.xml
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/share/pluginlib/package.xml
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/share/image_transport/package.xml
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/share/camera_info_manager/package.xml
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/share/topic_tools/package.xml
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/share/rosbag/package.xml
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/share/rosmsg/package.xml
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/share/rosservice/package.xml
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/share/dynamic_reconfigure/package.xml
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/share/bond/package.xml
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/share/smclib/package.xml
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/share/bondcpp/package.xml
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/share/nodelet/package.xml
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/share/openni_camera/package.xml
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/share/orocos_kdl/package.xml
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/stacks/orocos_kinematics_dynamics/python_orocos_kdl/manifest.xml
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/stacks/orocos_kinematics_dynamics/kdl/manifest.xml
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/share/tf/package.xml
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/stacks/openni_tracker/manifest.xml
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/share/gencpp/package.xml
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/share/genlisp/package.xml
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/share/message_generation/package.xml
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/share/actionlib_msgs/package.xml
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/share/rosclean/package.xml
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/share/rosmaster/package.xml
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/share/rosout/package.xml
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/share/rosparam/package.xml
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/share/roslaunch/package.xml
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/share/rosunit/package.xml
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/share/rostest/package.xml
+../msg_gen/cpp/include/Human_intention/EnableJointGroup.h: /opt/ros/groovy/share/actionlib/package.xml
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/vibek/Human_intention/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/cpp/include/Human_intention/EnableJointGroup.h"
+	/opt/ros/groovy/share/roscpp/rosbuild/scripts/genmsg_cpp.py /home/vibek/Human_intention/msg/EnableJointGroup.msg
 
 ROSBUILD_genmsg_cpp: CMakeFiles/ROSBUILD_genmsg_cpp
-ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/skeleton_markers/Skeleton.h
-ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/skeleton_markers/EnableJointGroup.h
+ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/Human_intention/Skeleton.h
+ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/Human_intention/EnableJointGroup.h
 ROSBUILD_genmsg_cpp: CMakeFiles/ROSBUILD_genmsg_cpp.dir/build.make
 .PHONY : ROSBUILD_genmsg_cpp
 
@@ -190,6 +187,6 @@ CMakeFiles/ROSBUILD_genmsg_cpp.dir/clean:
 .PHONY : CMakeFiles/ROSBUILD_genmsg_cpp.dir/clean
 
 CMakeFiles/ROSBUILD_genmsg_cpp.dir/depend:
-	cd /home/vibek/skeleton_markers/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/vibek/skeleton_markers /home/vibek/skeleton_markers /home/vibek/skeleton_markers/build /home/vibek/skeleton_markers/build /home/vibek/skeleton_markers/build/CMakeFiles/ROSBUILD_genmsg_cpp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/vibek/Human_intention/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/vibek/Human_intention /home/vibek/Human_intention /home/vibek/Human_intention/build /home/vibek/Human_intention/build /home/vibek/Human_intention/build/CMakeFiles/ROSBUILD_genmsg_cpp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/ROSBUILD_genmsg_cpp.dir/depend
 

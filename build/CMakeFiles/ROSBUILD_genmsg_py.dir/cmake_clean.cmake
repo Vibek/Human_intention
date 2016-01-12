@@ -1,11 +1,11 @@
 FILE(REMOVE_RECURSE
   "../msg_gen"
   "../msg_gen"
-  "../src/skeleton_markers/msg"
+  "../src/Human_intention/msg"
   "CMakeFiles/ROSBUILD_genmsg_py"
-  "../src/skeleton_markers/msg/__init__.py"
-  "../src/skeleton_markers/msg/_Skeleton.py"
-  "../src/skeleton_markers/msg/_EnableJointGroup.py"
+  "../src/Human_intention/msg/__init__.py"
+  "../src/Human_intention/msg/_Skeleton.py"
+  "../src/Human_intention/msg/_EnableJointGroup.py"
 )
 
 # Per-language clean rules from dependency scanning.

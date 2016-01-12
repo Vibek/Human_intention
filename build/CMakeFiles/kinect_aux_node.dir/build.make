@@ -31,14 +31,11 @@ CMAKE_COMMAND = /usr/bin/cmake
 # The command to remove a file.
 RM = /usr/bin/cmake -E remove -f
 
-# The program to use to edit the cache.
-CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
-
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/vibek/skeleton_markers
+CMAKE_SOURCE_DIR = /home/vibek/Human_intention
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/vibek/skeleton_markers/build
+CMAKE_BINARY_DIR = /home/vibek/Human_intention/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/kinect_aux_node.dir/depend.make
@@ -90,7 +87,7 @@ CMakeFiles/kinect_aux_node.dir/src/kinect_aux_node.cpp.o: /opt/ros/groovy/share/
 CMakeFiles/kinect_aux_node.dir/src/kinect_aux_node.cpp.o: /opt/ros/groovy/share/nodelet/package.xml
 CMakeFiles/kinect_aux_node.dir/src/kinect_aux_node.cpp.o: /opt/ros/groovy/share/openni_camera/package.xml
 CMakeFiles/kinect_aux_node.dir/src/kinect_aux_node.cpp.o: /opt/ros/groovy/share/orocos_kdl/package.xml
-CMakeFiles/kinect_aux_node.dir/src/kinect_aux_node.cpp.o: /opt/ros/groovy/share/python_orocos_kdl/package.xml
+CMakeFiles/kinect_aux_node.dir/src/kinect_aux_node.cpp.o: /opt/ros/groovy/stacks/orocos_kinematics_dynamics/python_orocos_kdl/manifest.xml
 CMakeFiles/kinect_aux_node.dir/src/kinect_aux_node.cpp.o: /opt/ros/groovy/stacks/orocos_kinematics_dynamics/kdl/manifest.xml
 CMakeFiles/kinect_aux_node.dir/src/kinect_aux_node.cpp.o: /opt/ros/groovy/share/tf/package.xml
 CMakeFiles/kinect_aux_node.dir/src/kinect_aux_node.cpp.o: /opt/ros/groovy/stacks/openni_tracker/manifest.xml
@@ -106,17 +103,17 @@ CMakeFiles/kinect_aux_node.dir/src/kinect_aux_node.cpp.o: /opt/ros/groovy/share/
 CMakeFiles/kinect_aux_node.dir/src/kinect_aux_node.cpp.o: /opt/ros/groovy/share/rosunit/package.xml
 CMakeFiles/kinect_aux_node.dir/src/kinect_aux_node.cpp.o: /opt/ros/groovy/share/rostest/package.xml
 CMakeFiles/kinect_aux_node.dir/src/kinect_aux_node.cpp.o: /opt/ros/groovy/share/actionlib/package.xml
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/vibek/skeleton_markers/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/vibek/Human_intention/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/kinect_aux_node.dir/src/kinect_aux_node.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -o CMakeFiles/kinect_aux_node.dir/src/kinect_aux_node.cpp.o -c /home/vibek/skeleton_markers/src/kinect_aux_node.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -o CMakeFiles/kinect_aux_node.dir/src/kinect_aux_node.cpp.o -c /home/vibek/Human_intention/src/kinect_aux_node.cpp
 
 CMakeFiles/kinect_aux_node.dir/src/kinect_aux_node.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/kinect_aux_node.dir/src/kinect_aux_node.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -E /home/vibek/skeleton_markers/src/kinect_aux_node.cpp > CMakeFiles/kinect_aux_node.dir/src/kinect_aux_node.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -E /home/vibek/Human_intention/src/kinect_aux_node.cpp > CMakeFiles/kinect_aux_node.dir/src/kinect_aux_node.cpp.i
 
 CMakeFiles/kinect_aux_node.dir/src/kinect_aux_node.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/kinect_aux_node.dir/src/kinect_aux_node.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -S /home/vibek/skeleton_markers/src/kinect_aux_node.cpp -o CMakeFiles/kinect_aux_node.dir/src/kinect_aux_node.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -S /home/vibek/Human_intention/src/kinect_aux_node.cpp -o CMakeFiles/kinect_aux_node.dir/src/kinect_aux_node.cpp.s
 
 CMakeFiles/kinect_aux_node.dir/src/kinect_aux_node.cpp.o.requires:
 .PHONY : CMakeFiles/kinect_aux_node.dir/src/kinect_aux_node.cpp.o.requires
@@ -152,6 +149,6 @@ CMakeFiles/kinect_aux_node.dir/clean:
 .PHONY : CMakeFiles/kinect_aux_node.dir/clean
 
 CMakeFiles/kinect_aux_node.dir/depend:
-	cd /home/vibek/skeleton_markers/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/vibek/skeleton_markers /home/vibek/skeleton_markers /home/vibek/skeleton_markers/build /home/vibek/skeleton_markers/build /home/vibek/skeleton_markers/build/CMakeFiles/kinect_aux_node.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/vibek/Human_intention/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/vibek/Human_intention /home/vibek/Human_intention /home/vibek/Human_intention/build /home/vibek/Human_intention/build /home/vibek/Human_intention/build/CMakeFiles/kinect_aux_node.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/kinect_aux_node.dir/depend
 

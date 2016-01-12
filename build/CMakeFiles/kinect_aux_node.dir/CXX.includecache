@@ -6,9 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/home/vibek/skeleton_markers/src/kinect_aux_node.cpp
+/home/vibek/Human_intention/src/kinect_aux_node.cpp
 libusb.h
--
+/home/vibek/Human_intention/src/libusb.h
 ros/ros.h
 -
 std_msgs/UInt8.h
@@ -18,6 +18,20 @@ std_msgs/UInt16.h
 std_msgs/Float64.h
 -
 sensor_msgs/Imu.h
+-
+
+/home/vibek/Human_intention/src/libusb.h
+stdint.h
+-
+sys/types.h
+-
+time.h
+-
+limits.h
+-
+sys/time.h
+-
+windows.h
 -
 
 /opt/ros/groovy/include/XmlRpcDecl.h

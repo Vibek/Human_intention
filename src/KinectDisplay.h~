@@ -1,80 +1,31 @@
 #ifndef KINECT_DISPLAY_
 #define KINECT_DISPLAY_
 
+#include <ros/ros.h>
+#include <ros/console.h>
 #include <map>
 #include <list>
+#include <vector>
 #include <XnCppWrapper.h>
 #include <XnVPointControl.h>
 
-
-typedef enum
-{
-	IN_SESSION,
-	NOT_IN_SESSION,
-	QUICK_REFOCUS
-} SessionState;
-
-void PrintSessionState(SessionState eState);
+void glPrintString(void *font, char *str);
 
 void kinect_display_drawDepthMapGL(const xn::DepthMetaData& dmd,
                                    const xn::SceneMetaData& smd);
+
+void kinect_display_drawRgbMapGL(const xn::ImageMetaData& imd);
                                    
 void kinect_display_drawSkeletonGL(xn::UserGenerator& userGenerator,
-                                   xn::DepthGenerator& depthGenerator);
+                                 xn::DepthGenerator& depthGenerator, bool isDepthPass);
 
-class XnVPointDrawer : public XnVPointControl
-{
-public:
-	XnVPointDrawer(XnUInt32 nHistorySize, xn::DepthGenerator depthGenerator);
-	virtual ~XnVPointDrawer();
 
-	/**
-	 * Handle a new message.
-	 * Calls other callbacks for each point, then draw the depth map (if needed) and the points
-	 */
-	void Update(XnVMessage* pMessage);
+void DrawCircle(xn::UserGenerator& userGenerator,
+              xn::DepthGenerator& depthGenerator,
+              XnUserID player, XnSkeletonJoint eJoint,
+		float radius, XnFloat *color3f); 
 
-	/**
-	 * Handle creation of a new point
-	 */
-	void OnPointCreate(const XnVHandPointContext* cxt);
-	/**
-	 * Handle new position of an existing point
-	 */
-	void OnPointUpdate(const XnVHandPointContext* cxt);
-	/**
-	 * Handle destruction of an existing point
-	 */
-	void OnPointDestroy(XnUInt32 nID);
+void DrawBezierCurve(const std::vector<XnPoint3D> &controlPoints, int numPoints = 16);
 
-	/**
-	 * Draw the points, each with its own color.
-	 */
-	void Draw() const;
-
-	/**
-	 * Change mode - should draw the depth map?
-	 */
-	void SetDepthMap(XnBool bDrawDM);
-	/**
-	 * Change mode - print out the frame id
-	 */
-	void SetFrameID(XnBool bFrameID);
-
-	void SetTouchingFOVEdge(XnUInt32 nID);
-protected:
-	XnBool IsTouching(XnUInt32 nID) const;
-	// Number of previous position to store for each hand
-	XnUInt32 m_nHistorySize;
-	// previous positions per hand
-	std::map<XnUInt32, std::list<XnPoint3D> > m_History;
-	std::list<XnUInt32> m_TouchingFOVEdge;
-	// Source of the depth map
-	xn::DepthGenerator m_DepthGenerator;
-	XnFloat* m_pfPositionBuffer;
-
-	XnBool m_bDrawDM;
-	XnBool m_bFrameID;
-};
-                                   
+                                  
 #endif

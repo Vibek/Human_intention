@@ -24,7 +24,7 @@ xn::Context KinectController::g_Context;
 //xn::Context		context;
 xn::DepthGenerator KinectController::g_DepthGenerator;
 xn::UserGenerator KinectController::g_UserGenerator;
-//xn::HandsGenerator KinectController::g_HandsGenerator;
+xn::ImageGenerator KinectController::g_ImageGenerator;
 
 XnBool KinectController::g_bNeedPose = FALSE;
 XnChar KinectController::g_strPose[20] = "";
@@ -42,6 +42,11 @@ xn::UserGenerator& KinectController::getUserGenerator()
 xn::DepthGenerator& KinectController::getDepthGenerator()
 {
 	return g_DepthGenerator;
+}
+
+xn::ImageGenerator& KinectController::getImageGenerator()
+{
+	return g_ImageGenerator;
 }
 
 xn::Context& KinectController::getContext()
@@ -146,15 +151,24 @@ int KinectController::init(const char* path, bool recording)
 
        	nRetVal = g_Context.FindExistingNode(XN_NODE_TYPE_DEPTH, g_DepthGenerator);
 	CHECK_RC(nRetVal, "Find depth generator");
-	nRetVal = g_Context.FindExistingNode(XN_NODE_TYPE_USER, g_UserGenerator);
-        //nRetVal = g_Context.FindExistingNode(XN_NODE_TYPE_USER, g_HandsGenerator);
-        //CHECK_RC(nRetVal, "Find hand generator");       
 
+	nRetVal = g_Context.FindExistingNode(XN_NODE_TYPE_USER, g_UserGenerator);
 	if (nRetVal != XN_STATUS_OK)
 	{
 		nRetVal = g_UserGenerator.Create(g_Context);
 		CHECK_RC(nRetVal, "Find user generator");
 	}
+
+	//nRetVal = g_Context.FindExistingNode(XN_NODE_TYPE_USER, g_HandsGenerator);
+        //CHECK_RC(nRetVal, "Find hand generator");     
+
+	nRetVal = g_Context.FindExistingNode(XN_NODE_TYPE_IMAGE, g_ImageGenerator);
+	if (nRetVal != XN_STATUS_OK)
+	{
+		nRetVal = g_ImageGenerator.Create(g_Context);
+		CHECK_RC(nRetVal, "Find image generator.... HELP!!! ");
+	} 
+
 
 	XnCallbackHandle hUserCallbacks, hCalibrationCallbacks, hPoseCallbacks;
 	if (!g_UserGenerator.IsCapabilitySupported(XN_CAPABILITY_SKELETON))
@@ -182,7 +196,7 @@ int KinectController::init(const char* path, bool recording)
 	nRetVal = g_Context.StartGeneratingAll();
 	CHECK_RC(nRetVal, "StartGenerating");
   
-  return 0;
+        return 0;
 }
 
 int KinectController::shutdown()

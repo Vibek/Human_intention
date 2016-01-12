@@ -4,7 +4,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/vibek/skeleton_markers/src/kinect_aux_node.cpp" "/home/vibek/skeleton_markers/build/CMakeFiles/kinect_aux_node.dir/src/kinect_aux_node.cpp.o"
+  "/home/vibek/Human_intention/src/kinect_aux_node.cpp" "/home/vibek/Human_intention/build/CMakeFiles/kinect_aux_node.dir/src/kinect_aux_node.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 

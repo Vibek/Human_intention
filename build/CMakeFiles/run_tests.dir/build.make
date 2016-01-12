@@ -31,14 +31,11 @@ CMAKE_COMMAND = /usr/bin/cmake
 # The command to remove a file.
 RM = /usr/bin/cmake -E remove -f
 
-# The program to use to edit the cache.
-CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
-
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/vibek/skeleton_markers
+CMAKE_SOURCE_DIR = /home/vibek/Human_intention
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/vibek/skeleton_markers/build
+CMAKE_BINARY_DIR = /home/vibek/Human_intention/build
 
 # Utility rule file for run_tests.
 
@@ -60,6 +57,6 @@ CMakeFiles/run_tests.dir/clean:
 .PHONY : CMakeFiles/run_tests.dir/clean
 
 CMakeFiles/run_tests.dir/depend:
-	cd /home/vibek/skeleton_markers/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/vibek/skeleton_markers /home/vibek/skeleton_markers /home/vibek/skeleton_markers/build /home/vibek/skeleton_markers/build /home/vibek/skeleton_markers/build/CMakeFiles/run_tests.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/vibek/Human_intention/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/vibek/Human_intention /home/vibek/Human_intention /home/vibek/Human_intention/build /home/vibek/Human_intention/build /home/vibek/Human_intention/build/CMakeFiles/run_tests.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/run_tests.dir/depend
 

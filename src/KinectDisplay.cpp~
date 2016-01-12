@@ -6,18 +6,27 @@
  //  All rights reserved.
 *                                                                            *
 *****************************************************************************/
-
+#include <ros/ros.h>
+#include <ros/console.h>
 #include <GL/glut.h>
 #include <std_msgs/String.h>
 #include <std_msgs/Header.h>
 #include <fstream>
 #include <stdio.h>
 #include "KinectDisplay.h"
-//#include <vector.h>
-//#include <stdio.h>
+#include "trajectory.h"
 #include <stdlib.h>
 #include <math.h>
+#include <time.h>
+#include <XnV3DVector.h>
+#include <geometry_msgs/Point.h>
+#include <geometry_msgs/Twist.h>
+#include <geometry_msgs/Pose2D.h>
 
+#define PI              3.14159265359
+#define fps             30
+#define MAX_DEPTH	10000
+#define MAX_RGB		10000
 
 XnBool g_bDrawBackground = TRUE;
 XnBool g_bDrawPixels = TRUE;
@@ -28,18 +37,17 @@ XnBool g_bPrintFrameID = FALSE;
 
 extern xn::ImageGenerator ImageGenerator;
 
+ros::Publisher  cmdVelPub;
+
 using std::string;
-
-#define PI 3.14159265359
-#define fps 30
 using namespace std;
-
-#define MAX_DEPTH 10000
-
+//using geometry_msgs::Twist;
+//Twist vel;
 // focal length(calculated before) and test distance
 float f = 525.0, D = 45.0;   
 
 float g_pDepthHist[MAX_DEPTH];
+float g_pRgbHist[MAX_RGB];
 unsigned int getClosestPowerOfTwo(unsigned int n)
 {
 	unsigned int m = 2;
@@ -91,10 +99,10 @@ void DrawTexture(float topLeftX, float topLeftY, float bottomRightX, float botto
 XnFloat Colors[][3] =
 {
 	{0,1,1},
-	{0,0,1},
+	{0,0,1}, // blue
 	{0,1,0},
-	{1,1,0},
-	{1,0,0},
+	{1,1,0}, // yellow
+	{1,0,0}, // red
 	{1,.5,0},
 	{.5,1,0},
 	{0,.5,1},
@@ -119,19 +127,19 @@ void glPrintString(void *font, char *str)
 	}
 }
 
-/*** Here is the main thing to work with to change in RGB image and show the skeleton on RGB image frame ***/
+/*** Here is the main thing to work with to change in Depth image and show the skeleton on Depth image frame ***/
 
-void kinect_display_drawDepthMapGL(const xn::DepthMetaData& dmd, const xn::SceneMetaData& smd) // I need to check with imageMetaData
+void kinect_display_drawDepthMapGL(const xn::DepthMetaData& dmd, const xn::SceneMetaData& smd) // I need to check with DepthMetaData
 {
 	static bool bInitialized = false;	
 	static GLuint depthTexID;
 	static unsigned char* pDepthTexBuf;
 	static int texWidth, texHeight;
 
-  float topLeftX;
-  float topLeftY;
-  float bottomRightY;
-  float bottomRightX;
+  	float topLeftX;
+  	float topLeftY;
+  	float bottomRightY;
+  	float bottomRightX;
 	float texXpos;
 	float texYpos;
        
@@ -259,6 +267,97 @@ void kinect_display_drawDepthMapGL(const xn::DepthMetaData& dmd, const xn::Scene
 	glDisable(GL_TEXTURE_2D);
 }
 
+/*** Here is the main thing to work with to change in RGB image and show the skeleton on RGB image frame ***/
+
+void kinect_display_drawRgbMapGL(const xn::ImageMetaData& imd) // I need to check with imageMetaData
+{
+	static bool bInitialized = false;	
+	static GLuint rgbTexID;
+	static unsigned char* pRgbTexBuf;
+	static int texWidth, texHeight;
+
+  	float topLeftX;
+  	float topLeftY;
+  	float bottomRightY;
+  	float bottomRightX;
+	float texXpos;
+	float texYpos;
+       
+	if(!bInitialized)
+	{
+
+		texWidth =  getClosestPowerOfTwo(imd.XRes());
+		texHeight = getClosestPowerOfTwo(imd.YRes());
+
+		printf("Initializing depth texture: width = %d, height = %d\n", texWidth, texHeight);
+		rgbTexID = initTexture((void**)&pRgbTexBuf,texWidth, texHeight) ;
+
+		printf("Initialized depth texture: width = %d, height = %d\n", texWidth, texHeight);
+		bInitialized = true;
+
+		topLeftX = imd.XRes();
+		topLeftY = 0;
+		bottomRightY = imd.YRes();
+		bottomRightX = 0;
+		texXpos =(float)imd.XRes()/texWidth;
+		texYpos  =(float)imd.YRes()/texHeight;
+
+		memset(texcoords, 0, 8*sizeof(float));
+		texcoords[0] = texXpos, texcoords[1] = texYpos, texcoords[2] = texXpos, texcoords[7] = texYpos;
+
+	}
+	unsigned int nX = 0;
+	unsigned int nY = 0;
+	XnUInt16 g_nXRes = imd.XRes();
+	XnUInt16 g_nYRes = imd.YRes();
+
+	unsigned char* pDestImage = pRgbTexBuf;
+	const XnRGB24Pixel* pRgb = imd.RGB24Data();
+
+	if (g_bDrawPixels)
+	{
+		XnUInt32 nIndex = 0;
+		// Prepare the texture map
+		for (nY=0; nY<g_nYRes; nY++)
+		{
+			for (nX=0; nX < g_nXRes; nX++, nIndex++)
+			{
+
+				pDestImage[0] = 0;
+				pDestImage[1] = 0;
+				pDestImage[2] = 0;
+				if (g_bDrawBackground)
+				{
+
+					pDestImage[0] = pRgb->nRed; 
+					pDestImage[1] = pRgb->nGreen;
+					pDestImage[2] = pRgb->nBlue;
+				}
+
+				pRgb++;
+				pDestImage+=3;
+			}
+
+			pDestImage += (texWidth - g_nXRes) *3;
+		}
+	}
+	else
+	{
+		xnOSMemSet(pRgbTexBuf, 0, 3*2*g_nXRes*g_nYRes);
+	}
+
+	glBindTexture(GL_TEXTURE_2D, rgbTexID);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, texWidth, texHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, pRgbTexBuf);
+
+	// Display the OpenGL texture map
+	glColor4f(0.75,0.75,0.75,1);
+
+	glEnable(GL_TEXTURE_2D);
+	DrawTexture(imd.XRes(),imd.YRes(),0,0);	
+	glDisable(GL_TEXTURE_2D);
+}
+
+
 void DrawLimb(xn::UserGenerator& userGenerator,
               xn::DepthGenerator& depthGenerator,
               XnUserID player, XnSkeletonJoint eJoint1, XnSkeletonJoint eJoint2)
@@ -283,7 +382,7 @@ void DrawLimb(xn::UserGenerator& userGenerator,
 	pt[1] = joint2.position;
 
 	depthGenerator.ConvertRealWorldToProjective(2, pt, pt);
-        //depthGenerator.GetAlternativeViewPointCap().SetViewPoint(ImageGenerator);
+       
 	glVertex3i(pt[0].X, pt[0].Y, 0);
 	glVertex3i(pt[1].X, pt[1].Y, 0);
 }
@@ -308,73 +407,115 @@ void DrawJoint(xn::UserGenerator& userGenerator,
         XnPoint3D pt[2];
 	pt[0] = joint.position;
         depthGenerator.ConvertRealWorldToProjective(1, pt, pt);
-        //ImageGenerator.GetAlternativeViewPointCap().SetViewPoint(UserGenerator);
-        //DepthGenerator.GetAlternativeViewPointCap().SetViewPoint(ImageGenerator);
         glVertex2f(pt[0].X, pt[0].Y);
-        //glPrintString(GLUT_BITMAP_HELVETICA_18, strLabel);
+}
+
+const char *GetJointName (XnSkeletonJoint eJoint)
+{
+                     
+	switch (eJoint)
+	{
+	case XN_SKEL_HEAD: return "head";
+	case XN_SKEL_NECK: return "neck";
+        case XN_SKEL_LEFT_SHOULDER: return "left shoulder";
+	case XN_SKEL_LEFT_ELBOW: return "left elbow";
+	case XN_SKEL_RIGHT_SHOULDER: return "right shoulder";
+	case XN_SKEL_RIGHT_ELBOW: return "right elbow";
+	case XN_SKEL_TORSO: return "torse";
+	case XN_SKEL_LEFT_HIP: return "left hip";
+	case XN_SKEL_LEFT_KNEE: return "left knee";
+	case XN_SKEL_LEFT_FOOT: return "left foot";
+	case XN_SKEL_RIGHT_KNEE: return "right knee";
+	case XN_SKEL_RIGHT_FOOT: return "right foot";
+	case XN_SKEL_RIGHT_HAND: return "right hand";
+	case XN_SKEL_LEFT_HAND: return "left hand";
+	
+	};
+
+	return "Joint";
 }
 
 void DrawPoint(xn::UserGenerator& userGenerator,
               xn::DepthGenerator& depthGenerator,
-              XnUserID player, XnSkeletonJoint eJoint)
+              XnUserID player, XnSkeletonJoint eJoint,
+		ofstream &x_file, bool addComma=true)
 {
     char strLabel[50] = "";
     xnOSMemSet(strLabel, 0, sizeof(strLabel));
-    vector<double> joint_x;
-    vector<double> joint_y;
-    double jnt_x =0, jnt_y=0;
 
     if (!userGenerator.GetSkeletonCap().IsTracking(player))
 	{
 		printf("not tracked!\n");
 		return;
 	}
-    
-       ofstream x_file;
-       x_file.open ("JointPositionData.csv", ios::app);
 
-  if (g_bPrintID){ 
-     //PVector joint = new PVector();
-     XnSkeletonJointPosition joint;
-     userGenerator.GetSkeletonCap().GetSkeletonJointPosition(player, eJoint, joint);
-     //println(joint);
-      if (joint.fConfidence < 0.5){
-           return;
-    }
+
+    if (g_bPrintID){ 
+     	XnSkeletonJointPosition joint;
+     	userGenerator.GetSkeletonCap().GetSkeletonJointPosition(player, eJoint, joint);
+
+      	if (joint.fConfidence < 0.5){
+		x_file << "[,]" << (addComma? ", " : "");
+           	return;
+   	}
+	else {
+
+		XnPoint3D pt[2];
+		pt[0] = joint.position;
+		depthGenerator.ConvertRealWorldToProjective(1, pt, pt);
+		glVertex2f(pt[0].X, pt[0].Y);
+		sprintf(strLabel, "%s (%.0f, %.0f) ", GetJointName(eJoint), pt[0].X,pt[0].Y);
+		glColor3f(1.f,1.f,1.f);
+		glRasterPos2i(pt[0].X, pt[0].Y);
+		glPrintString(GLUT_BITMAP_HELVETICA_18, strLabel);   
+
+        	x_file << "[" << pt[0].X << ", " << pt[0].Y << "]";
+		if (addComma) x_file << ", ";
+	}
       
-        XnPoint3D pt[2];
-	pt[0] = joint.position;
-        depthGenerator.ConvertRealWorldToProjective(1, pt, pt);
-        glVertex2f(pt[0].X, pt[0].Y);
-        sprintf(strLabel, "Joint (%.0f, %.0f) ", pt[0].X,pt[0].Y);
+    }
+}
+
+//Calculate 3D distance between two points inorder to evaluate threshold in prediction
+
+void Distance3D(xn::UserGenerator& userGenerator,
+              xn::DepthGenerator& depthGenerator,
+              XnUserID player, XnSkeletonJoint eJoint1, XnSkeletonJoint eJoint2)
+{
+	char strLabel[50] = "";
+  	xnOSMemSet(strLabel, 0, sizeof(strLabel));
+
+    if (!userGenerator.GetSkeletonCap().IsTracking(player))
+	{
+		printf("not tracked!\n");
+		return;
+	}
+
+	XnSkeletonJointPosition joint1, joint2;
+	userGenerator.GetSkeletonCap().GetSkeletonJointPosition(player, eJoint1, joint1);
+	userGenerator.GetSkeletonCap().GetSkeletonJointPosition(player, eJoint2, joint2);
+
+	if (joint1.fConfidence < 0.5 || joint2.fConfidence < 0.5)
+	{
+		return;
+	}
+
+
+	XnVector3D v;
+	v.X = joint1.position.X - joint2.position.X;
+	v.Y = joint1.position.Y - joint2.position.Y;
+	v.Z = joint1.position.Z - joint2.position.Z;
+	float distance3D = sqrt(v.X * v.X + v.Y * v.Y + v.Z * v.Z);
+
+	float dist = sqrt(distance3D * distance3D) * 0.001f;
+	sprintf(strLabel, " Distance between %s", GetJointName(eJoint1), "and %s", GetJointName(eJoint2),":(%.03fm) ", dist);
         glColor3f(1.f,1.f,1.f);
-        glRasterPos2i(pt[0].X, pt[0].Y);
-        glPrintString(GLUT_BITMAP_HELVETICA_18, strLabel);
-      
-        double posx =pt[0].X;
-        double posy =pt[0].Y;  
-       
-        double posx_diff = posx - jnt_x;
-        double posy_diff = posy - jnt_y;
+	glRasterPos2i(20, (eJoint2 == XN_SKEL_RIGHT_HAND)? 80 : 110);
+	glPrintString(GLUT_BITMAP_HELVETICA_18, strLabel);	
+        
+}
 
-        jnt_x = posx;
-        jnt_y = posy;
 
-        joint_x.push_back(posx_diff);
-        joint_y.push_back(posy_diff);
-
-        //cout <<"JOINT VALUE PUSHED INTO VECTOR" << jnt_x <<","<< jnt_y<<endl;
-
-        vector<double>::iterator j = joint_y.begin();
-
-         for (vector<double>::iterator i = joint_x.begin(); i != joint_x.end();++i)
-         {
-          x_file << "Pos" << *i <<"," <<*j <<"." <<endl;
-          j++;
-        }      
-    }
-    x_file.close();   
-  }
 
 void Showvelocity(xn::UserGenerator& userGenerator,
               xn::DepthGenerator& depthGenerator,
@@ -417,7 +558,6 @@ void Showvelocity(xn::UserGenerator& userGenerator,
      
         double dist = sqrt(posx_diff*posx_diff + posy_diff*posy_diff);
         
-        //double factor = vel/dist;
         double vel_x = posx_diff * fps;
         double vel_y = posy_diff * fps;
         double vel =  sqrt(vel_x*vel_x + vel_y*vel_y);
@@ -427,105 +567,120 @@ void Showvelocity(xn::UserGenerator& userGenerator,
         joint_x.push_back(vel_x);
         joint_y.push_back(vel_y);
       
-
-        //cout <<"JOINT VALUE PUSHED INTO VECTOR" << velocity<<endl;
-        sprintf(strLabel, "Velocity :(%.0lf) ", velocity); 
- 
-        glColor3f(1.f,1.f,1.f);
+        sprintf(strLabel, " %s Velocity :(%.0lf) ", GetJointName(eJoint), velocity);
+        glColor3f(1.f,1.f,1.f); 
+        if (eJoint == XN_SKEL_RIGHT_HAND){
+        
         glRasterPos2i(20, 20);
+	}
+    else{
+ 	glRasterPos2i(20, 40);
+	}
         glPrintString(GLUT_BITMAP_HELVETICA_18, strLabel);
  
         
 } 
 
+//Function Struct History is called from trajectory.h (file)
+ 
+History g_RightHandPositionHistory;
+History g_LeftHandPositionHistory;
+/*
+bool GetHistoryForJoint (XnSkeletonJoint eJoint, History **history) {
+	switch (eJoint)
+	{
+	case XN_SKEL_RIGHT_HAND:
+		*history = &g_RightHandPositionHistory;
+		break;
 
+	case XN_SKEL_LEFT_HAND:
+		*history = &g_LeftHandPositionHistory;
+		break;
+
+	default:
+		*history = 0;
+		return false;
+	};
+
+	return true;
+}*/
+
+/*
 void handtrajectory(xn::UserGenerator& userGenerator,
               xn::DepthGenerator& depthGenerator,
-              XnUserID player, XnSkeletonJoint eJoint)
+              XnUserID player, XnSkeletonJoint eJoint, bool updateHistory)
 {
-         
-       // previous positions per hand
-       std::list<XnPoint3D> m_History;
-        //std::list<XnPoint3D> f_History;
-         XnFloat *m_pfPositionBuffer;
-        if (!userGenerator.GetSkeletonCap().IsTracking(player))
-	{
-		printf("not tracked!\n");
-		return;
-	}
+	XnSkeletonJointPosition joint;
+	userGenerator.GetSkeletonCap().GetSkeletonJointPosition(player, eJoint, joint);
 
-       
-     XnSkeletonJointPosition joint;
-     userGenerator.GetSkeletonCap().GetSkeletonJointPosition(player, eJoint, joint);
-
-      if (joint.fConfidence < 0.5){
+	if (joint.fConfidence < 0.5){
            return;
         }
             
-        XnPoint3D pt[2], pnt, point;
-        point.X=-1; point.Y=-1;
-	pt[0] = joint.position;
-        depthGenerator.ConvertRealWorldToProjective(1, pt, pt);
-                             
-          pnt.X = pt[0].X - point.X;
-          pnt.Y = pt[0].Y - point.Y;  
-         
-          point.X = pnt.X;
-          point.Y = pnt.Y;
-    
-        m_History.push_front(pt[0]);
-        //pnt(m_History.size()-1);
-        //f_History.push_front(pnt);
-	std::list<XnPoint3D>::const_iterator PointIterator;
-            XnUInt32 nHistory;
-           m_pfPositionBuffer = new XnFloat[nHistory*3];
-       
-	// Go over each existing hand
-	for (PointIterator = m_History.begin();
-		PointIterator != m_History.end();
-		++PointIterator)
-	{                 
-                                             
-			XnUInt32 i = 0;		
-                
-              std::list<XnPoint3D>::const_iterator PositionIterator;
-            for (PositionIterator = m_History.begin();
-		PositionIterator != m_History.end();
-		++PositionIterator){
+        XnPoint3D pt_world, pt_screen;
+	pt_world = joint.position;
+        depthGenerator.ConvertRealWorldToProjective(1, &pt_world, &pt_screen);
+      
+	History *history;
+	if (GetHistoryForJoint (eJoint, &history) == false) return;
 
-                       // XnFloat m_pfPositionBuffer[i];
-                          // Add position to buffer
-                        XnPoint3D temp(pt[0]);                       
-                  	// Add position to buffer
-			m_pfPositionBuffer[3*i] = temp.X;
-			m_pfPositionBuffer[3*i + 1] = temp.Y;
-			m_pfPositionBuffer[3*i + 2] = 0;//pos.Z();
-                       	++i;	       
-                   }   
+	if (updateHistory) history->StoreValue (pt_world, pt_screen); // store value in the history
 
-		// Draw buffer:
-		glColor3f(0.f, 1.f, 0.f);
-		glPointSize(8);
-		glVertexPointer(3, GL_FLOAT, 0, m_pfPositionBuffer);
-		glDrawArrays(GL_LINE_STRIP, 0, i);
-         //}
-		glPointSize(8);
-		glDrawArrays(GL_POINTS, 0, 1);
-		glFlush();
+	// Visualize history
+	//
+	XnFloat pVertexBuffer [HISTORY_DRAW_SIZE * sizeof (float) * 3];
+	XnFloat *pVertex = pVertexBuffer;
+
+	// Prepare vertex buffer for drawing
+	XnPoint3D pt;
+	for (int k = 0; k < history->Size(); ++k) {
+		history->GetValueScreen (k, pt);
+
+		*pVertex++ = pt.X;
+		*pVertex++ = pt.Y;
+		*pVertex++ = 0.0f;
 	}
-}   
+
+	glColor3f(0.f, 1.f, 0.f);
+	glVertexPointer(3, GL_FLOAT, 0, pVertexBuffer);
+
+	// draw trajectory
+	glLineWidth(2);
+	glDrawArrays(GL_LINE_STRIP, 0, history->Size());
+
+	// draw history points
+	glPointSize(8);
+	glDrawArrays(GL_POINTS, 0, history->Size());
+}*/
 
 void kinect_display_drawSkeletonGL(xn::UserGenerator& userGenerator,
-                                  xn::DepthGenerator& depthGenerator)
+                                  xn::DepthGenerator& depthGenerator, bool isDepthPass)
 {
-	char strLabel[50] = "";
+	char strLabel[100];
 	XnUserID aUsers[3];
 	XnUInt16 nUsers = 3;
         GLfloat width = 3;
-    
+
 	userGenerator.GetUsers(aUsers, nUsers);
 	for (int i = 0; i < nUsers; ++i)
 	{
+		// Update targets for hand history objects
+		{
+			XnSkeletonJointPosition headJoint;
+			userGenerator.GetSkeletonCap().GetSkeletonJointPosition(aUsers[i], XN_SKEL_HEAD, headJoint);
+
+			XnPoint3D pt_world, pt_screen;
+			pt_world = headJoint.position;
+			depthGenerator.ConvertRealWorldToProjective(1, &pt_world, &pt_screen);
+
+			g_LeftHandPositionHistory.SetTarget(pt_world, pt_screen);
+			g_RightHandPositionHistory.SetTarget(pt_world, pt_screen);
+		}
+
+		char filename[256];
+		sprintf (filename, "JointPositionData:%02d.csv", i);
+		ofstream csv_file;
+		csv_file.open (filename, ios::app);
                  
 		if (g_bPrintID)
 		{
@@ -534,19 +689,20 @@ void kinect_display_drawSkeletonGL(xn::UserGenerator& userGenerator,
 			depthGenerator.ConvertRealWorldToProjective(1, &com, &com);// I need to change with image generator
                         glVertex2f(com.X, com.Y);
                         float tmpCOM_x =com.X;
-                        float tmpCOM_y =com.Y;         
+                        float tmpCOM_y =com.Y;     
                       
                         // Calculate the distance from the qrcode to camera
-                        float distanceL = (f * D) / tmpCOM_y;
-                        float distanceR = (f * D) / tmpCOM_y;                        
-                        float dist = sqrt(distanceL*distanceL + distanceR*distanceR);
-                        //float dist = ((distanceL + distanceR) / 2)/299.8701;
-                        //cout << "Distance:" << dist <<endl;
-                        sprintf(strLabel, "Distance :(%.0lfcm) ", dist); 
+                        float dist = com.Z /1000.0f;       
+                        sprintf(strLabel, "Distance :(%.1fm) ", dist); 
                         glColor3f(1.f,1.f,1.f);
-                        glRasterPos2i(30, 50);
+                        glRasterPos2i(20, 60);
                         glPrintString(GLUT_BITMAP_HELVETICA_18, strLabel);
 
+			sprintf(strLabel, "Hand speeds (L/R) :(%.1f/%.1f) ", g_LeftHandPositionHistory.Speed(), g_RightHandPositionHistory.Speed()); 
+                        glColor3f(1.f,1.f,1.f);
+                        glRasterPos2i(20, 130);
+                        glPrintString(GLUT_BITMAP_HELVETICA_18, strLabel);
+				
 			xnOSMemSet(strLabel, 0, sizeof(strLabel));
 			if (!g_bPrintState)
 			{
@@ -578,13 +734,13 @@ void kinect_display_drawSkeletonGL(xn::UserGenerator& userGenerator,
 			glPrintString(GLUT_BITMAP_HELVETICA_18, strLabel);
 		}
                        
-                        
+                     //cmdVelPub.publish(vel);   
                            
 		if (g_bDrawSkeleton && userGenerator.GetSkeletonCap().IsTracking(aUsers[i]))
 		{
 		  
                   	
-                       glLineWidth(width);
+                        glLineWidth(width);
                         glBegin(GL_LINES);
 			glColor4f(1-Colors[aUsers[i]%nColors][0], 1-Colors[aUsers[i]%nColors][1], 1-Colors[aUsers[i]%nColors][2], 1);
 			DrawLimb(userGenerator, depthGenerator, aUsers[i], XN_SKEL_HEAD, XN_SKEL_NECK);
@@ -609,12 +765,12 @@ void kinect_display_drawSkeletonGL(xn::UserGenerator& userGenerator,
 			DrawLimb(userGenerator, depthGenerator, aUsers[i], XN_SKEL_RIGHT_KNEE, XN_SKEL_RIGHT_FOOT);
 
 			DrawLimb(userGenerator, depthGenerator, aUsers[i], XN_SKEL_LEFT_HIP, XN_SKEL_RIGHT_HIP);
-                         glEnd();
+                        glEnd();
                         
 
-                         glBegin(GL_POINTS);
-                         glColor3f(1.f, 0.f, 0.f);
-                         glPointSize(1000.0);
+                        glBegin(GL_POINTS);
+                        glColor3f(1.f, 0.f, 0.f);
+                        glPointSize(1000.0);
                         
                            DrawJoint(userGenerator, depthGenerator, aUsers[i], XN_SKEL_HEAD);
                           
@@ -639,61 +795,58 @@ void kinect_display_drawSkeletonGL(xn::UserGenerator& userGenerator,
                            DrawJoint(userGenerator, depthGenerator, aUsers[i], XN_SKEL_LEFT_HAND);
 
 			glEnd();
-                            
-                           DrawPoint(userGenerator, depthGenerator, aUsers[i], XN_SKEL_HEAD);
+			
+                           DrawPoint(userGenerator, depthGenerator, aUsers[i], XN_SKEL_HEAD, csv_file);
                           
-                           DrawPoint(userGenerator, depthGenerator, aUsers[i], XN_SKEL_NECK);
-                           DrawPoint(userGenerator, depthGenerator, aUsers[i], XN_SKEL_LEFT_SHOULDER);
-                           DrawPoint(userGenerator, depthGenerator, aUsers[i], XN_SKEL_LEFT_ELBOW);
-                           DrawPoint(userGenerator, depthGenerator, aUsers[i], XN_SKEL_NECK);
+                           DrawPoint(userGenerator, depthGenerator, aUsers[i], XN_SKEL_NECK, csv_file);
+                           DrawPoint(userGenerator, depthGenerator, aUsers[i], XN_SKEL_LEFT_SHOULDER, csv_file);
+                           DrawPoint(userGenerator, depthGenerator, aUsers[i], XN_SKEL_LEFT_ELBOW, csv_file);
+                           DrawPoint(userGenerator, depthGenerator, aUsers[i], XN_SKEL_NECK, csv_file);
                            
-                           DrawPoint(userGenerator, depthGenerator, aUsers[i], XN_SKEL_RIGHT_SHOULDER);
-                           DrawPoint(userGenerator, depthGenerator, aUsers[i], XN_SKEL_RIGHT_ELBOW);
+                           DrawPoint(userGenerator, depthGenerator, aUsers[i], XN_SKEL_RIGHT_SHOULDER, csv_file);
+                           DrawPoint(userGenerator, depthGenerator, aUsers[i], XN_SKEL_RIGHT_ELBOW, csv_file);
                           
-                           DrawPoint(userGenerator, depthGenerator, aUsers[i], XN_SKEL_TORSO);
-                           DrawPoint(userGenerator, depthGenerator, aUsers[i], XN_SKEL_LEFT_HIP);
-                           DrawPoint(userGenerator, depthGenerator, aUsers[i], XN_SKEL_LEFT_KNEE);
-                           DrawPoint(userGenerator, depthGenerator, aUsers[i], XN_SKEL_RIGHT_HIP);
-                           DrawPoint(userGenerator, depthGenerator, aUsers[i], XN_SKEL_LEFT_FOOT);
+                           DrawPoint(userGenerator, depthGenerator, aUsers[i], XN_SKEL_TORSO, csv_file);
+                           DrawPoint(userGenerator, depthGenerator, aUsers[i], XN_SKEL_LEFT_HIP, csv_file);
+                           DrawPoint(userGenerator, depthGenerator, aUsers[i], XN_SKEL_LEFT_KNEE, csv_file);
+                           DrawPoint(userGenerator, depthGenerator, aUsers[i], XN_SKEL_RIGHT_HIP, csv_file);
+                           DrawPoint(userGenerator, depthGenerator, aUsers[i], XN_SKEL_LEFT_FOOT, csv_file);
                           
-                           DrawPoint(userGenerator, depthGenerator, aUsers[i], XN_SKEL_RIGHT_KNEE);
-                           DrawPoint(userGenerator, depthGenerator, aUsers[i], XN_SKEL_LEFT_HIP);
-                           DrawPoint(userGenerator, depthGenerator, aUsers[i], XN_SKEL_RIGHT_FOOT);
-                           DrawPoint(userGenerator, depthGenerator, aUsers[i], XN_SKEL_RIGHT_HAND);
-                           DrawPoint(userGenerator, depthGenerator, aUsers[i], XN_SKEL_LEFT_HAND);
+                           DrawPoint(userGenerator, depthGenerator, aUsers[i], XN_SKEL_RIGHT_KNEE, csv_file);
+                           DrawPoint(userGenerator, depthGenerator, aUsers[i], XN_SKEL_LEFT_HIP, csv_file);
+                           DrawPoint(userGenerator, depthGenerator, aUsers[i], XN_SKEL_RIGHT_FOOT, csv_file);
+                           DrawPoint(userGenerator, depthGenerator, aUsers[i], XN_SKEL_RIGHT_HAND, csv_file);
+                           DrawPoint(userGenerator, depthGenerator, aUsers[i], XN_SKEL_LEFT_HAND, csv_file, false);
                           
                            Showvelocity(userGenerator, depthGenerator, aUsers[i], XN_SKEL_RIGHT_HAND);
                            Showvelocity(userGenerator, depthGenerator, aUsers[i], XN_SKEL_LEFT_HAND);
-                     /*
-                           handtrajectory(userGenerator, depthGenerator, aUsers[i], XN_SKEL_HEAD);
+               
+                           handtrajectory(userGenerator, depthGenerator, aUsers[i], XN_SKEL_RIGHT_HAND, isDepthPass);
+                           handtrajectory(userGenerator, depthGenerator, aUsers[i], XN_SKEL_LEFT_HAND, isDepthPass);
+
+                           Distance3D(userGenerator, depthGenerator, aUsers[i], XN_SKEL_HEAD, XN_SKEL_RIGHT_HAND);
+			   Distance3D(userGenerator, depthGenerator, aUsers[i], XN_SKEL_HEAD, XN_SKEL_LEFT_HAND);
                           
-                           handtrajectory(userGenerator, depthGenerator, aUsers[i], XN_SKEL_NECK);
-                           handtrajectory(userGenerator, depthGenerator, aUsers[i], XN_SKEL_LEFT_SHOULDER);
-                           handtrajectory(userGenerator, depthGenerator, aUsers[i], XN_SKEL_LEFT_ELBOW);
-                           handtrajectory(userGenerator, depthGenerator, aUsers[i], XN_SKEL_NECK);
-                           
-                           handtrajectory(userGenerator, depthGenerator, aUsers[i], XN_SKEL_RIGHT_SHOULDER);
-                           handtrajectory(userGenerator, depthGenerator, aUsers[i], XN_SKEL_RIGHT_ELBOW);
-                          
-                           handtrajectory(userGenerator, depthGenerator, aUsers[i], XN_SKEL_TORSO);
-                           handtrajectory(userGenerator, depthGenerator, aUsers[i], XN_SKEL_LEFT_HIP);
-                           handtrajectory(userGenerator, depthGenerator, aUsers[i], XN_SKEL_LEFT_KNEE);
-                           handtrajectory(userGenerator, depthGenerator, aUsers[i], XN_SKEL_RIGHT_HIP);
-                           handtrajectory(userGenerator, depthGenerator, aUsers[i], XN_SKEL_LEFT_FOOT);
-                          
-                           handtrajectory(userGenerator, depthGenerator, aUsers[i], XN_SKEL_RIGHT_KNEE);
-                           handtrajectory(userGenerator, depthGenerator, aUsers[i], XN_SKEL_LEFT_HIP);
-                           handtrajectory(userGenerator, depthGenerator, aUsers[i], XN_SKEL_RIGHT_FOOT);*/
-                           handtrajectory(userGenerator, depthGenerator, aUsers[i], XN_SKEL_RIGHT_HAND);
-                           handtrajectory(userGenerator, depthGenerator, aUsers[i], XN_SKEL_LEFT_HAND);
-                          
+			   DrawCircle(userGenerator, depthGenerator, aUsers[i], XN_SKEL_RIGHT_HAND, 10, g_RightHandPositionHistory.Color());
+			   DrawCircle(userGenerator, depthGenerator, aUsers[i], XN_SKEL_LEFT_HAND, 10, g_LeftHandPositionHistory.Color());
+
+			   if (g_RightHandPositionHistory.IsNearTarget())
+			   {
+				DrawBezierCurve(g_RightHandPositionHistory.GetApproachCurveControlPoints());
+			   }
+			   if (g_LeftHandPositionHistory.IsNearTarget())
+			   {
+			   	DrawBezierCurve(g_LeftHandPositionHistory.GetApproachCurveControlPoints());
+			   }
 		}
+
+		csv_file.close();
+   		
  
 }
  
 }
 
-
-
-
+        
+	
 

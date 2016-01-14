@@ -1,4 +1,13 @@
-#include <GL/glut.h>
+/*****************************************************************************
+*                                                                            *
+*  //Copyright (c) 2015, Vibekananda Dutta, WUT
+  // Faculty of Power and Aeronautical Engineering (MEiL)/ZTMiR Laboratory
+  // Warsaw University of Technology
+ //  All rights reserved.
+*                                                                            *
+*****************************************************************************/
+
+include <GL/glut.h>
 #include <std_msgs/String.h>
 #include <std_msgs/Header.h>
 #include <fstream>

@@ -269,7 +269,7 @@ void kinect_display_drawDepthMapGL(const xn::DepthMetaData& dmd, const xn::Scene
 
 /*** Here is the main thing to work with to change in RGB image and show the skeleton on RGB image frame ***/
 
-void kinect_display_drawRgbMapGL(const xn::ImageMetaData& imd) // I need to check with imageMetaData
+void kinect_display_drawRgbMapGL(const xn::ImageMetaData& imd, AttentionMap &attention_map) // I need to check with imageMetaData
 {
 	static bool bInitialized = false;	
 	static GLuint rgbTexID;
@@ -289,10 +289,10 @@ void kinect_display_drawRgbMapGL(const xn::ImageMetaData& imd) // I need to chec
 		texWidth =  getClosestPowerOfTwo(imd.XRes());
 		texHeight = getClosestPowerOfTwo(imd.YRes());
 
-		printf("Initializing depth texture: width = %d, height = %d\n", texWidth, texHeight);
+		printf("Initializing RGB texture: width = %d, height = %d\n", texWidth, texHeight);
 		rgbTexID = initTexture((void**)&pRgbTexBuf,texWidth, texHeight) ;
 
-		printf("Initialized depth texture: width = %d, height = %d\n", texWidth, texHeight);
+		printf("Initialized RGB texture: width = %d, height = %d\n", texWidth, texHeight);
 		bInitialized = true;
 
 		topLeftX = imd.XRes();
@@ -345,6 +345,10 @@ void kinect_display_drawRgbMapGL(const xn::ImageMetaData& imd) // I need to chec
 	{
 		xnOSMemSet(pRgbTexBuf, 0, 3*2*g_nXRes*g_nYRes);
 	}
+
+
+	attention_map.overlay(pRgbTexBuf, texWidth, texHeight);	
+
 
 	glBindTexture(GL_TEXTURE_2D, rgbTexID);
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, texWidth, texHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, pRgbTexBuf);
@@ -653,6 +657,8 @@ void handtrajectory(xn::UserGenerator& userGenerator,
 	glDrawArrays(GL_POINTS, 0, history->Size());
 }
 
+std::vector<XnPoint3D> g_temp_points;
+
 void kinect_display_drawSkeletonGL(xn::UserGenerator& userGenerator,
                                   xn::DepthGenerator& depthGenerator, bool isDepthPass)
 {
@@ -832,11 +838,41 @@ void kinect_display_drawSkeletonGL(xn::UserGenerator& userGenerator,
 
 			   if (g_RightHandPositionHistory.IsNearTarget())
 			   {
-				DrawBezierCurve(g_RightHandPositionHistory.GetApproachCurveControlPoints());
+				g_temp_points.clear();
+				g_RightHandPositionHistory.GetApproachCurveControlPoints(g_temp_points);
+				DrawBezierCurve(g_temp_points);
+				
+				sprintf(strLabel, "PREDICTION: DRINKING"); 
+		                glColor3f(1.f,1.f,1.f);
+		                glRasterPos2i(320, 400);
+		                glPrintString(GLUT_BITMAP_HELVETICA_18, strLabel);
+
 			   }
 			   if (g_LeftHandPositionHistory.IsNearTarget())
 			   {
-			   	DrawBezierCurve(g_LeftHandPositionHistory.GetApproachCurveControlPoints());
+				g_temp_points.clear();
+				g_LeftHandPositionHistory.GetApproachCurveControlPoints(g_temp_points);
+			   	DrawBezierCurve(g_temp_points);
+				
+				sprintf(strLabel, "PREDICTING.."); 
+		                glColor3f(1.f,1.f,1.f);
+		                glRasterPos2i(320, 400);
+		                glPrintString(GLUT_BITMAP_HELVETICA_18, strLabel);
+			   }
+
+			   if (!g_RightHandPositionHistory.IsStationary())
+			   {
+				sprintf(strLabel, "RIGHT HAND IS MOVING"); 
+		                glColor3f(1.f,1.f,1.f);
+		                glRasterPos2i(320, 420);
+		                glPrintString(GLUT_BITMAP_HELVETICA_18, strLabel);
+			   }
+			   if (!g_LeftHandPositionHistory.IsStationary())
+			   {
+				sprintf(strLabel, "LEFT HAND IS MOVING"); 
+		                glColor3f(1.f,1.f,1.f);
+		                glRasterPos2i(320, 440);
+		                glPrintString(GLUT_BITMAP_HELVETICA_18, strLabel);
 			   }
 		}
 

@@ -1,3 +1,12 @@
+/*****************************************************************************
+*                                                                            *
+*  //Copyright (c) 2015, Vibekananda Dutta, WUT
+  // Faculty of Power and Aeronautical Engineering (MEiL)/ZTMiR Laboratory
+  // Warsaw University of Technology
+ //  All rights reserved.
+*                                                                            *
+*****************************************************************************/
+
 #ifndef TRAJECTORY_
 #define TRAJECTORY_
 
@@ -136,14 +145,25 @@ struct History {
 		return distance3D * 0.001f;
 	}
 
-	std::vector<XnPoint3D> GetApproachCurveControlPoints()
+	void GetApproachCurveControlPoints(std::vector<XnPoint3D> &points)
 	{
-		std::vector<XnPoint3D> points;
 		points.push_back(GetCurrentScreenPosition());
 		points.push_back(GetCurrentScreenPosition() + GetCurrentDirectionScreen() * Speed() * 1.0f);
 		points.push_back(GetTargetScreenPosition() - GetTargetApproachVectorScreen() * 10.0f);
 		points.push_back(GetTargetScreenPosition());
-		return points;
+	}
+
+	void GetPointsNewerThanTime(int timeMilliSec, std::vector<XnPoint3D> &points)
+	{
+		int count = Size();
+		for (int index = 0; index < count; ++index)
+		{
+			Record &rec = m_records [(m_curr_pos + index) % m_max_size];
+			if (rec.time >= timeMilliSec)
+			{
+				points.push_back(rec.value_screen);
+			}
+		}
 	}
 
 private:
@@ -153,7 +173,7 @@ private:
 	{
 		XnPoint3D value_world; // world position in millimeters
 		XnPoint3D value_screen;// screen position in pixels
-		int	  time;
+		int	  time; //milliseconds
 	};
 	std::vector<Record> m_records;
 
@@ -163,6 +183,8 @@ private:
 	XnPoint3D m_target_world; // in millimeters
 	XnPoint3D m_target_screen; // in pixels
 };
+
+bool GetHistoryForJoint (XnSkeletonJoint eJoint, History **history);
 
 #endif
 

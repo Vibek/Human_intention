@@ -8,13 +8,14 @@
 #include <vector>
 #include <XnCppWrapper.h>
 #include <XnVPointControl.h>
+#include "attention_map.hpp"
 
 void glPrintString(void *font, char *str);
 
 void kinect_display_drawDepthMapGL(const xn::DepthMetaData& dmd,
                                    const xn::SceneMetaData& smd);
 
-void kinect_display_drawRgbMapGL(const xn::ImageMetaData& imd);
+void kinect_display_drawRgbMapGL(const xn::ImageMetaData& imd, AttentionMap &attention_map);
                                    
 void kinect_display_drawSkeletonGL(xn::UserGenerator& userGenerator,
                                  xn::DepthGenerator& depthGenerator, bool isDepthPass);

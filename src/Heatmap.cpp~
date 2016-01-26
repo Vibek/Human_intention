@@ -1,0 +1,33 @@
+Mat mSource_Gray,mBlobHeatMap,mHeatMap;
+mSource_Gray= imread(FileName_S.c_str(),0);
+
+//Just making sure everything is binary
+threshold(mSource_Gray,mSource_Gray,254,255,THRESH_BINARY);
+imshow("Source Image",mSource_Gray);
+
+//Finding Distance Transform
+Mat mDist,mBlobDist;
+distanceTransform(mSource_Gray, mDist, CV_DIST_L2, 3);
+normalize(mDist, mDist, 0, 1., cv::NORM_MINMAX);
+mDist.convertTo(mDist,CV_8UC1,255,0);
+imshow("mDist",mDist);
+
+vector<vector<Point> > contours;
+vector<Vec4i> hierarchy;
+
+/// Find contours to Mask out the Individual Contours
+findContours( mSource_Gray, contours, hierarchy, RETR_TREE, CHAIN_APPROX_SIMPLE, Point(0, 0) );
+
+/// Draw contours (Mask)
+Mat mBlobMask = Mat::zeros( mSource_Gray.size(), CV_8UC1 );
+
+	for( size_t i = 0; i< contours.size(); i++ )
+	{
+	    drawContours( mBlobMask, contours, (int)i, Scalar(255), -1);
+	    mDist.copyTo(mBlobDist,mBlobMask);
+	    applyColorMap(mBlobDist,mBlobHeatMap,COLORMAP_RAINBOW);
+	    GaussianBlur(mBlobHeatMap,mBlobHeatMap,Size(21,21),0,0);
+	    mBlobHeatMap.copyTo(mHeatMap,mBlobMask);
+	}
+
+imshow("mHeatMap",mHeatMap);

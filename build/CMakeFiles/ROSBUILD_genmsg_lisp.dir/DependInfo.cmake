@@ -7,6 +7,9 @@ SET(CMAKE_DEPENDS_LANGUAGES
 SET(CMAKE_MULTIPLE_OUTPUT_PAIRS
   "/home/vibek/Human_intention/msg_gen/lisp/_package.lisp" "/home/vibek/Human_intention/msg_gen/lisp/Skeleton.lisp"
   "/home/vibek/Human_intention/msg_gen/lisp/_package_EnableJointGroup.lisp" "/home/vibek/Human_intention/msg_gen/lisp/EnableJointGroup.lisp"
+  "/home/vibek/Human_intention/msg_gen/lisp/_package_Goal.lisp" "/home/vibek/Human_intention/msg_gen/lisp/Goal.lisp"
+  "/home/vibek/Human_intention/msg_gen/lisp/_package_PerceptInfo.lisp" "/home/vibek/Human_intention/msg_gen/lisp/PerceptInfo.lisp"
+  "/home/vibek/Human_intention/msg_gen/lisp/_package_Pose.lisp" "/home/vibek/Human_intention/msg_gen/lisp/Pose.lisp"
   "/home/vibek/Human_intention/msg_gen/lisp/_package_Skeleton.lisp" "/home/vibek/Human_intention/msg_gen/lisp/Skeleton.lisp"
   )
 

@@ -9,6 +9,15 @@ FILE(REMOVE_RECURSE
   "../msg_gen/lisp/EnableJointGroup.lisp"
   "../msg_gen/lisp/_package.lisp"
   "../msg_gen/lisp/_package_EnableJointGroup.lisp"
+  "../msg_gen/lisp/PerceptInfo.lisp"
+  "../msg_gen/lisp/_package.lisp"
+  "../msg_gen/lisp/_package_PerceptInfo.lisp"
+  "../msg_gen/lisp/Pose.lisp"
+  "../msg_gen/lisp/_package.lisp"
+  "../msg_gen/lisp/_package_Pose.lisp"
+  "../msg_gen/lisp/Goal.lisp"
+  "../msg_gen/lisp/_package.lisp"
+  "../msg_gen/lisp/_package_Goal.lisp"
 )
 
 # Per-language clean rules from dependency scanning.

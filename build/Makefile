@@ -461,6 +461,30 @@ gtest_main/fast:
 	$(MAKE) -f gtest/CMakeFiles/gtest_main.dir/build.make gtest/CMakeFiles/gtest_main.dir/build
 .PHONY : gtest_main/fast
 
+src/BrazierCurve.o: src/BrazierCurve.cpp.o
+.PHONY : src/BrazierCurve.o
+
+# target to build an object file
+src/BrazierCurve.cpp.o:
+	$(MAKE) -f CMakeFiles/skeleton_tracker.dir/build.make CMakeFiles/skeleton_tracker.dir/src/BrazierCurve.cpp.o
+.PHONY : src/BrazierCurve.cpp.o
+
+src/BrazierCurve.i: src/BrazierCurve.cpp.i
+.PHONY : src/BrazierCurve.i
+
+# target to preprocess a source file
+src/BrazierCurve.cpp.i:
+	$(MAKE) -f CMakeFiles/skeleton_tracker.dir/build.make CMakeFiles/skeleton_tracker.dir/src/BrazierCurve.cpp.i
+.PHONY : src/BrazierCurve.cpp.i
+
+src/BrazierCurve.s: src/BrazierCurve.cpp.s
+.PHONY : src/BrazierCurve.s
+
+# target to generate assembly for a file
+src/BrazierCurve.cpp.s:
+	$(MAKE) -f CMakeFiles/skeleton_tracker.dir/build.make CMakeFiles/skeleton_tracker.dir/src/BrazierCurve.cpp.s
+.PHONY : src/BrazierCurve.cpp.s
+
 src/KinectController.o: src/KinectController.cpp.o
 .PHONY : src/KinectController.o
 
@@ -509,29 +533,29 @@ src/KinectDisplay.cpp.s:
 	$(MAKE) -f CMakeFiles/skeleton_tracker.dir/build.make CMakeFiles/skeleton_tracker.dir/src/KinectDisplay.cpp.s
 .PHONY : src/KinectDisplay.cpp.s
 
-src/heatmap.o: src/heatmap.cpp.o
-.PHONY : src/heatmap.o
+src/attention_map.o: src/attention_map.cpp.o
+.PHONY : src/attention_map.o
 
 # target to build an object file
-src/heatmap.cpp.o:
-	$(MAKE) -f CMakeFiles/skeleton_tracker.dir/build.make CMakeFiles/skeleton_tracker.dir/src/heatmap.cpp.o
-.PHONY : src/heatmap.cpp.o
+src/attention_map.cpp.o:
+	$(MAKE) -f CMakeFiles/skeleton_tracker.dir/build.make CMakeFiles/skeleton_tracker.dir/src/attention_map.cpp.o
+.PHONY : src/attention_map.cpp.o
 
-src/heatmap.i: src/heatmap.cpp.i
-.PHONY : src/heatmap.i
+src/attention_map.i: src/attention_map.cpp.i
+.PHONY : src/attention_map.i
 
 # target to preprocess a source file
-src/heatmap.cpp.i:
-	$(MAKE) -f CMakeFiles/skeleton_tracker.dir/build.make CMakeFiles/skeleton_tracker.dir/src/heatmap.cpp.i
-.PHONY : src/heatmap.cpp.i
+src/attention_map.cpp.i:
+	$(MAKE) -f CMakeFiles/skeleton_tracker.dir/build.make CMakeFiles/skeleton_tracker.dir/src/attention_map.cpp.i
+.PHONY : src/attention_map.cpp.i
 
-src/heatmap.s: src/heatmap.cpp.s
-.PHONY : src/heatmap.s
+src/attention_map.s: src/attention_map.cpp.s
+.PHONY : src/attention_map.s
 
 # target to generate assembly for a file
-src/heatmap.cpp.s:
-	$(MAKE) -f CMakeFiles/skeleton_tracker.dir/build.make CMakeFiles/skeleton_tracker.dir/src/heatmap.cpp.s
-.PHONY : src/heatmap.cpp.s
+src/attention_map.cpp.s:
+	$(MAKE) -f CMakeFiles/skeleton_tracker.dir/build.make CMakeFiles/skeleton_tracker.dir/src/attention_map.cpp.s
+.PHONY : src/attention_map.cpp.s
 
 src/kinect_aux_node.o: src/kinect_aux_node.cpp.o
 .PHONY : src/kinect_aux_node.o
@@ -581,6 +605,30 @@ src/skeleton_tracker.cpp.s:
 	$(MAKE) -f CMakeFiles/skeleton_tracker.dir/build.make CMakeFiles/skeleton_tracker.dir/src/skeleton_tracker.cpp.s
 .PHONY : src/skeleton_tracker.cpp.s
 
+src/utils.o: src/utils.cpp.o
+.PHONY : src/utils.o
+
+# target to build an object file
+src/utils.cpp.o:
+	$(MAKE) -f CMakeFiles/skeleton_tracker.dir/build.make CMakeFiles/skeleton_tracker.dir/src/utils.cpp.o
+.PHONY : src/utils.cpp.o
+
+src/utils.i: src/utils.cpp.i
+.PHONY : src/utils.i
+
+# target to preprocess a source file
+src/utils.cpp.i:
+	$(MAKE) -f CMakeFiles/skeleton_tracker.dir/build.make CMakeFiles/skeleton_tracker.dir/src/utils.cpp.i
+.PHONY : src/utils.cpp.i
+
+src/utils.s: src/utils.cpp.s
+.PHONY : src/utils.s
+
+# target to generate assembly for a file
+src/utils.cpp.s:
+	$(MAKE) -f CMakeFiles/skeleton_tracker.dir/build.make CMakeFiles/skeleton_tracker.dir/src/utils.cpp.s
+.PHONY : src/utils.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -618,21 +666,27 @@ help:
 	@echo "... tests"
 	@echo "... gtest"
 	@echo "... gtest_main"
+	@echo "... src/BrazierCurve.o"
+	@echo "... src/BrazierCurve.i"
+	@echo "... src/BrazierCurve.s"
 	@echo "... src/KinectController.o"
 	@echo "... src/KinectController.i"
 	@echo "... src/KinectController.s"
 	@echo "... src/KinectDisplay.o"
 	@echo "... src/KinectDisplay.i"
 	@echo "... src/KinectDisplay.s"
-	@echo "... src/heatmap.o"
-	@echo "... src/heatmap.i"
-	@echo "... src/heatmap.s"
+	@echo "... src/attention_map.o"
+	@echo "... src/attention_map.i"
+	@echo "... src/attention_map.s"
 	@echo "... src/kinect_aux_node.o"
 	@echo "... src/kinect_aux_node.i"
 	@echo "... src/kinect_aux_node.s"
 	@echo "... src/skeleton_tracker.o"
 	@echo "... src/skeleton_tracker.i"
 	@echo "... src/skeleton_tracker.s"
+	@echo "... src/utils.o"
+	@echo "... src/utils.i"
+	@echo "... src/utils.s"
 .PHONY : help
 
 

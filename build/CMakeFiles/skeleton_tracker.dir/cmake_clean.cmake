@@ -5,7 +5,9 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/skeleton_tracker.dir/src/skeleton_tracker.cpp.o"
   "CMakeFiles/skeleton_tracker.dir/src/KinectController.cpp.o"
   "CMakeFiles/skeleton_tracker.dir/src/KinectDisplay.cpp.o"
-  "CMakeFiles/skeleton_tracker.dir/src/heatmap.cpp.o"
+  "CMakeFiles/skeleton_tracker.dir/src/BrazierCurve.cpp.o"
+  "CMakeFiles/skeleton_tracker.dir/src/attention_map.cpp.o"
+  "CMakeFiles/skeleton_tracker.dir/src/utils.cpp.o"
   "../bin/skeleton_tracker.pdb"
   "../bin/skeleton_tracker"
 )

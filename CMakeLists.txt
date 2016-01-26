@@ -23,6 +23,7 @@ rosbuild_genmsg()
 #uncomment if you have defined services
 #rosbuild_gensrv()
 
+find_package(OpenCV REQUIRED)
 #common commands for building c++ executables and libraries
 #rosbuild_add_library(${PROJECT_NAME} src/example.cpp)
 #target_link_libraries(${PROJECT_NAME} another_library)
@@ -31,9 +32,9 @@ rosbuild_genmsg()
 #rosbuild_add_executable(example examples/example.cpp)
 #target_link_libraries(example ${PROJECT_NAME})
 include_directories(/usr/include/openni /usr/include/nite /usr/include/ni)
-rosbuild_add_executable(skeleton_tracker src/skeleton_tracker.cpp src/KinectController.cpp src/KinectDisplay.cpp src/heatmap.cpp )
+rosbuild_add_executable(skeleton_tracker src/skeleton_tracker.cpp src/KinectController.cpp src/KinectDisplay.cpp src/BrazierCurve.cpp src/attention_map.cpp src/utils.cpp)
 target_link_libraries(skeleton_tracker glut OpenNI )
 rosbuild_add_executable(kinect_aux_node src/kinect_aux_node.cpp)
 #rosbuild_add_executable(kinect_aux_node src/libusb.h)
 target_link_libraries(kinect_aux_node -lusb-1.0)
-
+target_link_libraries(skeleton_tracker ${OpenCV_LIBS})

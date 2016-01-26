@@ -1,7 +1,7 @@
 ; Auto-generated. Do not edit!
 
 
-(cl:in-package skeleton_markers-msg)
+(cl:in-package Human_intention-msg)
 
 
 ;//! \htmlinclude PerceptInfo.msg.html
@@ -45,36 +45,36 @@
 (cl:defmethod cl:initialize-instance :after ((m <PerceptInfo>) cl:&rest args)
   (cl:declare (cl:ignorable args))
   (cl:unless (cl:typep m 'PerceptInfo)
-    (roslisp-msg-protocol:msg-deprecation-warning "using old message class name skeleton_markers-msg:<PerceptInfo> is deprecated: use skeleton_markers-msg:PerceptInfo instead.")))
+    (roslisp-msg-protocol:msg-deprecation-warning "using old message class name Human_intention-msg:<PerceptInfo> is deprecated: use Human_intention-msg:PerceptInfo instead.")))
 
 (cl:ensure-generic-function 'class_id-val :lambda-list '(m))
 (cl:defmethod class_id-val ((m <PerceptInfo>))
-  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader skeleton_markers-msg:class_id-val is deprecated.  Use skeleton_markers-msg:class_id instead.")
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader Human_intention-msg:class_id-val is deprecated.  Use Human_intention-msg:class_id instead.")
   (class_id m))
 
 (cl:ensure-generic-function 'class_support-val :lambda-list '(m))
 (cl:defmethod class_support-val ((m <PerceptInfo>))
-  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader skeleton_markers-msg:class_support-val is deprecated.  Use skeleton_markers-msg:class_support instead.")
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader Human_intention-msg:class_support-val is deprecated.  Use Human_intention-msg:class_support instead.")
   (class_support m))
 
 (cl:ensure-generic-function 'object_id-val :lambda-list '(m))
 (cl:defmethod object_id-val ((m <PerceptInfo>))
-  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader skeleton_markers-msg:object_id-val is deprecated.  Use skeleton_markers-msg:object_id instead.")
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader Human_intention-msg:object_id-val is deprecated.  Use Human_intention-msg:object_id instead.")
   (object_id m))
 
 (cl:ensure-generic-function 'object_support-val :lambda-list '(m))
 (cl:defmethod object_support-val ((m <PerceptInfo>))
-  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader skeleton_markers-msg:object_support-val is deprecated.  Use skeleton_markers-msg:object_support instead.")
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader Human_intention-msg:object_support-val is deprecated.  Use Human_intention-msg:object_support instead.")
   (object_support m))
 
 (cl:ensure-generic-function 'name-val :lambda-list '(m))
 (cl:defmethod name-val ((m <PerceptInfo>))
-  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader skeleton_markers-msg:name-val is deprecated.  Use skeleton_markers-msg:name instead.")
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader Human_intention-msg:name-val is deprecated.  Use Human_intention-msg:name instead.")
   (name m))
 
 (cl:ensure-generic-function 'orientation-val :lambda-list '(m))
 (cl:defmethod orientation-val ((m <PerceptInfo>))
-  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader skeleton_markers-msg:orientation-val is deprecated.  Use skeleton_markers-msg:orientation instead.")
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader Human_intention-msg:orientation-val is deprecated.  Use Human_intention-msg:orientation instead.")
   (orientation m))
 (cl:defmethod roslisp-msg-protocol:serialize ((msg <PerceptInfo>) ostream)
   "Serializes a message object of type '<PerceptInfo>"
@@ -163,10 +163,10 @@
 )
 (cl:defmethod roslisp-msg-protocol:ros-datatype ((msg (cl:eql '<PerceptInfo>)))
   "Returns string type for a message object of type '<PerceptInfo>"
-  "skeleton_markers/PerceptInfo")
+  "Human_intention/PerceptInfo")
 (cl:defmethod roslisp-msg-protocol:ros-datatype ((msg (cl:eql 'PerceptInfo)))
   "Returns string type for a message object of type 'PerceptInfo"
-  "skeleton_markers/PerceptInfo")
+  "Human_intention/PerceptInfo")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<PerceptInfo>)))
   "Returns md5sum for a message object of type '<PerceptInfo>"
   "712b3ec12b55ad51984514c0d645b54b")

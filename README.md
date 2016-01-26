@@ -10,5 +10,12 @@ This respository is the part of Human Intention project using Kinect contains RO
 5. Generated anticipate trajectory depends on current activity. In this work, we defined threshold to determined the anticipatary trajectory.
 6. Save the left and right hand joint position, velocity and anticipate trajectory in csv file.
 7. We visualize the skeleton and hand trajectory in RVIZ
+8. We introduced attention map to visualize the predictive trajectory.
+9. We proposed a algorithm which generate the attention using linear interpolate and Gaussian Blur method. 
+
+The proposed attention map is used to visualize the motion intention, which will help to perform the tasks in more meaningful way by mobile robot.
+
+Mobile Robot used in this work is developed by Adept Mobile Robot.
+Model: SeekurJr with manipulator.
 
 

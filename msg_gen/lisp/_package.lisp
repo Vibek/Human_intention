@@ -1,15 +1,15 @@
 (cl:defpackage Human_intention-msg
   (:use )
   (:export
-   "<SKELETON>"
-   "SKELETON"
-   "<ENABLEJOINTGROUP>"
-   "ENABLEJOINTGROUP"
-   "<PERCEPTINFO>"
-   "PERCEPTINFO"
    "<POSE>"
    "POSE"
+   "<SKELETON>"
+   "SKELETON"
    "<GOAL>"
    "GOAL"
+   "<PERCEPTINFO>"
+   "PERCEPTINFO"
+   "<ENABLEJOINTGROUP>"
+   "ENABLEJOINTGROUP"
   ))
 

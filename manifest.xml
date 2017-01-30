@@ -20,8 +20,11 @@
   <depend package="std_msgs"/>
   <depend package="sensor_msgs"/>
   <depend package="geometry_msgs"/>
-  <!--depend package="tinyxml2.6.2"/-->
-  <!--depend package="feature_extraction_package"/-->
+  <depend package="image_transport"/>
+  <depend package="hector_worldmodel_msgs"/>
+  <depend package="cv_bridge"/>
+  <depend package="pcl_ros"/>
+  <depend package="pcl_conversions"/>
 
   <export>
     <cpp cflags="-I/usr/include/openni -I/usr/include/nite -I/usr/include/ni"/>

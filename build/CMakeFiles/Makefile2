@@ -333,6 +333,41 @@ clean: CMakeFiles/kinect_aux_node.dir/clean
 .PHONY : clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/object.dir
+
+# All Build rule for target.
+CMakeFiles/object.dir/all: CMakeFiles/rosbuild_precompile.dir/all
+	$(MAKE) -f CMakeFiles/object.dir/build.make CMakeFiles/object.dir/depend
+	$(MAKE) -f CMakeFiles/object.dir/build.make CMakeFiles/object.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/vibek/Human_intention/build/CMakeFiles  21
+	@echo "Built target object"
+.PHONY : CMakeFiles/object.dir/all
+
+# Include target in all.
+all: CMakeFiles/object.dir/all
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/object.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/vibek/Human_intention/build/CMakeFiles 17
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/object.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/vibek/Human_intention/build/CMakeFiles 0
+.PHONY : CMakeFiles/object.dir/rule
+
+# Convenience name for target.
+object: CMakeFiles/object.dir/rule
+.PHONY : object
+
+# clean rule for target.
+CMakeFiles/object.dir/clean:
+	$(MAKE) -f CMakeFiles/object.dir/build.make CMakeFiles/object.dir/clean
+.PHONY : CMakeFiles/object.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/object.dir/clean
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/rosbuild_clean-test-results.dir
 
 # All Build rule for target.
@@ -595,7 +630,7 @@ clean: CMakeFiles/run_tests.dir/clean
 CMakeFiles/skeleton_tracker.dir/all: CMakeFiles/rosbuild_precompile.dir/all
 	$(MAKE) -f CMakeFiles/skeleton_tracker.dir/build.make CMakeFiles/skeleton_tracker.dir/depend
 	$(MAKE) -f CMakeFiles/skeleton_tracker.dir/build.make CMakeFiles/skeleton_tracker.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/vibek/Human_intention/build/CMakeFiles  21 22 23 24 25 26
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/vibek/Human_intention/build/CMakeFiles  22 23 24 25 26 27
 	@echo "Built target skeleton_tracker"
 .PHONY : CMakeFiles/skeleton_tracker.dir/all
 

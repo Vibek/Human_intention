@@ -254,6 +254,19 @@ kinect_aux_node/fast:
 .PHONY : kinect_aux_node/fast
 
 #=============================================================================
+# Target rules for targets named object
+
+# Build rule for target.
+object: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 object
+.PHONY : object
+
+# fast build rule for target.
+object/fast:
+	$(MAKE) -f CMakeFiles/object.dir/build.make CMakeFiles/object.dir/build
+.PHONY : object/fast
+
+#=============================================================================
 # Target rules for targets named rosbuild_clean-test-results
 
 # Build rule for target.
@@ -557,6 +570,30 @@ src/attention_map.cpp.s:
 	$(MAKE) -f CMakeFiles/skeleton_tracker.dir/build.make CMakeFiles/skeleton_tracker.dir/src/attention_map.cpp.s
 .PHONY : src/attention_map.cpp.s
 
+src/find_objects_color.o: src/find_objects_color.cpp.o
+.PHONY : src/find_objects_color.o
+
+# target to build an object file
+src/find_objects_color.cpp.o:
+	$(MAKE) -f CMakeFiles/object.dir/build.make CMakeFiles/object.dir/src/find_objects_color.cpp.o
+.PHONY : src/find_objects_color.cpp.o
+
+src/find_objects_color.i: src/find_objects_color.cpp.i
+.PHONY : src/find_objects_color.i
+
+# target to preprocess a source file
+src/find_objects_color.cpp.i:
+	$(MAKE) -f CMakeFiles/object.dir/build.make CMakeFiles/object.dir/src/find_objects_color.cpp.i
+.PHONY : src/find_objects_color.cpp.i
+
+src/find_objects_color.s: src/find_objects_color.cpp.s
+.PHONY : src/find_objects_color.s
+
+# target to generate assembly for a file
+src/find_objects_color.cpp.s:
+	$(MAKE) -f CMakeFiles/object.dir/build.make CMakeFiles/object.dir/src/find_objects_color.cpp.s
+.PHONY : src/find_objects_color.cpp.s
+
 src/kinect_aux_node.o: src/kinect_aux_node.cpp.o
 .PHONY : src/kinect_aux_node.o
 
@@ -649,6 +686,7 @@ help:
 	@echo "... install/strip"
 	@echo "... kinect_aux_node"
 	@echo "... list_install_components"
+	@echo "... object"
 	@echo "... rebuild_cache"
 	@echo "... rosbuild_clean-test-results"
 	@echo "... rosbuild_precompile"
@@ -678,6 +716,9 @@ help:
 	@echo "... src/attention_map.o"
 	@echo "... src/attention_map.i"
 	@echo "... src/attention_map.s"
+	@echo "... src/find_objects_color.o"
+	@echo "... src/find_objects_color.i"
+	@echo "... src/find_objects_color.s"
 	@echo "... src/kinect_aux_node.o"
 	@echo "... src/kinect_aux_node.i"
 	@echo "... src/kinect_aux_node.s"

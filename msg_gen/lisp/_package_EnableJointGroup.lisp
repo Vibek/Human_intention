@@ -1,4 +1,4 @@
-(cl:in-package skeleton_markers-msg)
+(cl:in-package Human_intention-msg)
 (cl:export '(JOINTGROUPS-VAL
           JOINTGROUPS
           ENABLEDSTATES-VAL

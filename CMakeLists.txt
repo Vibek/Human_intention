@@ -23,18 +23,31 @@ rosbuild_genmsg()
 #uncomment if you have defined services
 #rosbuild_gensrv()
 
+include_directories(${PCL_INCLUDE_DIRS})
+
 find_package(OpenCV REQUIRED)
-#common commands for building c++ executables and libraries
-#rosbuild_add_library(${PROJECT_NAME} src/example.cpp)
-#target_link_libraries(${PROJECT_NAME} another_library)
-#rosbuild_add_boost_directories()
-#rosbuild_link_boost(${PROJECT_NAME} thread)
-#rosbuild_add_executable(example examples/example.cpp)
-#target_link_libraries(example ${PROJECT_NAME})
+
 include_directories(/usr/include/openni /usr/include/nite /usr/include/ni)
 rosbuild_add_executable(skeleton_tracker src/skeleton_tracker.cpp src/KinectController.cpp src/KinectDisplay.cpp src/BrazierCurve.cpp src/attention_map.cpp src/utils.cpp)
+# src/find_objects_pcl.cpp src/find_objects.cpp)
 target_link_libraries(skeleton_tracker glut OpenNI )
-rosbuild_add_executable(kinect_aux_node src/kinect_aux_node.cpp)
-#rosbuild_add_executable(kinect_aux_node src/libusb.h)
-target_link_libraries(kinect_aux_node -lusb-1.0)
 target_link_libraries(skeleton_tracker ${OpenCV_LIBS})
+
+rosbuild_add_executable(kinect_aux_node src/kinect_aux_node.cpp)
+target_link_libraries(kinect_aux_node -lusb-1.0)
+
+rosbuild_add_executable(object src/find_objects_color.cpp)
+target_link_libraries(object ${OpenCV_LIBS})
+
+# Find PCL
+find_package(PCL REQUIRED)
+
+link_directories(${PCL_LIBRARY_DIRS})
+add_definitions(${PCL_DEFINITIONS})
+
+#rosbuild_add_executable(Tracker_object2 src/Tracker_object2.cpp)
+#target_link_libraries(Tracker_object2 ${PCL_LIBRARIES} ${OpenCV_LIBS})
+
+#rosbuild_add_executable(test_image src/test_image.cpp)
+#target_link_libraries(test_image ${PCL_LIBRARIES} ${OpenCV_LIBS})
+

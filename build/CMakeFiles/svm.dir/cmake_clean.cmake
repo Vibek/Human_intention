@@ -1,0 +1,13 @@
+FILE(REMOVE_RECURSE
+  "../msg_gen"
+  "../msg_gen"
+  "../src/Human_intention/msg"
+  "CMakeFiles/svm.dir/src/classification_with_svm.cpp.o"
+  "../bin/svm.pdb"
+  "../bin/svm"
+)
+
+# Per-language clean rules from dependency scanning.
+FOREACH(lang CXX)
+  INCLUDE(CMakeFiles/svm.dir/cmake_clean_${lang}.cmake OPTIONAL)
+ENDFOREACH(lang)

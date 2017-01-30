@@ -103,6 +103,17 @@ CMakeFiles/skeleton_tracker.dir/src/skeleton_tracker.cpp.o: /opt/ros/groovy/shar
 CMakeFiles/skeleton_tracker.dir/src/skeleton_tracker.cpp.o: /opt/ros/groovy/share/rosunit/package.xml
 CMakeFiles/skeleton_tracker.dir/src/skeleton_tracker.cpp.o: /opt/ros/groovy/share/rostest/package.xml
 CMakeFiles/skeleton_tracker.dir/src/skeleton_tracker.cpp.o: /opt/ros/groovy/share/actionlib/package.xml
+CMakeFiles/skeleton_tracker.dir/src/skeleton_tracker.cpp.o: /opt/ros/groovy/stacks/hector_worldmodel/hector_worldmodel_msgs/manifest.xml
+CMakeFiles/skeleton_tracker.dir/src/skeleton_tracker.cpp.o: /opt/ros/groovy/share/opencv2/package.xml
+CMakeFiles/skeleton_tracker.dir/src/skeleton_tracker.cpp.o: /opt/ros/groovy/share/cv_bridge/package.xml
+CMakeFiles/skeleton_tracker.dir/src/skeleton_tracker.cpp.o: /opt/ros/groovy/share/nodelet_topic_tools/package.xml
+CMakeFiles/skeleton_tracker.dir/src/skeleton_tracker.cpp.o: /opt/ros/groovy/share/flann/package.xml
+CMakeFiles/skeleton_tracker.dir/src/skeleton_tracker.cpp.o: /opt/ros/groovy/share/pcl_msgs/package.xml
+CMakeFiles/skeleton_tracker.dir/src/skeleton_tracker.cpp.o: /opt/ros/groovy/share/pcl/package.xml
+CMakeFiles/skeleton_tracker.dir/src/skeleton_tracker.cpp.o: /opt/ros/groovy/share/pcl_ros/package.xml
+CMakeFiles/skeleton_tracker.dir/src/skeleton_tracker.cpp.o: /opt/ros/groovy/share/pcl_conversions/package.xml
+CMakeFiles/skeleton_tracker.dir/src/skeleton_tracker.cpp.o: /opt/ros/groovy/stacks/hector_worldmodel/hector_worldmodel_msgs/msg_gen/generated
+CMakeFiles/skeleton_tracker.dir/src/skeleton_tracker.cpp.o: /opt/ros/groovy/stacks/hector_worldmodel/hector_worldmodel_msgs/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/vibek/Human_intention/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/skeleton_tracker.dir/src/skeleton_tracker.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -o CMakeFiles/skeleton_tracker.dir/src/skeleton_tracker.cpp.o -c /home/vibek/Human_intention/src/skeleton_tracker.cpp
@@ -181,6 +192,17 @@ CMakeFiles/skeleton_tracker.dir/src/KinectController.cpp.o: /opt/ros/groovy/shar
 CMakeFiles/skeleton_tracker.dir/src/KinectController.cpp.o: /opt/ros/groovy/share/rosunit/package.xml
 CMakeFiles/skeleton_tracker.dir/src/KinectController.cpp.o: /opt/ros/groovy/share/rostest/package.xml
 CMakeFiles/skeleton_tracker.dir/src/KinectController.cpp.o: /opt/ros/groovy/share/actionlib/package.xml
+CMakeFiles/skeleton_tracker.dir/src/KinectController.cpp.o: /opt/ros/groovy/stacks/hector_worldmodel/hector_worldmodel_msgs/manifest.xml
+CMakeFiles/skeleton_tracker.dir/src/KinectController.cpp.o: /opt/ros/groovy/share/opencv2/package.xml
+CMakeFiles/skeleton_tracker.dir/src/KinectController.cpp.o: /opt/ros/groovy/share/cv_bridge/package.xml
+CMakeFiles/skeleton_tracker.dir/src/KinectController.cpp.o: /opt/ros/groovy/share/nodelet_topic_tools/package.xml
+CMakeFiles/skeleton_tracker.dir/src/KinectController.cpp.o: /opt/ros/groovy/share/flann/package.xml
+CMakeFiles/skeleton_tracker.dir/src/KinectController.cpp.o: /opt/ros/groovy/share/pcl_msgs/package.xml
+CMakeFiles/skeleton_tracker.dir/src/KinectController.cpp.o: /opt/ros/groovy/share/pcl/package.xml
+CMakeFiles/skeleton_tracker.dir/src/KinectController.cpp.o: /opt/ros/groovy/share/pcl_ros/package.xml
+CMakeFiles/skeleton_tracker.dir/src/KinectController.cpp.o: /opt/ros/groovy/share/pcl_conversions/package.xml
+CMakeFiles/skeleton_tracker.dir/src/KinectController.cpp.o: /opt/ros/groovy/stacks/hector_worldmodel/hector_worldmodel_msgs/msg_gen/generated
+CMakeFiles/skeleton_tracker.dir/src/KinectController.cpp.o: /opt/ros/groovy/stacks/hector_worldmodel/hector_worldmodel_msgs/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/vibek/Human_intention/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/skeleton_tracker.dir/src/KinectController.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -o CMakeFiles/skeleton_tracker.dir/src/KinectController.cpp.o -c /home/vibek/Human_intention/src/KinectController.cpp
@@ -259,6 +281,17 @@ CMakeFiles/skeleton_tracker.dir/src/KinectDisplay.cpp.o: /opt/ros/groovy/share/r
 CMakeFiles/skeleton_tracker.dir/src/KinectDisplay.cpp.o: /opt/ros/groovy/share/rosunit/package.xml
 CMakeFiles/skeleton_tracker.dir/src/KinectDisplay.cpp.o: /opt/ros/groovy/share/rostest/package.xml
 CMakeFiles/skeleton_tracker.dir/src/KinectDisplay.cpp.o: /opt/ros/groovy/share/actionlib/package.xml
+CMakeFiles/skeleton_tracker.dir/src/KinectDisplay.cpp.o: /opt/ros/groovy/stacks/hector_worldmodel/hector_worldmodel_msgs/manifest.xml
+CMakeFiles/skeleton_tracker.dir/src/KinectDisplay.cpp.o: /opt/ros/groovy/share/opencv2/package.xml
+CMakeFiles/skeleton_tracker.dir/src/KinectDisplay.cpp.o: /opt/ros/groovy/share/cv_bridge/package.xml
+CMakeFiles/skeleton_tracker.dir/src/KinectDisplay.cpp.o: /opt/ros/groovy/share/nodelet_topic_tools/package.xml
+CMakeFiles/skeleton_tracker.dir/src/KinectDisplay.cpp.o: /opt/ros/groovy/share/flann/package.xml
+CMakeFiles/skeleton_tracker.dir/src/KinectDisplay.cpp.o: /opt/ros/groovy/share/pcl_msgs/package.xml
+CMakeFiles/skeleton_tracker.dir/src/KinectDisplay.cpp.o: /opt/ros/groovy/share/pcl/package.xml
+CMakeFiles/skeleton_tracker.dir/src/KinectDisplay.cpp.o: /opt/ros/groovy/share/pcl_ros/package.xml
+CMakeFiles/skeleton_tracker.dir/src/KinectDisplay.cpp.o: /opt/ros/groovy/share/pcl_conversions/package.xml
+CMakeFiles/skeleton_tracker.dir/src/KinectDisplay.cpp.o: /opt/ros/groovy/stacks/hector_worldmodel/hector_worldmodel_msgs/msg_gen/generated
+CMakeFiles/skeleton_tracker.dir/src/KinectDisplay.cpp.o: /opt/ros/groovy/stacks/hector_worldmodel/hector_worldmodel_msgs/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/vibek/Human_intention/build/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/skeleton_tracker.dir/src/KinectDisplay.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -o CMakeFiles/skeleton_tracker.dir/src/KinectDisplay.cpp.o -c /home/vibek/Human_intention/src/KinectDisplay.cpp
@@ -337,6 +370,17 @@ CMakeFiles/skeleton_tracker.dir/src/BrazierCurve.cpp.o: /opt/ros/groovy/share/ro
 CMakeFiles/skeleton_tracker.dir/src/BrazierCurve.cpp.o: /opt/ros/groovy/share/rosunit/package.xml
 CMakeFiles/skeleton_tracker.dir/src/BrazierCurve.cpp.o: /opt/ros/groovy/share/rostest/package.xml
 CMakeFiles/skeleton_tracker.dir/src/BrazierCurve.cpp.o: /opt/ros/groovy/share/actionlib/package.xml
+CMakeFiles/skeleton_tracker.dir/src/BrazierCurve.cpp.o: /opt/ros/groovy/stacks/hector_worldmodel/hector_worldmodel_msgs/manifest.xml
+CMakeFiles/skeleton_tracker.dir/src/BrazierCurve.cpp.o: /opt/ros/groovy/share/opencv2/package.xml
+CMakeFiles/skeleton_tracker.dir/src/BrazierCurve.cpp.o: /opt/ros/groovy/share/cv_bridge/package.xml
+CMakeFiles/skeleton_tracker.dir/src/BrazierCurve.cpp.o: /opt/ros/groovy/share/nodelet_topic_tools/package.xml
+CMakeFiles/skeleton_tracker.dir/src/BrazierCurve.cpp.o: /opt/ros/groovy/share/flann/package.xml
+CMakeFiles/skeleton_tracker.dir/src/BrazierCurve.cpp.o: /opt/ros/groovy/share/pcl_msgs/package.xml
+CMakeFiles/skeleton_tracker.dir/src/BrazierCurve.cpp.o: /opt/ros/groovy/share/pcl/package.xml
+CMakeFiles/skeleton_tracker.dir/src/BrazierCurve.cpp.o: /opt/ros/groovy/share/pcl_ros/package.xml
+CMakeFiles/skeleton_tracker.dir/src/BrazierCurve.cpp.o: /opt/ros/groovy/share/pcl_conversions/package.xml
+CMakeFiles/skeleton_tracker.dir/src/BrazierCurve.cpp.o: /opt/ros/groovy/stacks/hector_worldmodel/hector_worldmodel_msgs/msg_gen/generated
+CMakeFiles/skeleton_tracker.dir/src/BrazierCurve.cpp.o: /opt/ros/groovy/stacks/hector_worldmodel/hector_worldmodel_msgs/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/vibek/Human_intention/build/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/skeleton_tracker.dir/src/BrazierCurve.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -o CMakeFiles/skeleton_tracker.dir/src/BrazierCurve.cpp.o -c /home/vibek/Human_intention/src/BrazierCurve.cpp
@@ -415,6 +459,17 @@ CMakeFiles/skeleton_tracker.dir/src/attention_map.cpp.o: /opt/ros/groovy/share/r
 CMakeFiles/skeleton_tracker.dir/src/attention_map.cpp.o: /opt/ros/groovy/share/rosunit/package.xml
 CMakeFiles/skeleton_tracker.dir/src/attention_map.cpp.o: /opt/ros/groovy/share/rostest/package.xml
 CMakeFiles/skeleton_tracker.dir/src/attention_map.cpp.o: /opt/ros/groovy/share/actionlib/package.xml
+CMakeFiles/skeleton_tracker.dir/src/attention_map.cpp.o: /opt/ros/groovy/stacks/hector_worldmodel/hector_worldmodel_msgs/manifest.xml
+CMakeFiles/skeleton_tracker.dir/src/attention_map.cpp.o: /opt/ros/groovy/share/opencv2/package.xml
+CMakeFiles/skeleton_tracker.dir/src/attention_map.cpp.o: /opt/ros/groovy/share/cv_bridge/package.xml
+CMakeFiles/skeleton_tracker.dir/src/attention_map.cpp.o: /opt/ros/groovy/share/nodelet_topic_tools/package.xml
+CMakeFiles/skeleton_tracker.dir/src/attention_map.cpp.o: /opt/ros/groovy/share/flann/package.xml
+CMakeFiles/skeleton_tracker.dir/src/attention_map.cpp.o: /opt/ros/groovy/share/pcl_msgs/package.xml
+CMakeFiles/skeleton_tracker.dir/src/attention_map.cpp.o: /opt/ros/groovy/share/pcl/package.xml
+CMakeFiles/skeleton_tracker.dir/src/attention_map.cpp.o: /opt/ros/groovy/share/pcl_ros/package.xml
+CMakeFiles/skeleton_tracker.dir/src/attention_map.cpp.o: /opt/ros/groovy/share/pcl_conversions/package.xml
+CMakeFiles/skeleton_tracker.dir/src/attention_map.cpp.o: /opt/ros/groovy/stacks/hector_worldmodel/hector_worldmodel_msgs/msg_gen/generated
+CMakeFiles/skeleton_tracker.dir/src/attention_map.cpp.o: /opt/ros/groovy/stacks/hector_worldmodel/hector_worldmodel_msgs/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/vibek/Human_intention/build/CMakeFiles $(CMAKE_PROGRESS_5)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/skeleton_tracker.dir/src/attention_map.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -o CMakeFiles/skeleton_tracker.dir/src/attention_map.cpp.o -c /home/vibek/Human_intention/src/attention_map.cpp
@@ -493,6 +548,17 @@ CMakeFiles/skeleton_tracker.dir/src/utils.cpp.o: /opt/ros/groovy/share/roslaunch
 CMakeFiles/skeleton_tracker.dir/src/utils.cpp.o: /opt/ros/groovy/share/rosunit/package.xml
 CMakeFiles/skeleton_tracker.dir/src/utils.cpp.o: /opt/ros/groovy/share/rostest/package.xml
 CMakeFiles/skeleton_tracker.dir/src/utils.cpp.o: /opt/ros/groovy/share/actionlib/package.xml
+CMakeFiles/skeleton_tracker.dir/src/utils.cpp.o: /opt/ros/groovy/stacks/hector_worldmodel/hector_worldmodel_msgs/manifest.xml
+CMakeFiles/skeleton_tracker.dir/src/utils.cpp.o: /opt/ros/groovy/share/opencv2/package.xml
+CMakeFiles/skeleton_tracker.dir/src/utils.cpp.o: /opt/ros/groovy/share/cv_bridge/package.xml
+CMakeFiles/skeleton_tracker.dir/src/utils.cpp.o: /opt/ros/groovy/share/nodelet_topic_tools/package.xml
+CMakeFiles/skeleton_tracker.dir/src/utils.cpp.o: /opt/ros/groovy/share/flann/package.xml
+CMakeFiles/skeleton_tracker.dir/src/utils.cpp.o: /opt/ros/groovy/share/pcl_msgs/package.xml
+CMakeFiles/skeleton_tracker.dir/src/utils.cpp.o: /opt/ros/groovy/share/pcl/package.xml
+CMakeFiles/skeleton_tracker.dir/src/utils.cpp.o: /opt/ros/groovy/share/pcl_ros/package.xml
+CMakeFiles/skeleton_tracker.dir/src/utils.cpp.o: /opt/ros/groovy/share/pcl_conversions/package.xml
+CMakeFiles/skeleton_tracker.dir/src/utils.cpp.o: /opt/ros/groovy/stacks/hector_worldmodel/hector_worldmodel_msgs/msg_gen/generated
+CMakeFiles/skeleton_tracker.dir/src/utils.cpp.o: /opt/ros/groovy/stacks/hector_worldmodel/hector_worldmodel_msgs/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/vibek/Human_intention/build/CMakeFiles $(CMAKE_PROGRESS_6)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/skeleton_tracker.dir/src/utils.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -o CMakeFiles/skeleton_tracker.dir/src/utils.cpp.o -c /home/vibek/Human_intention/src/utils.cpp

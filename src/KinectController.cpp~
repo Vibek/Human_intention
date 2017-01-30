@@ -1,8 +1,18 @@
+/*****************************************************************************
+*                                                                            *
+*  //Copyright (c) 2015, Vibekananda Dutta, WUT
+  // Faculty of Power and Aeronautical Engineering (MEiL)/ZTMiR Laboratory
+  // Warsaw University of Technology
+ //  All rights reserved.
+*                                                                            *
+*****************************************************************************/
+
 #include <XnOpenNI.h>
 #include <XnCodecIDs.h>
+
 #include "KinectDisplay.h"
 #include "KinectController.h"
-//#include "SimpleViewer.h"
+
 
 #define CHECK_RC(nRetVal, what)										\
 	if (nRetVal != XN_STATUS_OK)									\
@@ -163,11 +173,11 @@ int KinectController::init(const char* path, bool recording)
         //CHECK_RC(nRetVal, "Find hand generator");     
 
 	nRetVal = g_Context.FindExistingNode(XN_NODE_TYPE_IMAGE, g_ImageGenerator);
-	//if (nRetVal != XN_STATUS_OK)
-	//{
-		//nRetVal = g_ImageGenerator.Create(g_Context);
+	if (nRetVal != XN_STATUS_OK)
+	{
+		nRetVal = g_ImageGenerator.Create(g_Context);
 		CHECK_RC(nRetVal, "Find image generator.... HELP!!! ");
-	//} 
+	} 
 
 
 	XnCallbackHandle hUserCallbacks, hCalibrationCallbacks, hPoseCallbacks;

@@ -1,4 +1,13 @@
-#include <libusb.h>
+/*****************************************************************************
+*                                                                            *
+*  //Copyright (c) 2015, Vibekananda Dutta, WUT
+  // Faculty of Power and Aeronautical Engineering (MEiL)/ZTMiR Laboratory
+  // Warsaw University of Technology
+ //  All rights reserved.
+*                                                                            *
+*****************************************************************************/
+
+#include "libusb.h"
 #include <ros/ros.h>
 #include <std_msgs/UInt8.h>
 #include <std_msgs/UInt16.h>

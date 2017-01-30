@@ -11,9 +11,16 @@ SET(CMAKE_FORCE_UNIX_PATHS 1)
 # The C and CXX include file search paths:
 SET(CMAKE_C_INCLUDE_PATH
   "../include"
+  "/opt/ros/groovy/stacks/hector_worldmodel/hector_worldmodel_msgs/include"
+  "/opt/ros/groovy/stacks/hector_worldmodel/hector_worldmodel_msgs/msg_gen/cpp/include"
+  "/opt/ros/groovy/stacks/hector_worldmodel/hector_worldmodel_msgs/srv_gen/cpp/include"
   "/opt/ros/groovy/include"
+  "/opt/ros/groovy/include/opencv"
+  "/opt/ros/groovy/include/pcl-1.6"
   "/usr/include/ni"
   "/usr/include/eigen3"
+  "/usr/include/vtk-5.8"
+  "/usr/include/qhull"
   "../msg_gen/cpp/include"
   "/usr/include/openni"
   "/usr/include/nite"

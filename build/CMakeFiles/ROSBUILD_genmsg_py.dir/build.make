@@ -45,13 +45,13 @@ include CMakeFiles/ROSBUILD_genmsg_py.dir/progress.make
 CMakeFiles/ROSBUILD_genmsg_py: ../src/Human_intention/msg/__init__.py
 
 ../src/Human_intention/msg/__init__.py: ../src/Human_intention/msg/_Skeleton.py
-../src/Human_intention/msg/__init__.py: ../src/Human_intention/msg/_EnableJointGroup.py
 ../src/Human_intention/msg/__init__.py: ../src/Human_intention/msg/_PerceptInfo.py
-../src/Human_intention/msg/__init__.py: ../src/Human_intention/msg/_Pose.py
 ../src/Human_intention/msg/__init__.py: ../src/Human_intention/msg/_Goal.py
+../src/Human_intention/msg/__init__.py: ../src/Human_intention/msg/_EnableJointGroup.py
+../src/Human_intention/msg/__init__.py: ../src/Human_intention/msg/_Pose.py
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/vibek/Human_intention/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/Human_intention/msg/__init__.py"
-	/opt/ros/groovy/share/rospy/rosbuild/scripts/genmsg_py.py --initpy /home/vibek/Human_intention/msg/Skeleton.msg /home/vibek/Human_intention/msg/EnableJointGroup.msg /home/vibek/Human_intention/msg/PerceptInfo.msg /home/vibek/Human_intention/msg/Pose.msg /home/vibek/Human_intention/msg/Goal.msg
+	/opt/ros/groovy/share/rospy/rosbuild/scripts/genmsg_py.py --initpy /home/vibek/Human_intention/msg/Skeleton.msg /home/vibek/Human_intention/msg/PerceptInfo.msg /home/vibek/Human_intention/msg/Goal.msg /home/vibek/Human_intention/msg/EnableJointGroup.msg /home/vibek/Human_intention/msg/Pose.msg
 
 ../src/Human_intention/msg/_Skeleton.py: ../msg/Skeleton.msg
 ../src/Human_intention/msg/_Skeleton.py: /opt/ros/groovy/share/rospy/rosbuild/scripts/genmsg_py.py
@@ -114,71 +114,20 @@ CMakeFiles/ROSBUILD_genmsg_py: ../src/Human_intention/msg/__init__.py
 ../src/Human_intention/msg/_Skeleton.py: /opt/ros/groovy/share/rosunit/package.xml
 ../src/Human_intention/msg/_Skeleton.py: /opt/ros/groovy/share/rostest/package.xml
 ../src/Human_intention/msg/_Skeleton.py: /opt/ros/groovy/share/actionlib/package.xml
+../src/Human_intention/msg/_Skeleton.py: /opt/ros/groovy/stacks/hector_worldmodel/hector_worldmodel_msgs/manifest.xml
+../src/Human_intention/msg/_Skeleton.py: /opt/ros/groovy/share/opencv2/package.xml
+../src/Human_intention/msg/_Skeleton.py: /opt/ros/groovy/share/cv_bridge/package.xml
+../src/Human_intention/msg/_Skeleton.py: /opt/ros/groovy/share/nodelet_topic_tools/package.xml
+../src/Human_intention/msg/_Skeleton.py: /opt/ros/groovy/share/flann/package.xml
+../src/Human_intention/msg/_Skeleton.py: /opt/ros/groovy/share/pcl_msgs/package.xml
+../src/Human_intention/msg/_Skeleton.py: /opt/ros/groovy/share/pcl/package.xml
+../src/Human_intention/msg/_Skeleton.py: /opt/ros/groovy/share/pcl_ros/package.xml
+../src/Human_intention/msg/_Skeleton.py: /opt/ros/groovy/share/pcl_conversions/package.xml
+../src/Human_intention/msg/_Skeleton.py: /opt/ros/groovy/stacks/hector_worldmodel/hector_worldmodel_msgs/msg_gen/generated
+../src/Human_intention/msg/_Skeleton.py: /opt/ros/groovy/stacks/hector_worldmodel/hector_worldmodel_msgs/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/vibek/Human_intention/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/Human_intention/msg/_Skeleton.py"
 	/opt/ros/groovy/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/vibek/Human_intention/msg/Skeleton.msg
-
-../src/Human_intention/msg/_EnableJointGroup.py: ../msg/EnableJointGroup.msg
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/rospy/rosbuild/scripts/genmsg_py.py
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/roslib/cmake/../../../lib/roslib/gendeps
-../src/Human_intention/msg/_EnableJointGroup.py: ../manifest.xml
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/genmsg/package.xml
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/genpy/package.xml
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/rosgraph/package.xml
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/cpp_common/package.xml
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/rostime/package.xml
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/roscpp_traits/package.xml
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/roscpp_serialization/package.xml
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/message_runtime/package.xml
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/std_msgs/package.xml
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/rosgraph_msgs/package.xml
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/catkin/package.xml
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/rospack/package.xml
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/roslib/package.xml
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/rospy/package.xml
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/rosconsole/package.xml
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/xmlrpcpp/package.xml
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/roscpp/package.xml
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/geometry_msgs/package.xml
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/visualization_msgs/package.xml
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/sensor_msgs/package.xml
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/camera_calibration_parsers/package.xml
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/message_filters/package.xml
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/console_bridge/package.xml
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/class_loader/package.xml
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/pluginlib/package.xml
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/image_transport/package.xml
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/camera_info_manager/package.xml
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/topic_tools/package.xml
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/rosbag/package.xml
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/rosmsg/package.xml
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/rosservice/package.xml
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/dynamic_reconfigure/package.xml
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/bond/package.xml
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/smclib/package.xml
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/bondcpp/package.xml
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/nodelet/package.xml
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/openni_camera/package.xml
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/orocos_kdl/package.xml
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/stacks/orocos_kinematics_dynamics/python_orocos_kdl/manifest.xml
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/stacks/orocos_kinematics_dynamics/kdl/manifest.xml
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/tf/package.xml
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/stacks/openni_tracker/manifest.xml
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/gencpp/package.xml
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/genlisp/package.xml
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/message_generation/package.xml
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/actionlib_msgs/package.xml
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/rosclean/package.xml
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/rosmaster/package.xml
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/rosout/package.xml
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/rosparam/package.xml
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/roslaunch/package.xml
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/rosunit/package.xml
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/rostest/package.xml
-../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/actionlib/package.xml
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/vibek/Human_intention/build/CMakeFiles $(CMAKE_PROGRESS_3)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/Human_intention/msg/_EnableJointGroup.py"
-	/opt/ros/groovy/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/vibek/Human_intention/msg/EnableJointGroup.msg
 
 ../src/Human_intention/msg/_PerceptInfo.py: ../msg/PerceptInfo.msg
 ../src/Human_intention/msg/_PerceptInfo.py: /opt/ros/groovy/share/rospy/rosbuild/scripts/genmsg_py.py
@@ -238,9 +187,166 @@ CMakeFiles/ROSBUILD_genmsg_py: ../src/Human_intention/msg/__init__.py
 ../src/Human_intention/msg/_PerceptInfo.py: /opt/ros/groovy/share/rosunit/package.xml
 ../src/Human_intention/msg/_PerceptInfo.py: /opt/ros/groovy/share/rostest/package.xml
 ../src/Human_intention/msg/_PerceptInfo.py: /opt/ros/groovy/share/actionlib/package.xml
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/vibek/Human_intention/build/CMakeFiles $(CMAKE_PROGRESS_4)
+../src/Human_intention/msg/_PerceptInfo.py: /opt/ros/groovy/stacks/hector_worldmodel/hector_worldmodel_msgs/manifest.xml
+../src/Human_intention/msg/_PerceptInfo.py: /opt/ros/groovy/share/opencv2/package.xml
+../src/Human_intention/msg/_PerceptInfo.py: /opt/ros/groovy/share/cv_bridge/package.xml
+../src/Human_intention/msg/_PerceptInfo.py: /opt/ros/groovy/share/nodelet_topic_tools/package.xml
+../src/Human_intention/msg/_PerceptInfo.py: /opt/ros/groovy/share/flann/package.xml
+../src/Human_intention/msg/_PerceptInfo.py: /opt/ros/groovy/share/pcl_msgs/package.xml
+../src/Human_intention/msg/_PerceptInfo.py: /opt/ros/groovy/share/pcl/package.xml
+../src/Human_intention/msg/_PerceptInfo.py: /opt/ros/groovy/share/pcl_ros/package.xml
+../src/Human_intention/msg/_PerceptInfo.py: /opt/ros/groovy/share/pcl_conversions/package.xml
+../src/Human_intention/msg/_PerceptInfo.py: /opt/ros/groovy/stacks/hector_worldmodel/hector_worldmodel_msgs/msg_gen/generated
+../src/Human_intention/msg/_PerceptInfo.py: /opt/ros/groovy/stacks/hector_worldmodel/hector_worldmodel_msgs/srv_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/vibek/Human_intention/build/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/Human_intention/msg/_PerceptInfo.py"
 	/opt/ros/groovy/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/vibek/Human_intention/msg/PerceptInfo.msg
+
+../src/Human_intention/msg/_Goal.py: ../msg/Goal.msg
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/rospy/rosbuild/scripts/genmsg_py.py
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/roslib/cmake/../../../lib/roslib/gendeps
+../src/Human_intention/msg/_Goal.py: ../manifest.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/genmsg/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/genpy/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/rosgraph/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/cpp_common/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/rostime/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/roscpp_traits/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/roscpp_serialization/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/message_runtime/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/std_msgs/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/rosgraph_msgs/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/catkin/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/rospack/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/roslib/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/rospy/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/rosconsole/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/xmlrpcpp/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/roscpp/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/geometry_msgs/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/visualization_msgs/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/sensor_msgs/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/camera_calibration_parsers/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/message_filters/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/console_bridge/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/class_loader/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/pluginlib/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/image_transport/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/camera_info_manager/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/topic_tools/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/rosbag/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/rosmsg/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/rosservice/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/dynamic_reconfigure/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/bond/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/smclib/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/bondcpp/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/nodelet/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/openni_camera/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/orocos_kdl/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/stacks/orocos_kinematics_dynamics/python_orocos_kdl/manifest.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/stacks/orocos_kinematics_dynamics/kdl/manifest.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/tf/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/stacks/openni_tracker/manifest.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/gencpp/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/genlisp/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/message_generation/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/actionlib_msgs/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/rosclean/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/rosmaster/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/rosout/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/rosparam/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/roslaunch/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/rosunit/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/rostest/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/actionlib/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/stacks/hector_worldmodel/hector_worldmodel_msgs/manifest.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/opencv2/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/cv_bridge/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/nodelet_topic_tools/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/flann/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/pcl_msgs/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/pcl/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/pcl_ros/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/pcl_conversions/package.xml
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/stacks/hector_worldmodel/hector_worldmodel_msgs/msg_gen/generated
+../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/stacks/hector_worldmodel/hector_worldmodel_msgs/srv_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/vibek/Human_intention/build/CMakeFiles $(CMAKE_PROGRESS_4)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/Human_intention/msg/_Goal.py"
+	/opt/ros/groovy/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/vibek/Human_intention/msg/Goal.msg
+
+../src/Human_intention/msg/_EnableJointGroup.py: ../msg/EnableJointGroup.msg
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/rospy/rosbuild/scripts/genmsg_py.py
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/roslib/cmake/../../../lib/roslib/gendeps
+../src/Human_intention/msg/_EnableJointGroup.py: ../manifest.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/genmsg/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/genpy/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/rosgraph/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/cpp_common/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/rostime/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/roscpp_traits/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/roscpp_serialization/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/message_runtime/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/std_msgs/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/rosgraph_msgs/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/catkin/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/rospack/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/roslib/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/rospy/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/rosconsole/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/xmlrpcpp/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/roscpp/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/geometry_msgs/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/visualization_msgs/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/sensor_msgs/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/camera_calibration_parsers/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/message_filters/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/console_bridge/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/class_loader/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/pluginlib/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/image_transport/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/camera_info_manager/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/topic_tools/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/rosbag/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/rosmsg/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/rosservice/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/dynamic_reconfigure/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/bond/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/smclib/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/bondcpp/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/nodelet/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/openni_camera/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/orocos_kdl/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/stacks/orocos_kinematics_dynamics/python_orocos_kdl/manifest.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/stacks/orocos_kinematics_dynamics/kdl/manifest.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/tf/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/stacks/openni_tracker/manifest.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/gencpp/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/genlisp/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/message_generation/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/actionlib_msgs/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/rosclean/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/rosmaster/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/rosout/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/rosparam/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/roslaunch/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/rosunit/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/rostest/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/actionlib/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/stacks/hector_worldmodel/hector_worldmodel_msgs/manifest.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/opencv2/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/cv_bridge/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/nodelet_topic_tools/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/flann/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/pcl_msgs/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/pcl/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/pcl_ros/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/share/pcl_conversions/package.xml
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/stacks/hector_worldmodel/hector_worldmodel_msgs/msg_gen/generated
+../src/Human_intention/msg/_EnableJointGroup.py: /opt/ros/groovy/stacks/hector_worldmodel/hector_worldmodel_msgs/srv_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/vibek/Human_intention/build/CMakeFiles $(CMAKE_PROGRESS_5)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/Human_intention/msg/_EnableJointGroup.py"
+	/opt/ros/groovy/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/vibek/Human_intention/msg/EnableJointGroup.msg
 
 ../src/Human_intention/msg/_Pose.py: ../msg/Pose.msg
 ../src/Human_intention/msg/_Pose.py: /opt/ros/groovy/share/rospy/rosbuild/scripts/genmsg_py.py
@@ -304,79 +410,28 @@ CMakeFiles/ROSBUILD_genmsg_py: ../src/Human_intention/msg/__init__.py
 ../src/Human_intention/msg/_Pose.py: /opt/ros/groovy/share/rosunit/package.xml
 ../src/Human_intention/msg/_Pose.py: /opt/ros/groovy/share/rostest/package.xml
 ../src/Human_intention/msg/_Pose.py: /opt/ros/groovy/share/actionlib/package.xml
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/vibek/Human_intention/build/CMakeFiles $(CMAKE_PROGRESS_5)
+../src/Human_intention/msg/_Pose.py: /opt/ros/groovy/stacks/hector_worldmodel/hector_worldmodel_msgs/manifest.xml
+../src/Human_intention/msg/_Pose.py: /opt/ros/groovy/share/opencv2/package.xml
+../src/Human_intention/msg/_Pose.py: /opt/ros/groovy/share/cv_bridge/package.xml
+../src/Human_intention/msg/_Pose.py: /opt/ros/groovy/share/nodelet_topic_tools/package.xml
+../src/Human_intention/msg/_Pose.py: /opt/ros/groovy/share/flann/package.xml
+../src/Human_intention/msg/_Pose.py: /opt/ros/groovy/share/pcl_msgs/package.xml
+../src/Human_intention/msg/_Pose.py: /opt/ros/groovy/share/pcl/package.xml
+../src/Human_intention/msg/_Pose.py: /opt/ros/groovy/share/pcl_ros/package.xml
+../src/Human_intention/msg/_Pose.py: /opt/ros/groovy/share/pcl_conversions/package.xml
+../src/Human_intention/msg/_Pose.py: /opt/ros/groovy/stacks/hector_worldmodel/hector_worldmodel_msgs/msg_gen/generated
+../src/Human_intention/msg/_Pose.py: /opt/ros/groovy/stacks/hector_worldmodel/hector_worldmodel_msgs/srv_gen/generated
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/vibek/Human_intention/build/CMakeFiles $(CMAKE_PROGRESS_6)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/Human_intention/msg/_Pose.py"
 	/opt/ros/groovy/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/vibek/Human_intention/msg/Pose.msg
-
-../src/Human_intention/msg/_Goal.py: ../msg/Goal.msg
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/rospy/rosbuild/scripts/genmsg_py.py
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/roslib/cmake/../../../lib/roslib/gendeps
-../src/Human_intention/msg/_Goal.py: ../manifest.xml
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/genmsg/package.xml
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/genpy/package.xml
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/rosgraph/package.xml
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/cpp_common/package.xml
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/rostime/package.xml
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/roscpp_traits/package.xml
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/roscpp_serialization/package.xml
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/message_runtime/package.xml
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/std_msgs/package.xml
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/rosgraph_msgs/package.xml
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/catkin/package.xml
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/rospack/package.xml
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/roslib/package.xml
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/rospy/package.xml
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/rosconsole/package.xml
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/xmlrpcpp/package.xml
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/roscpp/package.xml
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/geometry_msgs/package.xml
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/visualization_msgs/package.xml
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/sensor_msgs/package.xml
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/camera_calibration_parsers/package.xml
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/message_filters/package.xml
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/console_bridge/package.xml
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/class_loader/package.xml
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/pluginlib/package.xml
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/image_transport/package.xml
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/camera_info_manager/package.xml
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/topic_tools/package.xml
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/rosbag/package.xml
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/rosmsg/package.xml
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/rosservice/package.xml
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/dynamic_reconfigure/package.xml
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/bond/package.xml
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/smclib/package.xml
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/bondcpp/package.xml
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/nodelet/package.xml
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/openni_camera/package.xml
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/orocos_kdl/package.xml
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/stacks/orocos_kinematics_dynamics/python_orocos_kdl/manifest.xml
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/stacks/orocos_kinematics_dynamics/kdl/manifest.xml
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/tf/package.xml
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/stacks/openni_tracker/manifest.xml
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/gencpp/package.xml
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/genlisp/package.xml
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/message_generation/package.xml
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/actionlib_msgs/package.xml
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/rosclean/package.xml
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/rosmaster/package.xml
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/rosout/package.xml
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/rosparam/package.xml
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/roslaunch/package.xml
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/rosunit/package.xml
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/rostest/package.xml
-../src/Human_intention/msg/_Goal.py: /opt/ros/groovy/share/actionlib/package.xml
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/vibek/Human_intention/build/CMakeFiles $(CMAKE_PROGRESS_6)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/Human_intention/msg/_Goal.py"
-	/opt/ros/groovy/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/vibek/Human_intention/msg/Goal.msg
 
 ROSBUILD_genmsg_py: CMakeFiles/ROSBUILD_genmsg_py
 ROSBUILD_genmsg_py: ../src/Human_intention/msg/__init__.py
 ROSBUILD_genmsg_py: ../src/Human_intention/msg/_Skeleton.py
-ROSBUILD_genmsg_py: ../src/Human_intention/msg/_EnableJointGroup.py
 ROSBUILD_genmsg_py: ../src/Human_intention/msg/_PerceptInfo.py
-ROSBUILD_genmsg_py: ../src/Human_intention/msg/_Pose.py
 ROSBUILD_genmsg_py: ../src/Human_intention/msg/_Goal.py
+ROSBUILD_genmsg_py: ../src/Human_intention/msg/_EnableJointGroup.py
+ROSBUILD_genmsg_py: ../src/Human_intention/msg/_Pose.py
 ROSBUILD_genmsg_py: CMakeFiles/ROSBUILD_genmsg_py.dir/build.make
 .PHONY : ROSBUILD_genmsg_py
 

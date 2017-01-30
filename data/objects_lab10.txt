@@ -1,0 +1,3 @@
+/home/vibek/Human_intention/data/tv.jpg
+/home/vibek/Human_intention/data/generatore.jpg
+/home/vibek/Human_intention/data/ipad.jpg

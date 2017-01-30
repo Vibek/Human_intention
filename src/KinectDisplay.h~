@@ -1,13 +1,26 @@
+/*****************************************************************************
+*                                                                            *
+*  //Copyright (c) 2015, Vibekananda Dutta, WUT
+  // Faculty of Power and Aeronautical Engineering (MEiL)/ZTMiR Laboratory
+  // Warsaw University of Technology
+ //  All rights reserved.
+*                                                                            *
+*****************************************************************************/
+
 #ifndef KINECT_DISPLAY_
 #define KINECT_DISPLAY_
 
 #include <ros/ros.h>
 #include <ros/console.h>
+
 #include <map>
 #include <list>
 #include <vector>
+
 #include <XnCppWrapper.h>
 #include <XnVPointControl.h>
+
+#include "attention_map.hpp"
 
 void glPrintString(void *font, char *str);
 

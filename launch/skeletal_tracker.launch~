@@ -15,6 +15,14 @@
         <param name="publish_frequency" value="20.0"/>
         </node>
        
+   <!--node pkg="tf" type="static_transform_publisher" name="base_to_kinect_tf" args="0.0 0 0.0 0 0 0 base_link /openni_depth_frame 100" /-->
+
+       <!-- x y z roll pitch yaw -->
+	<node pkg="tf" type="static_transform_publisher" name="raw_safe_object_transportation_tf" args=" 0.0 0.0 1 0 0.7 0.0 /openni_depth_frame /camera_link 100" />
+
+	<!-- remap the input from the Kinect to the input desired by the safe_object_transportation node -->
+	<remap from="safe_object_transportation_input" to="/camera/depth_registered/points"/>
+
 	<!-- Node that tracks skeletons -->
     <node pkg="Human_intention" type="skeleton_tracker" name="skeleton_tracker" output="screen" >
     <param name="force_left_arm_enabled" value="false" /> 
@@ -23,17 +31,13 @@
      <param name="fixed_frame" value="$(arg fixed_frame)" />
       <param name="load_filepath" value="$(find Human_intention)/params/SamplesConfig.xml" />
     </node>
-    
-  
-     <!--node pkg="skeleton_markers" type="Drinking_water" name="Drinking_water" output="screen" >
-   </node-->
-      
+        
   <node pkg="Human_intention" name="markers_from_tf" type="markers_from_tf.py" output="screen">
     <rosparam file="$(find Human_intention)/params/marker_params.yaml" command="load" />
     <param name="tf_prefix" value="$(arg tf_prefix)" />
     <param name="fixed_frame" value="openni_depth_frame" />
   </node>
-    <node pkg = "rviz" type ="rviz" name="rviz" args="-d /home/vibek/Human_intention/markers.rviz" />
-    <node pkg = "rqt_gui" type ="rqt_gui" name="rqt_gui" respawn="true">
- </node>
+      <!--node pkg="rviz" type="rviz" output="screen" name="rviz" args="-d/home/vibek/Human_intention/cfg/raw_safe_object_transportation.vcg" /-->
+    <!--node pkg = "rqt_gui" type ="rqt_gui" name="rqt_gui" respawn="true">
+ </node-->
 </launch>

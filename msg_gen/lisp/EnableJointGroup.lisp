@@ -1,7 +1,7 @@
 ; Auto-generated. Do not edit!
 
 
-(cl:in-package skeleton_markers-msg)
+(cl:in-package Human_intention-msg)
 
 
 ;//! \htmlinclude EnableJointGroup.msg.html
@@ -25,16 +25,16 @@
 (cl:defmethod cl:initialize-instance :after ((m <EnableJointGroup>) cl:&rest args)
   (cl:declare (cl:ignorable args))
   (cl:unless (cl:typep m 'EnableJointGroup)
-    (roslisp-msg-protocol:msg-deprecation-warning "using old message class name skeleton_markers-msg:<EnableJointGroup> is deprecated: use skeleton_markers-msg:EnableJointGroup instead.")))
+    (roslisp-msg-protocol:msg-deprecation-warning "using old message class name Human_intention-msg:<EnableJointGroup> is deprecated: use Human_intention-msg:EnableJointGroup instead.")))
 
 (cl:ensure-generic-function 'jointGroups-val :lambda-list '(m))
 (cl:defmethod jointGroups-val ((m <EnableJointGroup>))
-  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader skeleton_markers-msg:jointGroups-val is deprecated.  Use skeleton_markers-msg:jointGroups instead.")
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader Human_intention-msg:jointGroups-val is deprecated.  Use Human_intention-msg:jointGroups instead.")
   (jointGroups m))
 
 (cl:ensure-generic-function 'enabledStates-val :lambda-list '(m))
 (cl:defmethod enabledStates-val ((m <EnableJointGroup>))
-  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader skeleton_markers-msg:enabledStates-val is deprecated.  Use skeleton_markers-msg:enabledStates instead.")
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader Human_intention-msg:enabledStates-val is deprecated.  Use Human_intention-msg:enabledStates instead.")
   (enabledStates m))
 (cl:defmethod roslisp-msg-protocol:serialize ((msg <EnableJointGroup>) ostream)
   "Serializes a message object of type '<EnableJointGroup>"
@@ -89,10 +89,10 @@
 )
 (cl:defmethod roslisp-msg-protocol:ros-datatype ((msg (cl:eql '<EnableJointGroup>)))
   "Returns string type for a message object of type '<EnableJointGroup>"
-  "skeleton_markers/EnableJointGroup")
+  "Human_intention/EnableJointGroup")
 (cl:defmethod roslisp-msg-protocol:ros-datatype ((msg (cl:eql 'EnableJointGroup)))
   "Returns string type for a message object of type 'EnableJointGroup"
-  "skeleton_markers/EnableJointGroup")
+  "Human_intention/EnableJointGroup")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<EnableJointGroup>)))
   "Returns md5sum for a message object of type '<EnableJointGroup>"
   "816ee069696c3513a51b0f478a453767")

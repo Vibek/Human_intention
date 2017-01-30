@@ -46,7 +46,7 @@ int main(int argc, char** argv){
 			
 // ---------- FOR THE RIGHT HAND ---------------------------------------------------------------
 			
-			listener.lookupTransform("/right_foot_1", "/right_hip_1", ros::Time(0), transform1);
+			listener.lookupTransform("/right_hand_1", "/right_hip_1", ros::Time(0), transform1);
 
 			double right_x_tmp = transform1.getOrigin().x();  // returns a position of the joint with respect to fixed frame 
 			double right_y_tmp = transform1.getOrigin().y();  // individual elements of position can be accessed by x,y,z
@@ -71,7 +71,7 @@ int main(int argc, char** argv){
 
 // --------------------- FOR THE LEFT HAND ------------------------------------------------------			
 			
-			listener.lookupTransform("/head_1", "/right_hand_1", ros::Time(0), transform2);
+			listener.lookupTransform("/left_hand_1", "", ros::Time(0), transform2);
 			
 			double left_x_tmp = transform2.getOrigin().x();  // returns a position of the joint with respect to fixed frame 
 			double left_y_tmp = transform2.getOrigin().y();  // individual elements of position can be accessed by x,y,z
@@ -94,7 +94,7 @@ int main(int argc, char** argv){
 
 // --------------------- FOR THE HEAD ------------------------------------------------------			
 			
-			listener.lookupTransform("/head_1", "/left_hand_1", ros::Time(0), transform2);
+			listener.lookupTransform("/head_1", "", ros::Time(0), transform2);
 			
 			double head_x_tmp = transform2.getOrigin().x();  // returns a position of the joint with respect to fixed frame 
 			double head_y_tmp = transform2.getOrigin().y();  // individual elements of position can be accessed by x,y,z
@@ -136,25 +136,46 @@ int main(int argc, char** argv){
     vector<double>::iterator q = head_z.begin();
 
 
-    x_file.open ("righthand.csv", ios::app); //the flag ios::app makes sure that the control starts at the end of already existing file.
+    x_file.open ("hand_update_7.csv", ios::app); //the flag ios::app makes sure that the control starts at the end of already existing file.
 		x_file << 2;
 		x_file << ",";
 
     for (vector<double>::iterator i = right_hand_x.begin(); i != right_hand_x.end();++i){
 		//cout << *i << endl;
-		x_file <<"RIGHT HAND POSITION\n"<<"X="<< *i <<","<< "Y=" << *j <<"," << "Z=" << *k << std::endl;
-		//x_file << ",";
-                j++; k++;
-		/*
+		x_file << *i;
+		x_file << ",";
+		
 		x_file << *j;
 		x_file << ",";
 		j++;
 		
 		x_file << *k;
-		x_file << ",";
-		k++;*/
+		x_file << "\r\n";
+		k++;
 		
-						
+		x_file << *l;
+		x_file << ",";
+		l++;		
+		
+		x_file << *m;
+		x_file << ",";
+		m++;		
+		
+		x_file << *n;
+		x_file << ",";
+		n++;
+				
+		x_file << *o;
+		x_file << ",";
+		o++;				
+		
+		x_file << *p;
+		x_file << ",";
+		p++;				
+		
+		x_file << *q;
+		x_file << ",";
+		q++;				
 				
     }
     x_file << 0;

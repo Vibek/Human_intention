@@ -1,0 +1,12 @@
+<!-- Starts skeleton tracking -->
+<launch>
+       
+            
+    <param name="use_sim_time" value="false" />
+
+        <include file ="$(find openni_launch)/launch/openni.launch" />
+	
+     <node pkg="Human_intention" type="openni" name="openni" output="screen" >
+
+     </node>  
+</launch>

@@ -103,6 +103,17 @@ CMakeFiles/kinect_aux_node.dir/src/kinect_aux_node.cpp.o: /opt/ros/groovy/share/
 CMakeFiles/kinect_aux_node.dir/src/kinect_aux_node.cpp.o: /opt/ros/groovy/share/rosunit/package.xml
 CMakeFiles/kinect_aux_node.dir/src/kinect_aux_node.cpp.o: /opt/ros/groovy/share/rostest/package.xml
 CMakeFiles/kinect_aux_node.dir/src/kinect_aux_node.cpp.o: /opt/ros/groovy/share/actionlib/package.xml
+CMakeFiles/kinect_aux_node.dir/src/kinect_aux_node.cpp.o: /opt/ros/groovy/stacks/hector_worldmodel/hector_worldmodel_msgs/manifest.xml
+CMakeFiles/kinect_aux_node.dir/src/kinect_aux_node.cpp.o: /opt/ros/groovy/share/opencv2/package.xml
+CMakeFiles/kinect_aux_node.dir/src/kinect_aux_node.cpp.o: /opt/ros/groovy/share/cv_bridge/package.xml
+CMakeFiles/kinect_aux_node.dir/src/kinect_aux_node.cpp.o: /opt/ros/groovy/share/nodelet_topic_tools/package.xml
+CMakeFiles/kinect_aux_node.dir/src/kinect_aux_node.cpp.o: /opt/ros/groovy/share/flann/package.xml
+CMakeFiles/kinect_aux_node.dir/src/kinect_aux_node.cpp.o: /opt/ros/groovy/share/pcl_msgs/package.xml
+CMakeFiles/kinect_aux_node.dir/src/kinect_aux_node.cpp.o: /opt/ros/groovy/share/pcl/package.xml
+CMakeFiles/kinect_aux_node.dir/src/kinect_aux_node.cpp.o: /opt/ros/groovy/share/pcl_ros/package.xml
+CMakeFiles/kinect_aux_node.dir/src/kinect_aux_node.cpp.o: /opt/ros/groovy/share/pcl_conversions/package.xml
+CMakeFiles/kinect_aux_node.dir/src/kinect_aux_node.cpp.o: /opt/ros/groovy/stacks/hector_worldmodel/hector_worldmodel_msgs/msg_gen/generated
+CMakeFiles/kinect_aux_node.dir/src/kinect_aux_node.cpp.o: /opt/ros/groovy/stacks/hector_worldmodel/hector_worldmodel_msgs/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/vibek/Human_intention/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/kinect_aux_node.dir/src/kinect_aux_node.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -o CMakeFiles/kinect_aux_node.dir/src/kinect_aux_node.cpp.o -c /home/vibek/Human_intention/src/kinect_aux_node.cpp

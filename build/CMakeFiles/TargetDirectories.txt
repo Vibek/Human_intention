@@ -9,6 +9,7 @@
 /home/vibek/Human_intention/build/gtest/CMakeFiles/gtest.dir
 /home/vibek/Human_intention/build/gtest/CMakeFiles/gtest_main.dir
 /home/vibek/Human_intention/build/CMakeFiles/kinect_aux_node.dir
+/home/vibek/Human_intention/build/CMakeFiles/object.dir
 /home/vibek/Human_intention/build/CMakeFiles/rosbuild_clean-test-results.dir
 /home/vibek/Human_intention/build/CMakeFiles/rosbuild_precompile.dir
 /home/vibek/Human_intention/build/CMakeFiles/rosbuild_premsgsrvgen.dir

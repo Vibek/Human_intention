@@ -1,6 +1,6 @@
 /*****************************************************************************
 *                                                                            *
-*  //Copyright (c) 2015, Vibekananda Dutta, WUT
+*  //Copyright (c) 2016, Vibekananda Dutta, WUT
   // Faculty of Power and Aeronautical Engineering (MEiL)/ZTMiR Laboratory
   // Warsaw University of Technology
  //  All rights reserved.
@@ -16,6 +16,8 @@
 #include <opencv2/opencv.hpp>
 using namespace cv;
 
+
+const int g_bezier_segments = 32;
 
 struct AttentionMap
 {

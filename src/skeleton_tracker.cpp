@@ -7,58 +7,8 @@
 *                                                                            *
 *****************************************************************************/
 
-//ros libraries
-#include <ros/ros.h>
-#include <ros/console.h>
-#include <std_msgs/String.h>
-#include <std_msgs/Header.h>
-#include <kdl/frames.hpp>
-#include <skeleton_markers/Skeleton.h>
-#include <visualization_msgs/Marker.h>
-#include <tf/transform_broadcaster.h>
-#include <tf/tf.h>
-#include <tf/transform_listener.h>
-#include <nav_msgs/Odometry.h>
-#include <sensor_msgs/JointState.h>
-#include <geometry_msgs/Point.h>
-#include <geometry_msgs/Twist.h>
-#include <geometry_msgs/Pose2D.h>
-#include <sensor_msgs/LaserScan.h> // Laser sensor messages
-#include <sensor_msgs/PointCloud2.h> // PointCloud sensor messages
-
-//OpenGl libraries
-#include <GL/glut.h>
-
-//basic c and c++ libraries
-#include <string>
-#include <vector>
-#include <map>
-#include <fstream>
-#include <stdio.h>
-#include <ctime>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <cmath>
-#include <math.h>/* acos*/
-#include <iomanip>
-
-//Pacakge libraries design by our resporitory
-#include <skeleton_markers/EnableJointGroup.h>
-#include "Human_intention/Pose.h"
-#include "Human_intention/Goal.h"
-
-#include "attention_map.hpp"
-#include "KinectController.h"
-#include "KinectDisplay.h"
-#include "trajectory.h"
-
-#define PI 3.14159265359
-#ifndef HALFPI
-#define HALFPI 1.57079632679
-#endif 
-#ifndef QUARTPI
-#define QUARTPI 0.785398163397
-#endif
+#include "skeleton_tracker.h"
+//#include <pcl/io/openni_grabber.h>
 
 bool publish_kinect_tf_ = false;
 bool right_arm_enabled_ = false; 
@@ -79,45 +29,62 @@ Twist  vel;
 xn::Context	g_context;
 xn::ScriptNode	g_scriptNode;
 
-namespace skeleton_tracker
-{
- class SkeletonTracker
-  {
-    public:
-      std::string fixed_frame;
-      
-      SkeletonTracker()
-      {    
-      }
-      
-      void init()
-      {
+std::string OutputData::PostFix;
+std::string OutputData::CsvExtension; 
+
+//ObjectsFinderBase &GetObjectsFinder();
+
+void SkeletonTracker::init()   
+     
+    {
         ros::NodeHandle n;
         ros::NodeHandle np("~");
-	    int rate;
-	    n.param("tracking_rate", rate, 1);
-	    n.param("fixed_frame", fixed_frame, std::string("openni_depth_frame"));
-            skeleton_pub_ = n.advertise<skeleton_markers::Skeleton>("/skeleton", rate);
-	    marker_pub = n.advertise<visualization_msgs::Marker>("trajectory", 100);
-            enable_joint_group_sub_ = n.subscribe("enable_joint_group", 10,
-                                        &SkeletonTracker::enableJointGroupCB, this);
-            robotpose_sub = n.subscribe("/RosAria/pose", 1, &SkeletonTracker::getRobotPose, this);
-            pose_pub = n.advertise<Goal>("pose_publish", 10);
-            np.param<bool>("publish_kinect_tf", publish_kinect_tf_, false);  
-            np.param<bool>("force_left_arm_enabled", left_arm_enabled_, false);
-            np.param<bool>("force_right_arm_enabled", right_arm_enabled_, false);
-            np.param<bool>("force_legs_enabled", legs_enabled_, false);
-            np.param<bool>("motion_enabled", motion_enabled_, false); 
-            joint_states_pub_ = n.advertise<sensor_msgs::JointState>("joint_states", 1);
-            left_arm_destination_pub_ = n.advertise<geometry_msgs::Point>("left_arm_destination", 1);
-            right_arm_destination_pub_ = n.advertise<geometry_msgs::Point>("right_arm_destination", 1);	
-            cmdVelPub = n.advertise<geometry_msgs::Twist>("/RosAria/cmd_vel", 100);	
-            torso_destination_pub_ = n.advertise<geometry_msgs::Point>("torso_destination", 1);
+	int rate;
+	n.param("tracking_rate", rate, 1);
+	n.param("fixed_frame", fixed_frame, std::string("openni_depth_frame"));
+	np.param<bool>("publish_kinect_tf", publish_kinect_tf_, false);  
+        np.param<bool>("force_left_arm_enabled", left_arm_enabled_, false);
+        np.param<bool>("force_right_arm_enabled", right_arm_enabled_, false);
+        np.param<bool>("force_legs_enabled", legs_enabled_, false);
+        np.param<bool>("motion_enabled", motion_enabled_, false); 
+
+	enable_joint_group_sub_ = n.subscribe("enable_joint_group", 10, &SkeletonTracker::enableJointGroupCB, this);
+        robotpose_sub = n.subscribe<nav_msgs::Odometry>("/RosAria/pose", 1, &SkeletonTracker::getRobotPose, this);
+/*
+        //depth_sub_ = n.subscribe<sensor_msgs::PointCloud2>("/camera/depth_registered/points", 1, &pointCallback);
+	interface = NULL;
+	ObjectFinderPCL *pclFinder = dynamic_cast<ObjectFinderPCL *>(&GetObjectsFinder());
+	if (pclFinder != NULL)
+	{
+		interface = new pcl::OpenNIGrabber();
+       		
+		boost::function<void (const pcl::PointCloud<pcl::PointXYZ>::ConstPtr&)> f =
+         	boost::bind (&ObjectFinderPCL::processPoint, pclFinder, _1);
+
+       		interface->registerCallback (f);
+       		interface->start ();
+	}*/
+
+        skeleton_pub_ = n.advertise<Human_intention::Skeleton>("/skeleton", rate);
+	marker_pub = n.advertise<visualization_msgs::Marker>("/trajectory", 100);
+	robot_model_pub = n.advertise<visualization_msgs::Marker>("/robot", 1);        
+        pose_pub = n.advertise<Human_intention::Pose>("/pose_publish", 1);
+        joint_states_pub_ = n.advertise<sensor_msgs::JointState>("/joint_states", 1);
+        left_arm_destination_pub_ = n.advertise<geometry_msgs::Point>("/left_arm_destination", 1);
+        right_arm_destination_pub_ = n.advertise<geometry_msgs::Point>("/right_arm_destination", 1);
+        torso_destination_pub_ = n.advertise<geometry_msgs::Point>("/torso_destination", 1);	
+        cmdVelPub = n.advertise<geometry_msgs::Twist>("/RosAria/cmd_vel", 100);	       
                         
-      }
+    }
+
+SkeletonTracker::~SkeletonTracker() 
+{
+	//if (interface)
+	//	interface->stop ();
+}
       
-      void publishTransform(KinectController &kinect_controller, XnUserID const &user, XnSkeletonJoint const &joint, string const &frame_id, string const &child_frame_id, skeleton_markers::Skeleton &skeleton)
-      {
+void SkeletonTracker::publishTransform(KinectController &kinect_controller, XnUserID const &user, XnSkeletonJoint const &joint, string const &frame_id, string const &child_frame_id, Human_intention::Skeleton &skeleton)
+    {
 
       	xn::UserGenerator& UserGenerator = kinect_controller.getUserGenerator();
         static tf::TransformBroadcaster br;
@@ -172,11 +139,9 @@ namespace skeleton_tracker
       }
 
 //History function define in trajectory.h (file)
-History g_RightHandPositionHistory;
-History g_LeftHandPositionHistory;
-History *history;
 
-bool GetHistoryForJoint (XnSkeletonJoint eJoint, History **history) {
+bool SkeletonTracker::GetHistoryForJoint (XnSkeletonJoint eJoint, History **history)
+ {
 	switch (eJoint)
 	{
 	case XN_SKEL_RIGHT_HAND:
@@ -196,7 +161,7 @@ bool GetHistoryForJoint (XnSkeletonJoint eJoint, History **history) {
 }
 
 
-void handtrajectory(xn::UserGenerator& userGenerator,
+void SkeletonTracker::handtrajectory(xn::UserGenerator& userGenerator,
               xn::DepthGenerator& depthGenerator,
               XnUserID player, XnSkeletonJoint eJoint, bool updateHistory)
 {
@@ -223,7 +188,8 @@ void handtrajectory(xn::UserGenerator& userGenerator,
 	
 	// Prepare vertex buffer for drawing
 	XnPoint3D pt;
-	for (int k = 0; k < history->Size(); ++k) {
+	for (int k = 0; k < history->Size(); ++k) 
+	{
 		history->GetValueScreen (k, pt);
 
 		*pVertex++ = pt.X;
@@ -241,46 +207,80 @@ void handtrajectory(xn::UserGenerator& userGenerator,
 	// draw history points
 	glPointSize(8);
 	glDrawArrays(GL_POINTS, 0, history->Size());
-	
-	
-
 }
+
 
 //Publish robot odometry position in Visulaization
-void getRobotPose(const nav_msgs::Odometry& robot_pose)
-
+void SkeletonTracker::getRobotPose(const nav_msgs::Odometry::ConstPtr& robot_pose)
 {
- float true_lin_vel, true_ang_vel;
- std::ofstream outfile;
- odomPose.x = robot_pose.pose.pose.position.x;
- odomPose.y = robot_pose.pose.pose.position.y;
- odomPose.theta =  tf::getYaw(robot_pose.pose.pose.orientation);
- ROS_INFO("Robot current position:! x: %.2f, y: %.2f, theta: %.2f---", odomPose.x,odomPose.y,odomPose.theta);
-  // Open file to store robot poses
-  outfile.open("Postures.txt",std::ios_base::app);
-  outfile << "Robot current Pose in X: " << odomPose.x <<"," << "Robot current Pose in Y: " << odomPose.y <<","<<"Robot current Pose in Z: " << odomPose.theta <<'/' << std::endl;
-  // Close file
-  outfile.close();
- true_lin_vel = robot_pose.twist.twist.linear.x;
- true_ang_vel = robot_pose.twist.twist.angular.z;
- odom_updated = true;
+ 
+ ROS_INFO("ROS_ERROR...............");
+ odomPose.header.stamp = ros::Time::now();
+ odomPose.x = robot_pose->pose.pose.position.x;
+ odomPose.y = robot_pose->pose.pose.position.y;
+ odomPose.theta =  tf::getYaw(robot_pose->pose.pose.orientation);
+ ROS_DEBUG("Robot current position:! x: %.2f, y: %.2f, theta: %.2f---", odomPose.x, odomPose.y, odomPose.theta);
+ pose_pub.publish(odomPose);
+          
+         static uint32_t count = 0;
+         for (int i = -5; i < 5; ++i)
+         {          
+          // Set our initial shape type to be a cube
+          uint32_t shape = visualization_msgs::Marker::CUBE; 
+          visualization_msgs::Marker marker;
+	      marker.header.frame_id = "/base_link";
+	      marker.ns = "Robot";
+	      marker.type = shape;
+	      marker.action = visualization_msgs::Marker::ADD;
 
-         std::stringstream ss; 
-         Human_intention::Goal topicMsg;
-         ss << "Robot current postion:" <<odomPose.x <<"" << odomPose.y<<""<< odomPose.theta <<"" <<  robot_pose.child_frame_id <<""<< robot_pose.header<<"/";
-         topicMsg.name = ss.str(); 
-         pose_pub.publish(topicMsg);
-         
+          marker.pose.position.x = odomPose.x;
+          marker.pose.position.y = odomPose.y;
+	      marker.pose.position.z = 0;
+          marker.pose.orientation = tf::createQuaternionMsgFromRollPitchYaw(0, 0, odomPose.theta); 
+	      
+          marker.scale.x = 1.0;
+	      marker.scale.y = 1.0;
+	      marker.scale.z = 1.0;
+          marker.color.g = 1.0f;
+          marker.color.a = 1.0;             
+	     
+	      marker.lifetime = ros::Duration();
+
+          // Publish the marker
+          while (robot_model_pub.getNumSubscribers() >0) 
+          {
+          	if(!ros::ok())
+          		{ 
+                     return;
+          		}
+          		ROS_WARN_ONCE("Please create a subscriber to the marker");
+          		sleep(1);
+          }     			
+	      robot_model_pub.publish(marker);
+        } 
 }
+
+ void frameCallback(const ros::TimerEvent&)
+{
+   static uint32_t counter = 0;
+   static tf::TransformBroadcaster br;
+
+   tf::Transform t;
+   t.setOrigin(tf::Vector3(0.0, 0.0, (counter % 1000) * 0.01));
+   t.setRotation(tf::Quaternion(0.0, 0.0, 0.0, 1.0));
+   br.sendTransform(tf::StampedTransform(t, ros::Time::now(), "base_link", "openni_depth_frame"));
+   ++counter;
+
+ }
         
-void processKinect(KinectController &kinect_controller)
+void SkeletonTracker::processKinect(KinectController &kinect_controller)
       {
         XnUserID users[3];
         XnUInt16 users_count = 3;
         xn::UserGenerator& UserGenerator = kinect_controller.getUserGenerator();
         xn::DepthGenerator& depthGenerator = kinect_controller.getDepthGenerator();
         UserGenerator.GetUsers(users, users_count);
-	skeleton_markers::Skeleton g_skel;
+	Human_intention::Skeleton g_skel;
         for (int i = 0; i < users_count; ++i)
         {
            
@@ -342,7 +342,7 @@ void processKinect(KinectController &kinect_controller)
 					    } 
  
           handtrajectory(UserGenerator, depthGenerator, user, XN_SKEL_RIGHT_HAND, true); 
-	  handtrajectory(UserGenerator, depthGenerator, user, XN_SKEL_LEFT_HAND, true);           
+	  	  handtrajectory(UserGenerator, depthGenerator, user, XN_SKEL_LEFT_HAND, true);           
           publishTransform(kinect_controller, user, XN_SKEL_HEAD,           fixed_frame, "head", g_skel);
           publishTransform(kinect_controller, user, XN_SKEL_NECK,           fixed_frame, "neck", g_skel);
           publishTransform(kinect_controller, user, XN_SKEL_TORSO,          fixed_frame, "torso", g_skel);
@@ -491,12 +491,10 @@ void processKinect(KinectController &kinect_controller)
    
 
      // the kinect and robot are in different rotation spaces,
-
   
 		// Process and output joint rotations to the  robot.																														
 
-    // ARMS for robot
-		
+    // ARMS for robot		
   
 		// left elbow roll ****
 		KDL::Vector left_elbow_hand(left_hand - left_elbow);
@@ -689,10 +687,10 @@ void processKinect(KinectController &kinect_controller)
     torso_destination.z = torso_pitch;
     torso_destination_pub_.publish(torso_destination);
 
-              g_skel.user_id = user;
+          g_skel.user_id = user;
 	      g_skel.header.stamp = ros::Time::now();
 	      g_skel.header.frame_id = fixed_frame;
-              skeleton_pub_.publish(g_skel);
+          skeleton_pub_.publish(g_skel);
 	      cmdVelPub.publish(vel);
 
               //Visualize the trajectory of right hand in RVIZ
@@ -703,14 +701,14 @@ void processKinect(KinectController &kinect_controller)
 	      points.type = visualization_msgs::Marker::POINTS;
 	      // LINE_STRIP/LINE_LIST markers use only the x component of scale, for the line width
               points.scale.x = 0.03;
-	      points.scale.y = 0.03;
+	          points.scale.y = 0.03;
               points.color.r = 1.0;
               points.color.a = 0.5;
               XnPoint3D pt;
 		 for (int k = 0; k < g_RightHandPositionHistory.Size(); ++k) {
-				 g_RightHandPositionHistory.GetValueScreen (k, pt);
-				 geometry_msgs::Point p;
-                		 p.x = pt.Z/1000;
+				     g_RightHandPositionHistory.GetValueScreen (k, pt);
+				     geometry_msgs::Point p;
+                     p.x = pt.Z/1000;
         			 p.y = pt.Y/1000;
         			 p.z = pt.X/1000;  
         			 points.points.push_back(p);
@@ -725,14 +723,14 @@ void processKinect(KinectController &kinect_controller)
 	      point.type = visualization_msgs::Marker::POINTS;
 	      // LINE_STRIP/LINE_LIST markers use only the x component of scale, for the line width
               point.scale.x = 0.03;
-	      point.scale.y = 0.03;
+	          point.scale.y = 0.03;
               point.color.b = 1.0;
               point.color.a = 0.5;
               XnPoint3D pt1;
 		 for (int k = 0; k < g_LeftHandPositionHistory.Size(); ++k) {
-				 g_LeftHandPositionHistory.GetValueScreen (k, pt1);
-				 geometry_msgs::Point p;
-                		 p.x = pt1.Z/1000;
+				     g_LeftHandPositionHistory.GetValueScreen (k, pt1);
+				     geometry_msgs::Point p;
+                     p.x = pt1.Z/1000;
         			 p.y = pt1.Y/1000;
         			 p.z = pt1.X/1000;  
         			 point.points.push_back(p);
@@ -741,25 +739,10 @@ void processKinect(KinectController &kinect_controller)
 
               break;	// only read first user 
         }
-}
-         
-  private:
-    void enableJointGroupCB(const skeleton_markers::EnableJointGroupConstPtr& msg);
-    ros::Publisher  skeleton_pub_;
-    ros::Publisher  marker_pub;    
-    ros::Publisher  torso_destination_pub_;
-    ros::Publisher  left_arm_destination_pub_;
-    ros::Publisher  right_arm_destination_pub_;
-    ros::Publisher  cmdVelPub;
-    ros::Publisher  joint_states_pub_; 
-    ros::Publisher   pose_pub; 
-    ros::Subscriber  enable_joint_group_sub_;
-    ros::Subscriber  robotpose_sub;
-       
-  };
+}       
 
 
-void SkeletonTracker::enableJointGroupCB(const skeleton_markers::EnableJointGroupConstPtr& msg)
+void SkeletonTracker::enableJointGroupCB(const Human_intention::EnableJointGroupConstPtr& msg)
 {
 	for (size_t i=0; i < msg->jointGroups.size(); i++)
   {
@@ -786,14 +769,28 @@ void SkeletonTracker::enableJointGroupCB(const skeleton_markers::EnableJointGrou
 	}
 }
 
-}
 
-
-#define GL_WIN_SIZE_X 720
+#define GL_WIN_SIZE_X 640
 #define GL_WIN_SIZE_Y 480
+
 KinectController g_kinect_controller;
-skeleton_tracker::SkeletonTracker g_skeleton_tracker;
+SkeletonTracker g_skeleton_tracker;
 AttentionMap g_attention_map;
+ObjectsFinderBase *g_pObjectsFinder = NULL;
+/*
+ObjectsFinderBase &GetObjectsFinder()
+{
+	if (g_pObjectsFinder == NULL)
+	{
+		//g_pObjectsFinder = new ObjectsFinderSURF();
+		//g_pObjectsFinder = new ObjectsFinderORB();
+		//g_pObjectsFinder = new ObjectsFinderCMB();
+		//g_pObjectsFinder = new ObjectsFinderColor();
+		g_pObjectsFinder = new ObjectFinderPCL();
+	}
+
+	return *g_pObjectsFinder;
+}*/
 
 int depth_window, rgb_window;
 
@@ -808,6 +805,8 @@ void glutIdle (void)
 	glutSetWindow(rgb_window);
 	glutPostRedisplay();
 }
+
+void UpdateObjectsOfInterestWorldPositions(const xn::DepthMetaData& dmd);
 
 void glutDepthDisplay (void)
 {
@@ -825,14 +824,19 @@ void glutDepthDisplay (void)
 
 	glOrtho(0, depthMD.XRes(), depthMD.YRes(), 0, -1.0, 1.0);
   
-        glDisable(GL_TEXTURE_2D);
-  
-        kinect_display_drawDepthMapGL(depthMD, sceneMD);
+    glDisable(GL_TEXTURE_2D);
+
+    //GetObjectsFinder().processDepth(depthMD.Data());  
+    UpdateObjectsOfInterestWorldPositions(depthMD);
+
+    kinect_display_drawDepthMapGL(depthMD, sceneMD);
 	kinect_display_drawSkeletonGL(g_kinect_controller.getUserGenerator(),
                                 g_kinect_controller.getDepthGenerator(), true);  
          
 	glutSwapBuffers();
 }
+
+void DrawObjectsOfInterestWorldPositions();
 
 void glutRgbDisplay (void)
 {
@@ -848,31 +852,149 @@ void glutRgbDisplay (void)
 
 	glOrtho(0, imageMD.XRes(), imageMD.YRes(), 0, -1.0, 1.0);
   
-        glDisable(GL_TEXTURE_2D);
+    glDisable(GL_TEXTURE_2D);
   
-        kinect_display_drawRgbMapGL(imageMD, g_attention_map);
+    kinect_display_drawRgbMapGL(imageMD, g_attention_map);//, GetObjectsFinder());
 	kinect_display_drawSkeletonGL(g_kinect_controller.getUserGenerator(),
                                 g_kinect_controller.getDepthGenerator(), false); 
+
+	DrawObjectsOfInterestWorldPositions();
    	  
 	glutSwapBuffers();
 	
+}
+
+int gMouseX = 0;
+int gMouseY = 0;
+
+XnPoint3D gObjectsOfInterestPosProj[NumObjectsOfInterest];
+XnPoint3D gObjectsOfInterestPosWorld[NumObjectsOfInterest];
+bool      gObjectsOfInterestselectedState[NumObjectsOfInterest];
+
+bool g_bObjectOfInterestPosDirty = true;
+
+void DrawObjectsOfInterestWorldPositions()
+{
+    char strLabel[100];
+
+    glColor3f(1.f,1.f,1.f);
+
+
+    for (int i = 0; i < NumObjectsOfInterest; ++i)
+    {
+    	XnPoint3D pt = gObjectsOfInterestPosWorld[i];
+
+        DrawTransparentRectangleOnScreen(gObjectsOfInterestPosProj[i], 20, 20, gObjectsOfInterestselectedState[i]? transp_colors[4] : transp_colors[3]);
+
+	sprintf(strLabel, "OOI(%d) :(%.1fm, %.1fm, %.1fm) ", (i + 1), pt.X/1000.0f, pt.Y/1000.0f, pt.Z/1000.0f); 
+        glRasterPos2i(20, 160 + 20 * i);
+        glPrintString(GLUT_BITMAP_HELVETICA_18, strLabel);
+    }
+
+
+    //sprintf(strLabel, "Mouse(%d, %d)", gMouseX, gMouseY); 
+    //glRasterPos2i(20, 250);
+    //glPrintString(GLUT_BITMAP_HELVETICA_18, strLabel);
+}
+
+void SetObjectOfInterestSelected(int objectIndex, bool flag)
+{
+	gObjectsOfInterestselectedState[objectIndex] = flag;
+}
+
+void UpdateObjectsOfInterestWorldPositions(const xn::DepthMetaData& dmd)
+{
+	extern bool GetHistoryForJoint (XnSkeletonJoint eJoint, History **history);
+
+	if (!g_bObjectOfInterestPosDirty) return;
+
+	xn::DepthGenerator& depthGenerator = g_kinect_controller.getDepthGenerator();
+
+	for (int i = 0; i < NumObjectsOfInterest; ++i)
+	{
+		int projX = gObjectsOfInterestPosProj[i].X;
+		int projY = gObjectsOfInterestPosProj[i].Y;
+		XnDepthPixel depth = dmd(projX, projY);
+
+		XnPoint3D pt_proj, pt_world;
+		pt_proj.X = projX; pt_proj.Y = projY; pt_proj.Z = depth;
+
+		depthGenerator.ConvertProjectiveToRealWorld(1, &pt_proj, &pt_world);
+
+		/*pt_world.X /= 1000.0f;
+		pt_world.Y /= 1000.0f;
+		pt_world.Z /= 1000.0f;*/
+
+		gObjectsOfInterestPosWorld[i] = pt_world;
+
+
+		// set OOI as target for hands
+		{
+			History *pRightHandPositionHistory;
+			GetHistoryForJoint(XN_SKEL_RIGHT_HAND, &pRightHandPositionHistory);
+			pRightHandPositionHistory->SetTarget(i, pt_world, pt_proj);
+
+			History *pLeftHandPositionHistory;
+			GetHistoryForJoint(XN_SKEL_LEFT_HAND, &pLeftHandPositionHistory);
+			pLeftHandPositionHistory->SetTarget(i, pt_world, pt_proj);
+		}
+	}
+
+	g_bObjectOfInterestPosDirty = false;
+}
+
+void SetObjectOfInterestProjPos(int objectIndex)
+{
+	gObjectsOfInterestPosProj[objectIndex].X = gMouseX;
+	gObjectsOfInterestPosProj[objectIndex].Y = gMouseY;
+	g_bObjectOfInterestPosDirty = true;	
+}
+
+XnPoint3D GetObjectOfInterestProjPos(int k)
+{
+	return gObjectsOfInterestPosProj[k];
+}
+
+XnPoint3D GetObjectOfInterestWorldPos(int k)
+{
+	return gObjectsOfInterestPosWorld[k];
 }
 
 void glutKeyboard (unsigned char key, int x, int y)
 {
 	switch (key)
 	{
-	case 27: exit(1);
-                 break;
+	case 27:
+		exit(1);
+        break;
+
+    case '1':
+    	SetObjectOfInterestProjPos(0);
+    	break;
+
+    case '2':
+    	SetObjectOfInterestProjPos(1);
+    	break;
 	}
+}
+
+void glutPassiveMotion(int x, int y)
+{
+	gMouseX = x;
+	gMouseY = y;
 }
 
 int main(int argc, char** argv)
 {
+  OutputData::Init();
+
   ros::init(argc, argv, "skeleton_tracker");
-  //SkeletonTracker skd;
+  SkeletonTracker SKD;
   ros::NodeHandle n;
   ros::NodeHandle np("~");
+
+  ros::Timer frame_timer = n.createTimer(ros::Duration(0.01), frameCallback);
+
   string filepath;
   bool is_a_recording;
   np.getParam("load_filepath", filepath); 
@@ -881,11 +1003,13 @@ int main(int argc, char** argv)
   g_skeleton_tracker.init();
   g_kinect_controller.init(filepath.c_str(), is_a_recording);
 
-    // TODO... read these values from ini file
+
+  // TODO... read these values from ini file
   const int fps = 30;
   const int width = 640;
   const int height = 480;
 
+  //GetObjectsFinder().init(width, height);
   g_attention_map.init(fps, width, height);
 
   glutInit(&argc, argv);
@@ -901,11 +1025,12 @@ int main(int argc, char** argv)
   glEnableClientState(GL_VERTEX_ARRAY);
   glDisableClientState(GL_COLOR_ARRAY); 
 
-  glutKeyboardFunc(glutKeyboard);
-
   rgb_window = glutCreateWindow ("Skeleton RGB");
   glutDisplayFunc(glutRgbDisplay);
   
+  glutKeyboardFunc(glutKeyboard);
+  glutPassiveMotionFunc(glutPassiveMotion);
+
   glDisable(GL_DEPTH_TEST);
   glEnable(GL_TEXTURE_2D);
   glEnableClientState(GL_VERTEX_ARRAY);
@@ -915,9 +1040,7 @@ int main(int argc, char** argv)
   glutMainLoop();
   
   g_kinect_controller.shutdown();
-
-  ros::spin();
+  
+  delete g_pObjectsFinder;
   return 0;
 }
-
-

@@ -4,10 +4,10 @@ FILE(REMOVE_RECURSE
   "../src/Human_intention/msg"
   "CMakeFiles/ROSBUILD_genmsg_cpp"
   "../msg_gen/cpp/include/Human_intention/Skeleton.h"
-  "../msg_gen/cpp/include/Human_intention/EnableJointGroup.h"
   "../msg_gen/cpp/include/Human_intention/PerceptInfo.h"
-  "../msg_gen/cpp/include/Human_intention/Pose.h"
   "../msg_gen/cpp/include/Human_intention/Goal.h"
+  "../msg_gen/cpp/include/Human_intention/EnableJointGroup.h"
+  "../msg_gen/cpp/include/Human_intention/Pose.h"
 )
 
 # Per-language clean rules from dependency scanning.

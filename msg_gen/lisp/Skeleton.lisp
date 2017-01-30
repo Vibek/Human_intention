@@ -1,7 +1,7 @@
 ; Auto-generated. Do not edit!
 
 
-(cl:in-package skeleton_markers-msg)
+(cl:in-package Human_intention-msg)
 
 
 ;//! \htmlinclude Skeleton.msg.html
@@ -45,36 +45,36 @@
 (cl:defmethod cl:initialize-instance :after ((m <Skeleton>) cl:&rest args)
   (cl:declare (cl:ignorable args))
   (cl:unless (cl:typep m 'Skeleton)
-    (roslisp-msg-protocol:msg-deprecation-warning "using old message class name skeleton_markers-msg:<Skeleton> is deprecated: use skeleton_markers-msg:Skeleton instead.")))
+    (roslisp-msg-protocol:msg-deprecation-warning "using old message class name Human_intention-msg:<Skeleton> is deprecated: use Human_intention-msg:Skeleton instead.")))
 
 (cl:ensure-generic-function 'header-val :lambda-list '(m))
 (cl:defmethod header-val ((m <Skeleton>))
-  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader skeleton_markers-msg:header-val is deprecated.  Use skeleton_markers-msg:header instead.")
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader Human_intention-msg:header-val is deprecated.  Use Human_intention-msg:header instead.")
   (header m))
 
 (cl:ensure-generic-function 'user_id-val :lambda-list '(m))
 (cl:defmethod user_id-val ((m <Skeleton>))
-  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader skeleton_markers-msg:user_id-val is deprecated.  Use skeleton_markers-msg:user_id instead.")
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader Human_intention-msg:user_id-val is deprecated.  Use Human_intention-msg:user_id instead.")
   (user_id m))
 
 (cl:ensure-generic-function 'name-val :lambda-list '(m))
 (cl:defmethod name-val ((m <Skeleton>))
-  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader skeleton_markers-msg:name-val is deprecated.  Use skeleton_markers-msg:name instead.")
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader Human_intention-msg:name-val is deprecated.  Use Human_intention-msg:name instead.")
   (name m))
 
 (cl:ensure-generic-function 'confidence-val :lambda-list '(m))
 (cl:defmethod confidence-val ((m <Skeleton>))
-  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader skeleton_markers-msg:confidence-val is deprecated.  Use skeleton_markers-msg:confidence instead.")
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader Human_intention-msg:confidence-val is deprecated.  Use Human_intention-msg:confidence instead.")
   (confidence m))
 
 (cl:ensure-generic-function 'position-val :lambda-list '(m))
 (cl:defmethod position-val ((m <Skeleton>))
-  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader skeleton_markers-msg:position-val is deprecated.  Use skeleton_markers-msg:position instead.")
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader Human_intention-msg:position-val is deprecated.  Use Human_intention-msg:position instead.")
   (position m))
 
 (cl:ensure-generic-function 'orientation-val :lambda-list '(m))
 (cl:defmethod orientation-val ((m <Skeleton>))
-  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader skeleton_markers-msg:orientation-val is deprecated.  Use skeleton_markers-msg:orientation instead.")
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader Human_intention-msg:orientation-val is deprecated.  Use Human_intention-msg:orientation instead.")
   (orientation m))
 (cl:defmethod roslisp-msg-protocol:serialize ((msg <Skeleton>) ostream)
   "Serializes a message object of type '<Skeleton>"
@@ -186,10 +186,10 @@
 )
 (cl:defmethod roslisp-msg-protocol:ros-datatype ((msg (cl:eql '<Skeleton>)))
   "Returns string type for a message object of type '<Skeleton>"
-  "skeleton_markers/Skeleton")
+  "Human_intention/Skeleton")
 (cl:defmethod roslisp-msg-protocol:ros-datatype ((msg (cl:eql 'Skeleton)))
   "Returns string type for a message object of type 'Skeleton"
-  "skeleton_markers/Skeleton")
+  "Human_intention/Skeleton")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<Skeleton>)))
   "Returns md5sum for a message object of type '<Skeleton>"
   "34722af981b6a61700ff31df5a97c2e0")

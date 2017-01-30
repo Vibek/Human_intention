@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<launch>
+
+    <param name="use_sim_time" value="false" />
+    <node pkg="rviz" type="rviz" output="screen" name="rviz" args="-d/home/vibek/Human_intention/cfg/raw_safe_object_transportation.vcg" />
+
+        <include file ="$(find openni_launch)/launch/openni.launch" />
+
+     <!-- x y z roll pitch yaw -->
+	<node pkg="tf" type="static_transform_publisher" name="raw_safe_object_transportation_tf" args=" 0.0 0.0 1 0 0.7854 0.0 /world /camera_link 100" />
+
+	<!-- remap the input from the Kinect to the input desired by the safe_object_transportation node -->
+	<remap from="safe_object_transportation_input" to="camera/depth_registered/points"/>
+
+     <node pkg="Human_intention" type="object_tracking" name="object_tracking" output="screen" />
+     <node pkg = "rqt_gui" type ="rqt_gui" name="rqt_gui" respawn="true">
+</node>  
+  
+</launch>
+

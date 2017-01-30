@@ -17,6 +17,57 @@
 //Build shared libraries (DLLs).
 BUILD_SHARED_LIBS:BOOL=ON
 
+//The Boost DATE_TIME library
+Boost_DATE_TIME_LIBRARY:FILEPATH=/usr/lib/libboost_date_time-mt.so
+
+//Boost date_time library (debug)
+Boost_DATE_TIME_LIBRARY_DEBUG:FILEPATH=/usr/lib/libboost_date_time-mt.so
+
+//Boost date_time library (release)
+Boost_DATE_TIME_LIBRARY_RELEASE:FILEPATH=/usr/lib/libboost_date_time-mt.so
+
+//The Boost FILESYSTEM library
+Boost_FILESYSTEM_LIBRARY:FILEPATH=/usr/lib/libboost_filesystem-mt.so
+
+//Boost filesystem library (debug)
+Boost_FILESYSTEM_LIBRARY_DEBUG:FILEPATH=/usr/lib/libboost_filesystem-mt.so
+
+//Boost filesystem library (release)
+Boost_FILESYSTEM_LIBRARY_RELEASE:FILEPATH=/usr/lib/libboost_filesystem-mt.so
+
+//Path to a file.
+Boost_INCLUDE_DIR:PATH=/usr/include
+
+//The Boost IOSTREAMS library
+Boost_IOSTREAMS_LIBRARY:FILEPATH=/usr/lib/libboost_iostreams-mt.so
+
+//Boost iostreams library (debug)
+Boost_IOSTREAMS_LIBRARY_DEBUG:FILEPATH=/usr/lib/libboost_iostreams-mt.so
+
+//Boost iostreams library (release)
+Boost_IOSTREAMS_LIBRARY_RELEASE:FILEPATH=/usr/lib/libboost_iostreams-mt.so
+
+//Boost library directory
+Boost_LIBRARY_DIRS:FILEPATH=/usr/lib
+
+//The Boost SYSTEM library
+Boost_SYSTEM_LIBRARY:FILEPATH=/usr/lib/libboost_system-mt.so
+
+//Boost system library (debug)
+Boost_SYSTEM_LIBRARY_DEBUG:FILEPATH=/usr/lib/libboost_system-mt.so
+
+//Boost system library (release)
+Boost_SYSTEM_LIBRARY_RELEASE:FILEPATH=/usr/lib/libboost_system-mt.so
+
+//The Boost THREAD library
+Boost_THREAD_LIBRARY:FILEPATH=/usr/lib/libboost_thread-mt.so
+
+//Boost thread library (debug)
+Boost_THREAD_LIBRARY_DEBUG:FILEPATH=/usr/lib/libboost_thread-mt.so
+
+//Boost thread library (release)
+Boost_THREAD_LIBRARY_RELEASE:FILEPATH=/usr/lib/libboost_thread-mt.so
+
 //Catkin enable testing
 CATKIN_ENABLE_TESTING:BOOL=ON
 
@@ -176,11 +227,23 @@ DOXYGEN_EXECUTABLE:FILEPATH=/usr/bin/doxygen
 //Doxygen found
 DOXYGEN_FOUND:BOOL=TRUE
 
+//Path to a file.
+EIGEN_INCLUDE_DIRS:PATH=/usr/include/eigen3
+
 //Path to a program.
 EMPY_EXECUTABLE:FILEPATH=/usr/bin/empy
 
 //Single output directory for building all executables.
 EXECUTABLE_OUTPUT_PATH:PATH=
+
+//Path to a file.
+FLANN_INCLUDE_DIRS:PATH=/opt/ros/groovy/include
+
+//Path to a library.
+FLANN_LIBRARY:FILEPATH=/opt/ros/groovy/lib/libflann_cpp_s.a
+
+//Path to a library.
+FLANN_LIBRARY_DEBUG:FILEPATH=/opt/ros/groovy/lib/libflann_cpp_s-gd.a
 
 //Path to a file.
 GTEST_INCLUDE_DIR:PATH=/usr/include
@@ -206,6 +269,12 @@ Human_intention_SOURCE_DIR:STATIC=/home/vibek/Human_intention
 //Single output directory for building all libraries.
 LIBRARY_OUTPUT_PATH:PATH=
 
+//Path to a file.
+LIBUSB_1_INCLUDE_DIR:PATH=/usr/include
+
+//Path to a library.
+LIBUSB_1_LIBRARY:FILEPATH=/usr/lib/i386-linux-gnu/libusb-1.0.so
+
 //lsb_release executable was found
 LSB_FOUND:BOOL=TRUE
 
@@ -214,6 +283,12 @@ LSB_RELEASE_EXECUTABLE:FILEPATH=/usr/bin/lsb_release
 
 //Path to a program.
 NOSETESTS:FILEPATH=/usr/bin/nosetests
+
+//Path to a file.
+OPENNI_INCLUDE_DIRS:PATH=OPENNI_INCLUDE_DIRS-NOTFOUND
+
+//Path to a library.
+OPENNI_LIBRARY:FILEPATH=/usr/lib/libOpenNI.so
 
 //Path where debug 3rdpaty OpenCV dependencies are located
 OpenCV_3RDPARTY_LIB_DIR_DBG:PATH=
@@ -232,6 +307,141 @@ OpenCV_LIB_DIR_DBG:PATH=
 //Path where release OpenCV libraries are located
 OpenCV_LIB_DIR_OPT:PATH=
 
+//path to common headers
+PCL_COMMON_INCLUDE_DIR:PATH=/opt/ros/groovy/include/pcl-1.6
+
+//path to pcl_common library
+PCL_COMMON_LIBRARY:FILEPATH=/opt/ros/groovy/lib/libpcl_common.so
+
+//path to pcl_common library debug
+PCL_COMMON_LIBRARY_DEBUG:FILEPATH=/opt/ros/groovy/lib/libpcl_common.so
+
+//The directory containing a CMake configuration file for PCL.
+PCL_DIR:PATH=/opt/ros/groovy/share/pcl-1.6
+
+//path to features headers
+PCL_FEATURES_INCLUDE_DIR:PATH=/opt/ros/groovy/include/pcl-1.6
+
+//path to pcl_features library
+PCL_FEATURES_LIBRARY:FILEPATH=/opt/ros/groovy/lib/libpcl_features.so
+
+//path to pcl_features library debug
+PCL_FEATURES_LIBRARY_DEBUG:FILEPATH=/opt/ros/groovy/lib/libpcl_features.so
+
+//path to filters headers
+PCL_FILTERS_INCLUDE_DIR:PATH=/opt/ros/groovy/include/pcl-1.6
+
+//path to pcl_filters library
+PCL_FILTERS_LIBRARY:FILEPATH=/opt/ros/groovy/lib/libpcl_filters.so
+
+//path to pcl_filters library debug
+PCL_FILTERS_LIBRARY_DEBUG:FILEPATH=/opt/ros/groovy/lib/libpcl_filters.so
+
+//path to geometry headers
+PCL_GEOMETRY_INCLUDE_DIR:PATH=/opt/ros/groovy/include/pcl-1.6
+
+//path to io headers
+PCL_IO_INCLUDE_DIR:PATH=/opt/ros/groovy/include/pcl-1.6
+
+//path to pcl_io library
+PCL_IO_LIBRARY:FILEPATH=/opt/ros/groovy/lib/libpcl_io.so
+
+//path to pcl_io library debug
+PCL_IO_LIBRARY_DEBUG:FILEPATH=/opt/ros/groovy/lib/libpcl_io.so
+
+//path to kdtree headers
+PCL_KDTREE_INCLUDE_DIR:PATH=/opt/ros/groovy/include/pcl-1.6
+
+//path to pcl_kdtree library
+PCL_KDTREE_LIBRARY:FILEPATH=/opt/ros/groovy/lib/libpcl_kdtree.so
+
+//path to pcl_kdtree library debug
+PCL_KDTREE_LIBRARY_DEBUG:FILEPATH=/opt/ros/groovy/lib/libpcl_kdtree.so
+
+//path to keypoints headers
+PCL_KEYPOINTS_INCLUDE_DIR:PATH=/opt/ros/groovy/include/pcl-1.6
+
+//path to pcl_keypoints library
+PCL_KEYPOINTS_LIBRARY:FILEPATH=/opt/ros/groovy/lib/libpcl_keypoints.so
+
+//path to pcl_keypoints library debug
+PCL_KEYPOINTS_LIBRARY_DEBUG:FILEPATH=/opt/ros/groovy/lib/libpcl_keypoints.so
+
+//path to octree headers
+PCL_OCTREE_INCLUDE_DIR:PATH=/opt/ros/groovy/include/pcl-1.6
+
+//path to pcl_octree library
+PCL_OCTREE_LIBRARY:FILEPATH=/opt/ros/groovy/lib/libpcl_octree.so
+
+//path to pcl_octree library debug
+PCL_OCTREE_LIBRARY_DEBUG:FILEPATH=/opt/ros/groovy/lib/libpcl_octree.so
+
+//path to registration headers
+PCL_REGISTRATION_INCLUDE_DIR:PATH=/opt/ros/groovy/include/pcl-1.6
+
+//path to pcl_registration library
+PCL_REGISTRATION_LIBRARY:FILEPATH=/opt/ros/groovy/lib/libpcl_registration.so
+
+//path to pcl_registration library debug
+PCL_REGISTRATION_LIBRARY_DEBUG:FILEPATH=/opt/ros/groovy/lib/libpcl_registration.so
+
+//path to sample_consensus headers
+PCL_SAMPLE_CONSENSUS_INCLUDE_DIR:PATH=/opt/ros/groovy/include/pcl-1.6
+
+//path to pcl_sample_consensus library
+PCL_SAMPLE_CONSENSUS_LIBRARY:FILEPATH=/opt/ros/groovy/lib/libpcl_sample_consensus.so
+
+//path to pcl_sample_consensus library debug
+PCL_SAMPLE_CONSENSUS_LIBRARY_DEBUG:FILEPATH=/opt/ros/groovy/lib/libpcl_sample_consensus.so
+
+//path to search headers
+PCL_SEARCH_INCLUDE_DIR:PATH=/opt/ros/groovy/include/pcl-1.6
+
+//path to pcl_search library
+PCL_SEARCH_LIBRARY:FILEPATH=/opt/ros/groovy/lib/libpcl_search.so
+
+//path to pcl_search library debug
+PCL_SEARCH_LIBRARY_DEBUG:FILEPATH=/opt/ros/groovy/lib/libpcl_search.so
+
+//path to segmentation headers
+PCL_SEGMENTATION_INCLUDE_DIR:PATH=/opt/ros/groovy/include/pcl-1.6
+
+//path to pcl_segmentation library
+PCL_SEGMENTATION_LIBRARY:FILEPATH=/opt/ros/groovy/lib/libpcl_segmentation.so
+
+//path to pcl_segmentation library debug
+PCL_SEGMENTATION_LIBRARY_DEBUG:FILEPATH=/opt/ros/groovy/lib/libpcl_segmentation.so
+
+//path to surface headers
+PCL_SURFACE_INCLUDE_DIR:PATH=/opt/ros/groovy/include/pcl-1.6
+
+//path to pcl_surface library
+PCL_SURFACE_LIBRARY:FILEPATH=/opt/ros/groovy/lib/libpcl_surface.so
+
+//path to pcl_surface library debug
+PCL_SURFACE_LIBRARY_DEBUG:FILEPATH=/opt/ros/groovy/lib/libpcl_surface.so
+
+//path to tracking headers
+PCL_TRACKING_INCLUDE_DIR:PATH=/opt/ros/groovy/include/pcl-1.6
+
+//path to pcl_tracking library
+PCL_TRACKING_LIBRARY:FILEPATH=/opt/ros/groovy/lib/libpcl_tracking.so
+
+//path to pcl_tracking library debug
+PCL_TRACKING_LIBRARY_DEBUG:FILEPATH=/opt/ros/groovy/lib/libpcl_tracking.so
+
+//path to visualization headers
+PCL_VISUALIZATION_INCLUDE_DIR:PATH=/opt/ros/groovy/include/pcl-1.6
+
+//path to pcl_visualization library
+PCL_VISUALIZATION_LIBRARY:FILEPATH=/opt/ros/groovy/lib/libpcl_visualization.so
+
+//path to pcl_visualization library debug
+PCL_VISUALIZATION_LIBRARY_DEBUG:FILEPATH=/opt/ros/groovy/lib/libpcl_visualization.so
+
+//pkg-config executable
+PKG_CONFIG_EXECUTABLE:FILEPATH=/usr/bin/pkg-config
+
 //Path to a file.
 PROJECTCONFIG:FILEPATH=PROJECTCONFIG-NOTFOUND
 
@@ -246,6 +456,15 @@ Project_BINARY_DIR:STATIC=/home/vibek/Human_intention/build
 
 //Value Computed by CMake
 Project_SOURCE_DIR:STATIC=/home/vibek/Human_intention
+
+//Path to a file.
+QHULL_INCLUDE_DIRS:PATH=/usr/include/qhull
+
+//Path to a library.
+QHULL_LIBRARY:FILEPATH=/usr/lib/libqhull.so
+
+//Path to a library.
+QHULL_LIBRARY_DEBUG:FILEPATH=/usr/lib/libqhull.so
 
 //rospack executable
 ROSPACK_EXE:FILEPATH=/opt/ros/groovy/bin/rospack
@@ -275,7 +494,10 @@ _CATKIN_GTEST_INCLUDE:FILEPATH=/usr/include/gtest/gtest.h
 _CATKIN_GTEST_SRC:FILEPATH=/usr/src/gtest/src/gtest.cc
 
 //Path to a file.
-_file_name:FILEPATH=/home/vibek/Human_intention/src/kinect_aux_node.cpp
+_file_name:FILEPATH=/home/vibek/Human_intention/src/find_objects_color.cpp
+
+//Dependencies for the target
+bounding_box_tracking_LIB_DEPENDS:STATIC=general;openni_nodelet;general;openni_driver;general;OpenNI;general;camera_info_manager;general;dynamic_reconfigure_config_init_mutex;general;nodeletlib;general;bondcpp;general;uuid;general;orocos-kdl;general;actionlib;general;image_transport;general;tinyxml;general;class_loader;general;:/usr/lib/libPocoFoundation.so;general;dl;general;roslib;general;console_bridge;general;cv_bridge;general;:/opt/ros/groovy/lib/libopencv_videostab.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_video.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_superres.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_stitching.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_photo.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_objdetect.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_nonfree.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_ml.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_legacy.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_imgproc.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_highgui.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_gpu.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_flann.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_features2d.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_core.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_contrib.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_calib3d.so.2.4.9;general;pcl_ros_tf;general;pcl_ros_io;general;pcl_ros_filters;general;:/usr/lib/libboost_iostreams-mt.so;general;:/opt/ros/groovy/lib/libpcl_common.so;general;:/opt/ros/groovy/lib/libpcl_octree.so;general;:/usr/lib/libvtkCommon.so.5.8.0;general;:/usr/lib/libvtkRendering.so.5.8.0;general;:/usr/lib/libvtkHybrid.so.5.8.0;general;:/opt/ros/groovy/lib/libpcl_io.so;general;:/opt/ros/groovy/lib/libpcl_kdtree.so;general;:/opt/ros/groovy/lib/libpcl_search.so;general;:/opt/ros/groovy/lib/libpcl_sample_consensus.so;general;:/opt/ros/groovy/lib/libpcl_filters.so;general;:/opt/ros/groovy/lib/libpcl_segmentation.so;general;:/opt/ros/groovy/lib/libpcl_visualization.so;general;:/opt/ros/groovy/lib/libpcl_features.so;general;:/usr/lib/libqhull.so;general;:/opt/ros/groovy/lib/libpcl_surface.so;general;:/opt/ros/groovy/lib/libpcl_registration.so;general;:/opt/ros/groovy/lib/libpcl_keypoints.so;general;:/opt/ros/groovy/lib/libpcl_tracking.so;general;tf;general;message_filters;general;roscpp;general;:/usr/lib/libboost_signals-mt.so;general;:/usr/lib/libboost_filesystem-mt.so;general;rosconsole;general;:/usr/lib/libboost_regex-mt.so;general;:/usr/lib/liblog4cxx.so;general;xmlrpcpp;general;roscpp_serialization;general;rostime;general;:/usr/lib/libboost_date_time-mt.so;general;:/usr/lib/libboost_system-mt.so;general;:/usr/lib/libboost_thread-mt.so;general;pthread;general;cpp_common;
 
 //The directory containing a CMake configuration file for catkin.
 catkin_DIR:PATH=/opt/ros/groovy/share/catkin/cmake
@@ -320,6 +542,15 @@ gtest_main_LIB_DEPENDS:STATIC=general;-lpthread;general;gtest;
 //Path to a library.
 lib:FILEPATH=/opt/ros/groovy/lib/libroslib.so
 
+//Dependencies for the target
+object_candidate_extraction_LIB_DEPENDS:STATIC=general;openni_nodelet;general;openni_driver;general;OpenNI;general;camera_info_manager;general;dynamic_reconfigure_config_init_mutex;general;nodeletlib;general;bondcpp;general;uuid;general;orocos-kdl;general;actionlib;general;image_transport;general;tinyxml;general;class_loader;general;:/usr/lib/libPocoFoundation.so;general;dl;general;roslib;general;console_bridge;general;cv_bridge;general;:/opt/ros/groovy/lib/libopencv_videostab.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_video.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_superres.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_stitching.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_photo.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_objdetect.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_nonfree.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_ml.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_legacy.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_imgproc.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_highgui.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_gpu.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_flann.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_features2d.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_core.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_contrib.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_calib3d.so.2.4.9;general;pcl_ros_tf;general;pcl_ros_io;general;pcl_ros_filters;general;:/usr/lib/libboost_iostreams-mt.so;general;:/opt/ros/groovy/lib/libpcl_common.so;general;:/opt/ros/groovy/lib/libpcl_octree.so;general;:/usr/lib/libvtkCommon.so.5.8.0;general;:/usr/lib/libvtkRendering.so.5.8.0;general;:/usr/lib/libvtkHybrid.so.5.8.0;general;:/opt/ros/groovy/lib/libpcl_io.so;general;:/opt/ros/groovy/lib/libpcl_kdtree.so;general;:/opt/ros/groovy/lib/libpcl_search.so;general;:/opt/ros/groovy/lib/libpcl_sample_consensus.so;general;:/opt/ros/groovy/lib/libpcl_filters.so;general;:/opt/ros/groovy/lib/libpcl_segmentation.so;general;:/opt/ros/groovy/lib/libpcl_visualization.so;general;:/opt/ros/groovy/lib/libpcl_features.so;general;:/usr/lib/libqhull.so;general;:/opt/ros/groovy/lib/libpcl_surface.so;general;:/opt/ros/groovy/lib/libpcl_registration.so;general;:/opt/ros/groovy/lib/libpcl_keypoints.so;general;:/opt/ros/groovy/lib/libpcl_tracking.so;general;tf;general;message_filters;general;roscpp;general;:/usr/lib/libboost_signals-mt.so;general;:/usr/lib/libboost_filesystem-mt.so;general;rosconsole;general;:/usr/lib/libboost_regex-mt.so;general;:/usr/lib/liblog4cxx.so;general;xmlrpcpp;general;roscpp_serialization;general;rostime;general;:/usr/lib/libboost_date_time-mt.so;general;:/usr/lib/libboost_system-mt.so;general;:/usr/lib/libboost_thread-mt.so;general;pthread;general;cpp_common;
+
+//Dependencies for the target
+object_candidate_tracking_LIB_DEPENDS:STATIC=general;openni_nodelet;general;openni_driver;general;OpenNI;general;camera_info_manager;general;dynamic_reconfigure_config_init_mutex;general;nodeletlib;general;bondcpp;general;uuid;general;orocos-kdl;general;actionlib;general;image_transport;general;tinyxml;general;class_loader;general;:/usr/lib/libPocoFoundation.so;general;dl;general;roslib;general;console_bridge;general;cv_bridge;general;:/opt/ros/groovy/lib/libopencv_videostab.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_video.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_superres.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_stitching.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_photo.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_objdetect.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_nonfree.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_ml.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_legacy.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_imgproc.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_highgui.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_gpu.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_flann.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_features2d.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_core.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_contrib.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_calib3d.so.2.4.9;general;pcl_ros_tf;general;pcl_ros_io;general;pcl_ros_filters;general;:/usr/lib/libboost_iostreams-mt.so;general;:/opt/ros/groovy/lib/libpcl_common.so;general;:/opt/ros/groovy/lib/libpcl_octree.so;general;:/usr/lib/libvtkCommon.so.5.8.0;general;:/usr/lib/libvtkRendering.so.5.8.0;general;:/usr/lib/libvtkHybrid.so.5.8.0;general;:/opt/ros/groovy/lib/libpcl_io.so;general;:/opt/ros/groovy/lib/libpcl_kdtree.so;general;:/opt/ros/groovy/lib/libpcl_search.so;general;:/opt/ros/groovy/lib/libpcl_sample_consensus.so;general;:/opt/ros/groovy/lib/libpcl_filters.so;general;:/opt/ros/groovy/lib/libpcl_segmentation.so;general;:/opt/ros/groovy/lib/libpcl_visualization.so;general;:/opt/ros/groovy/lib/libpcl_features.so;general;:/usr/lib/libqhull.so;general;:/opt/ros/groovy/lib/libpcl_surface.so;general;:/opt/ros/groovy/lib/libpcl_registration.so;general;:/opt/ros/groovy/lib/libpcl_keypoints.so;general;:/opt/ros/groovy/lib/libpcl_tracking.so;general;tf;general;message_filters;general;roscpp;general;:/usr/lib/libboost_signals-mt.so;general;:/usr/lib/libboost_filesystem-mt.so;general;rosconsole;general;:/usr/lib/libboost_regex-mt.so;general;:/usr/lib/liblog4cxx.so;general;xmlrpcpp;general;roscpp_serialization;general;rostime;general;:/usr/lib/libboost_date_time-mt.so;general;:/usr/lib/libboost_system-mt.so;general;:/usr/lib/libboost_thread-mt.so;general;pthread;general;cpp_common;
+
+//Dependencies for the target
+platform_extraction_LIB_DEPENDS:STATIC=general;openni_nodelet;general;openni_driver;general;OpenNI;general;camera_info_manager;general;dynamic_reconfigure_config_init_mutex;general;nodeletlib;general;bondcpp;general;uuid;general;orocos-kdl;general;actionlib;general;image_transport;general;tinyxml;general;class_loader;general;:/usr/lib/libPocoFoundation.so;general;dl;general;roslib;general;console_bridge;general;cv_bridge;general;:/opt/ros/groovy/lib/libopencv_videostab.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_video.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_superres.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_stitching.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_photo.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_objdetect.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_nonfree.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_ml.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_legacy.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_imgproc.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_highgui.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_gpu.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_flann.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_features2d.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_core.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_contrib.so.2.4.9;general;:/opt/ros/groovy/lib/libopencv_calib3d.so.2.4.9;general;pcl_ros_tf;general;pcl_ros_io;general;pcl_ros_filters;general;:/usr/lib/libboost_iostreams-mt.so;general;:/opt/ros/groovy/lib/libpcl_common.so;general;:/opt/ros/groovy/lib/libpcl_octree.so;general;:/usr/lib/libvtkCommon.so.5.8.0;general;:/usr/lib/libvtkRendering.so.5.8.0;general;:/usr/lib/libvtkHybrid.so.5.8.0;general;:/opt/ros/groovy/lib/libpcl_io.so;general;:/opt/ros/groovy/lib/libpcl_kdtree.so;general;:/opt/ros/groovy/lib/libpcl_search.so;general;:/opt/ros/groovy/lib/libpcl_sample_consensus.so;general;:/opt/ros/groovy/lib/libpcl_filters.so;general;:/opt/ros/groovy/lib/libpcl_segmentation.so;general;:/opt/ros/groovy/lib/libpcl_visualization.so;general;:/opt/ros/groovy/lib/libpcl_features.so;general;:/usr/lib/libqhull.so;general;:/opt/ros/groovy/lib/libpcl_surface.so;general;:/opt/ros/groovy/lib/libpcl_registration.so;general;:/opt/ros/groovy/lib/libpcl_keypoints.so;general;:/opt/ros/groovy/lib/libpcl_tracking.so;general;tf;general;message_filters;general;roscpp;general;:/usr/lib/libboost_signals-mt.so;general;:/usr/lib/libboost_filesystem-mt.so;general;rosconsole;general;:/usr/lib/libboost_regex-mt.so;general;:/usr/lib/liblog4cxx.so;general;xmlrpcpp;general;roscpp_serialization;general;rostime;general;:/usr/lib/libboost_date_time-mt.so;general;:/usr/lib/libboost_system-mt.so;general;:/usr/lib/libboost_thread-mt.so;general;pthread;general;cpp_common;
+
 //The directory containing a CMake configuration file for roslib.
 roslib_DIR:PATH=/opt/ros/groovy/share/roslib/cmake
 
@@ -331,6 +562,54 @@ rosunit_DIR:PATH=/opt/ros/groovy/share/rosunit/cmake
 # INTERNAL cache entries
 ########################
 
+//Whether the Boost DATE_TIME library found
+Boost_DATE_TIME_FOUND:INTERNAL=ON
+//ADVANCED property for variable: Boost_DATE_TIME_LIBRARY
+Boost_DATE_TIME_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_DATE_TIME_LIBRARY_DEBUG
+Boost_DATE_TIME_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_DATE_TIME_LIBRARY_RELEASE
+Boost_DATE_TIME_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//Whether the Boost FILESYSTEM library found
+Boost_FILESYSTEM_FOUND:INTERNAL=ON
+//ADVANCED property for variable: Boost_FILESYSTEM_LIBRARY
+Boost_FILESYSTEM_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_FILESYSTEM_LIBRARY_DEBUG
+Boost_FILESYSTEM_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_FILESYSTEM_LIBRARY_RELEASE
+Boost_FILESYSTEM_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_INCLUDE_DIR
+Boost_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//Whether the Boost IOSTREAMS library found
+Boost_IOSTREAMS_FOUND:INTERNAL=ON
+//ADVANCED property for variable: Boost_IOSTREAMS_LIBRARY
+Boost_IOSTREAMS_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_IOSTREAMS_LIBRARY_DEBUG
+Boost_IOSTREAMS_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_IOSTREAMS_LIBRARY_RELEASE
+Boost_IOSTREAMS_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_LIBRARY_DIRS
+Boost_LIBRARY_DIRS-ADVANCED:INTERNAL=1
+//The library version string for boost libraries
+Boost_LIB_VERSION:INTERNAL=1_46_1
+//Whether the Boost SYSTEM library found
+Boost_SYSTEM_FOUND:INTERNAL=ON
+//ADVANCED property for variable: Boost_SYSTEM_LIBRARY
+Boost_SYSTEM_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_SYSTEM_LIBRARY_DEBUG
+Boost_SYSTEM_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_SYSTEM_LIBRARY_RELEASE
+Boost_SYSTEM_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//Whether the Boost THREAD library found
+Boost_THREAD_FOUND:INTERNAL=ON
+//ADVANCED property for variable: Boost_THREAD_LIBRARY
+Boost_THREAD_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_THREAD_LIBRARY_DEBUG
+Boost_THREAD_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_THREAD_LIBRARY_RELEASE
+Boost_THREAD_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//The version number for boost libraries
+Boost_VERSION:INTERNAL=104601
 //catkin environment
 CATKIN_ENV:INTERNAL=/home/vibek/Human_intention/build/catkin_generated/env_cached.sh
 CATKIN_TEST_RESULTS_DIR:INTERNAL=/home/vibek/Human_intention/build/test_results
@@ -462,10 +741,50 @@ CMAKE_UNAME:INTERNAL=/bin/uname
 CMAKE_USE_RELATIVE_PATHS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//Details about finding Flann
+FIND_PACKAGE_MESSAGE_DETAILS_Flann:INTERNAL=[/opt/ros/groovy/lib/libflann_cpp_s.a][/opt/ros/groovy/include][v()]
+//Details about finding PCL
+FIND_PACKAGE_MESSAGE_DETAILS_PCL:INTERNAL=[/usr/lib/libboost_system-mt.so;/usr/lib/libboost_filesystem-mt.so;/usr/lib/libboost_thread-mt.so;/usr/lib/libboost_date_time-mt.so;/usr/lib/libboost_iostreams-mt.so;optimized;/opt/ros/groovy/lib/libpcl_common.so;debug;/opt/ros/groovy/lib/libpcl_common.so;optimized;/opt/ros/groovy/lib/libpcl_octree.so;debug;/opt/ros/groovy/lib/libpcl_octree.so;vtkCommon;vtkRendering;vtkHybrid;optimized;/opt/ros/groovy/lib/libpcl_io.so;debug;/opt/ros/groovy/lib/libpcl_io.so;optimized;/opt/ros/groovy/lib/libflann_cpp_s.a;debug;/opt/ros/groovy/lib/libflann_cpp_s-gd.a;optimized;/opt/ros/groovy/lib/libpcl_kdtree.so;debug;/opt/ros/groovy/lib/libpcl_kdtree.so;optimized;/opt/ros/groovy/lib/libpcl_search.so;debug;/opt/ros/groovy/lib/libpcl_search.so;optimized;/opt/ros/groovy/lib/libpcl_sample_consensus.so;debug;/opt/ros/groovy/lib/libpcl_sample_consensus.so;optimized;/opt/ros/groovy/lib/libpcl_filters.so;debug;/opt/ros/groovy/lib/libpcl_filters.so;optimized;/opt/ros/groovy/lib/libpcl_segmentation.so;debug;/opt/ros/groovy/lib/libpcl_segmentation.so;optimized;/opt/ros/groovy/lib/libpcl_visualization.so;debug;/opt/ros/groovy/lib/libpcl_visualization.so;optimized;/opt/ros/groovy/lib/libpcl_features.so;debug;/opt/ros/groovy/lib/libpcl_features.so;optimized;/usr/lib/libqhull.so;debug;/usr/lib/libqhull.so;optimized;/opt/ros/groovy/lib/libpcl_surface.so;debug;/opt/ros/groovy/lib/libpcl_surface.so;optimized;/opt/ros/groovy/lib/libpcl_registration.so;debug;/opt/ros/groovy/lib/libpcl_registration.so;optimized;/opt/ros/groovy/lib/libpcl_keypoints.so;debug;/opt/ros/groovy/lib/libpcl_keypoints.so;optimized;/opt/ros/groovy/lib/libpcl_tracking.so;debug;/opt/ros/groovy/lib/libpcl_tracking.so][/opt/ros/groovy/include/pcl-1.6;/usr/include/eigen3;/usr/include;/usr/include/vtk-5.8;/opt/ros/groovy/include;/usr/include/qhull][v()]
+//Details about finding PCL_COMMON
+FIND_PACKAGE_MESSAGE_DETAILS_PCL_COMMON:INTERNAL=[/opt/ros/groovy/lib/libpcl_common.so][/opt/ros/groovy/include/pcl-1.6][v()]
+//Details about finding PCL_FEATURES
+FIND_PACKAGE_MESSAGE_DETAILS_PCL_FEATURES:INTERNAL=[/opt/ros/groovy/lib/libpcl_features.so][/opt/ros/groovy/include/pcl-1.6][v()]
+//Details about finding PCL_FILTERS
+FIND_PACKAGE_MESSAGE_DETAILS_PCL_FILTERS:INTERNAL=[/opt/ros/groovy/lib/libpcl_filters.so][/opt/ros/groovy/include/pcl-1.6][v()]
+//Details about finding PCL_GEOMETRY
+FIND_PACKAGE_MESSAGE_DETAILS_PCL_GEOMETRY:INTERNAL=[/opt/ros/groovy/include/pcl-1.6][v()]
+//Details about finding PCL_IO
+FIND_PACKAGE_MESSAGE_DETAILS_PCL_IO:INTERNAL=[/opt/ros/groovy/lib/libpcl_io.so][/opt/ros/groovy/include/pcl-1.6][v()]
+//Details about finding PCL_KDTREE
+FIND_PACKAGE_MESSAGE_DETAILS_PCL_KDTREE:INTERNAL=[/opt/ros/groovy/lib/libpcl_kdtree.so][/opt/ros/groovy/include/pcl-1.6][v()]
+//Details about finding PCL_KEYPOINTS
+FIND_PACKAGE_MESSAGE_DETAILS_PCL_KEYPOINTS:INTERNAL=[/opt/ros/groovy/lib/libpcl_keypoints.so][/opt/ros/groovy/include/pcl-1.6][v()]
+//Details about finding PCL_OCTREE
+FIND_PACKAGE_MESSAGE_DETAILS_PCL_OCTREE:INTERNAL=[/opt/ros/groovy/lib/libpcl_octree.so][/opt/ros/groovy/include/pcl-1.6][v()]
+//Details about finding PCL_REGISTRATION
+FIND_PACKAGE_MESSAGE_DETAILS_PCL_REGISTRATION:INTERNAL=[/opt/ros/groovy/lib/libpcl_registration.so][/opt/ros/groovy/include/pcl-1.6][v()]
+//Details about finding PCL_SAMPLE_CONSENSUS
+FIND_PACKAGE_MESSAGE_DETAILS_PCL_SAMPLE_CONSENSUS:INTERNAL=[/opt/ros/groovy/lib/libpcl_sample_consensus.so][/opt/ros/groovy/include/pcl-1.6][v()]
+//Details about finding PCL_SEARCH
+FIND_PACKAGE_MESSAGE_DETAILS_PCL_SEARCH:INTERNAL=[/opt/ros/groovy/lib/libpcl_search.so][/opt/ros/groovy/include/pcl-1.6][v()]
+//Details about finding PCL_SEGMENTATION
+FIND_PACKAGE_MESSAGE_DETAILS_PCL_SEGMENTATION:INTERNAL=[/opt/ros/groovy/lib/libpcl_segmentation.so][/opt/ros/groovy/include/pcl-1.6][v()]
+//Details about finding PCL_SURFACE
+FIND_PACKAGE_MESSAGE_DETAILS_PCL_SURFACE:INTERNAL=[/opt/ros/groovy/lib/libpcl_surface.so][/opt/ros/groovy/include/pcl-1.6][v()]
+//Details about finding PCL_TRACKING
+FIND_PACKAGE_MESSAGE_DETAILS_PCL_TRACKING:INTERNAL=[/opt/ros/groovy/lib/libpcl_tracking.so][/opt/ros/groovy/include/pcl-1.6][v()]
+//Details about finding PCL_VISUALIZATION
+FIND_PACKAGE_MESSAGE_DETAILS_PCL_VISUALIZATION:INTERNAL=[/opt/ros/groovy/lib/libpcl_visualization.so][/opt/ros/groovy/include/pcl-1.6][v()]
 //Details about finding PythonInterp
 FIND_PACKAGE_MESSAGE_DETAILS_PythonInterp:INTERNAL=[/usr/bin/python][v2.7.3()]
 //Details about finding Threads
 FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
+//Details about finding eigen
+FIND_PACKAGE_MESSAGE_DETAILS_eigen:INTERNAL=[/usr/include/eigen3][v()]
+//Details about finding libusb-1.0
+FIND_PACKAGE_MESSAGE_DETAILS_libusb-1.0:INTERNAL=[/usr/include][v()]
+//Details about finding qhull
+FIND_PACKAGE_MESSAGE_DETAILS_qhull:INTERNAL=[/usr/lib/libqhull.so][/usr/include/qhull][v()]
 GTEST_FROM_SOURCE_FOUND:INTERNAL=TRUE
 GTEST_FROM_SOURCE_INCLUDE_DIRS:INTERNAL=/usr/include
 GTEST_FROM_SOURCE_LIBRARIES:INTERNAL=gtest
@@ -483,11 +802,11 @@ GTEST_MAIN_LIBRARY-ADVANCED:INTERNAL=1
 GTEST_MAIN_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
 Human_intention_CFLAGS_OTHER:INTERNAL=
 Human_intention_INCLUDEDIR:INTERNAL=
-Human_intention_INCLUDE_DIRS:INTERNAL=/opt/ros/groovy/include;/usr/include/ni;/usr/include/eigen3
+Human_intention_INCLUDE_DIRS:INTERNAL=/opt/ros/groovy/stacks/hector_worldmodel/hector_worldmodel_msgs/include;/opt/ros/groovy/stacks/hector_worldmodel/hector_worldmodel_msgs/msg_gen/cpp/include;/opt/ros/groovy/stacks/hector_worldmodel/hector_worldmodel_msgs/srv_gen/cpp/include;/opt/ros/groovy/include;/opt/ros/groovy/include/opencv;/opt/ros/groovy/include/pcl-1.6;/usr/include/ni;/usr/include/eigen3;/usr/include/vtk-5.8;/usr/include/qhull
 Human_intention_LDFLAGS_OTHER:INTERNAL=
-Human_intention_LIBRARIES:INTERNAL=openni_nodelet;openni_driver;OpenNI;camera_info_manager;dynamic_reconfigure_config_init_mutex;image_transport;nodeletlib;bondcpp;uuid;tinyxml;class_loader;:/usr/lib/libPocoFoundation.so;dl;console_bridge;orocos-kdl;roslib;tf;message_filters;actionlib;roscpp;:/usr/lib/libboost_signals-mt.so;:/usr/lib/libboost_filesystem-mt.so;rosconsole;:/usr/lib/libboost_regex-mt.so;:/usr/lib/liblog4cxx.so;xmlrpcpp;roscpp_serialization;rostime;:/usr/lib/libboost_date_time-mt.so;:/usr/lib/libboost_system-mt.so;:/usr/lib/libboost_thread-mt.so;pthread;cpp_common
+Human_intention_LIBRARIES:INTERNAL=openni_nodelet;openni_driver;OpenNI;camera_info_manager;dynamic_reconfigure_config_init_mutex;nodeletlib;bondcpp;uuid;orocos-kdl;actionlib;image_transport;tinyxml;class_loader;:/usr/lib/libPocoFoundation.so;dl;roslib;console_bridge;cv_bridge;:/opt/ros/groovy/lib/libopencv_videostab.so.2.4.9;:/opt/ros/groovy/lib/libopencv_video.so.2.4.9;:/opt/ros/groovy/lib/libopencv_superres.so.2.4.9;:/opt/ros/groovy/lib/libopencv_stitching.so.2.4.9;:/opt/ros/groovy/lib/libopencv_photo.so.2.4.9;:/opt/ros/groovy/lib/libopencv_objdetect.so.2.4.9;:/opt/ros/groovy/lib/libopencv_nonfree.so.2.4.9;:/opt/ros/groovy/lib/libopencv_ml.so.2.4.9;:/opt/ros/groovy/lib/libopencv_legacy.so.2.4.9;:/opt/ros/groovy/lib/libopencv_imgproc.so.2.4.9;:/opt/ros/groovy/lib/libopencv_highgui.so.2.4.9;:/opt/ros/groovy/lib/libopencv_gpu.so.2.4.9;:/opt/ros/groovy/lib/libopencv_flann.so.2.4.9;:/opt/ros/groovy/lib/libopencv_features2d.so.2.4.9;:/opt/ros/groovy/lib/libopencv_core.so.2.4.9;:/opt/ros/groovy/lib/libopencv_contrib.so.2.4.9;:/opt/ros/groovy/lib/libopencv_calib3d.so.2.4.9;pcl_ros_tf;pcl_ros_io;pcl_ros_filters;:/usr/lib/libboost_iostreams-mt.so;:/opt/ros/groovy/lib/libpcl_common.so;:/opt/ros/groovy/lib/libpcl_octree.so;:/usr/lib/libvtkCommon.so.5.8.0;:/usr/lib/libvtkRendering.so.5.8.0;:/usr/lib/libvtkHybrid.so.5.8.0;:/opt/ros/groovy/lib/libpcl_io.so;:/opt/ros/groovy/lib/libpcl_kdtree.so;:/opt/ros/groovy/lib/libpcl_search.so;:/opt/ros/groovy/lib/libpcl_sample_consensus.so;:/opt/ros/groovy/lib/libpcl_filters.so;:/opt/ros/groovy/lib/libpcl_segmentation.so;:/opt/ros/groovy/lib/libpcl_visualization.so;:/opt/ros/groovy/lib/libpcl_features.so;:/usr/lib/libqhull.so;:/opt/ros/groovy/lib/libpcl_surface.so;:/opt/ros/groovy/lib/libpcl_registration.so;:/opt/ros/groovy/lib/libpcl_keypoints.so;:/opt/ros/groovy/lib/libpcl_tracking.so;tf;message_filters;roscpp;:/usr/lib/libboost_signals-mt.so;:/usr/lib/libboost_filesystem-mt.so;rosconsole;:/usr/lib/libboost_regex-mt.so;:/usr/lib/liblog4cxx.so;xmlrpcpp;roscpp_serialization;rostime;:/usr/lib/libboost_date_time-mt.so;:/usr/lib/libboost_system-mt.so;:/usr/lib/libboost_thread-mt.so;pthread;cpp_common
 Human_intention_LIBRARY_DIRS:INTERNAL=/opt/ros/groovy/lib
-Human_intention_cached_manifest_list:INTERNAL=/home/vibek/Human_intention/manifest.xml;/opt/ros/groovy/share/genmsg/package.xml;/opt/ros/groovy/share/genpy/package.xml;/opt/ros/groovy/share/rosgraph/package.xml;/opt/ros/groovy/share/cpp_common/package.xml;/opt/ros/groovy/share/rostime/package.xml;/opt/ros/groovy/share/roscpp_traits/package.xml;/opt/ros/groovy/share/roscpp_serialization/package.xml;/opt/ros/groovy/share/message_runtime/package.xml;/opt/ros/groovy/share/std_msgs/package.xml;/opt/ros/groovy/share/rosgraph_msgs/package.xml;/opt/ros/groovy/share/catkin/package.xml;/opt/ros/groovy/share/rospack/package.xml;/opt/ros/groovy/share/roslib/package.xml;/opt/ros/groovy/share/rospy/package.xml;/opt/ros/groovy/share/rosconsole/package.xml;/opt/ros/groovy/share/xmlrpcpp/package.xml;/opt/ros/groovy/share/roscpp/package.xml;/opt/ros/groovy/share/geometry_msgs/package.xml;/opt/ros/groovy/share/visualization_msgs/package.xml;/opt/ros/groovy/share/sensor_msgs/package.xml;/opt/ros/groovy/share/camera_calibration_parsers/package.xml;/opt/ros/groovy/share/message_filters/package.xml;/opt/ros/groovy/share/console_bridge/package.xml;/opt/ros/groovy/share/class_loader/package.xml;/opt/ros/groovy/share/pluginlib/package.xml;/opt/ros/groovy/share/image_transport/package.xml;/opt/ros/groovy/share/camera_info_manager/package.xml;/opt/ros/groovy/share/topic_tools/package.xml;/opt/ros/groovy/share/rosbag/package.xml;/opt/ros/groovy/share/rosmsg/package.xml;/opt/ros/groovy/share/rosservice/package.xml;/opt/ros/groovy/share/dynamic_reconfigure/package.xml;/opt/ros/groovy/share/bond/package.xml;/opt/ros/groovy/share/smclib/package.xml;/opt/ros/groovy/share/bondcpp/package.xml;/opt/ros/groovy/share/nodelet/package.xml;/opt/ros/groovy/share/openni_camera/package.xml;/opt/ros/groovy/share/orocos_kdl/package.xml;/opt/ros/groovy/stacks/orocos_kinematics_dynamics/python_orocos_kdl/manifest.xml;/opt/ros/groovy/stacks/orocos_kinematics_dynamics/kdl/manifest.xml;/opt/ros/groovy/share/tf/package.xml;/opt/ros/groovy/stacks/openni_tracker/manifest.xml;/opt/ros/groovy/share/gencpp/package.xml;/opt/ros/groovy/share/genlisp/package.xml;/opt/ros/groovy/share/message_generation/package.xml;/opt/ros/groovy/share/actionlib_msgs/package.xml;/opt/ros/groovy/share/rosclean/package.xml;/opt/ros/groovy/share/rosmaster/package.xml;/opt/ros/groovy/share/rosout/package.xml;/opt/ros/groovy/share/rosparam/package.xml;/opt/ros/groovy/share/roslaunch/package.xml;/opt/ros/groovy/share/rosunit/package.xml;/opt/ros/groovy/share/rostest/package.xml;/opt/ros/groovy/share/actionlib/package.xml
+Human_intention_cached_manifest_list:INTERNAL=/home/vibek/Human_intention/manifest.xml;/opt/ros/groovy/share/genmsg/package.xml;/opt/ros/groovy/share/genpy/package.xml;/opt/ros/groovy/share/rosgraph/package.xml;/opt/ros/groovy/share/cpp_common/package.xml;/opt/ros/groovy/share/rostime/package.xml;/opt/ros/groovy/share/roscpp_traits/package.xml;/opt/ros/groovy/share/roscpp_serialization/package.xml;/opt/ros/groovy/share/message_runtime/package.xml;/opt/ros/groovy/share/std_msgs/package.xml;/opt/ros/groovy/share/rosgraph_msgs/package.xml;/opt/ros/groovy/share/catkin/package.xml;/opt/ros/groovy/share/rospack/package.xml;/opt/ros/groovy/share/roslib/package.xml;/opt/ros/groovy/share/rospy/package.xml;/opt/ros/groovy/share/rosconsole/package.xml;/opt/ros/groovy/share/xmlrpcpp/package.xml;/opt/ros/groovy/share/roscpp/package.xml;/opt/ros/groovy/share/geometry_msgs/package.xml;/opt/ros/groovy/share/visualization_msgs/package.xml;/opt/ros/groovy/share/sensor_msgs/package.xml;/opt/ros/groovy/share/camera_calibration_parsers/package.xml;/opt/ros/groovy/share/message_filters/package.xml;/opt/ros/groovy/share/console_bridge/package.xml;/opt/ros/groovy/share/class_loader/package.xml;/opt/ros/groovy/share/pluginlib/package.xml;/opt/ros/groovy/share/image_transport/package.xml;/opt/ros/groovy/share/camera_info_manager/package.xml;/opt/ros/groovy/share/topic_tools/package.xml;/opt/ros/groovy/share/rosbag/package.xml;/opt/ros/groovy/share/rosmsg/package.xml;/opt/ros/groovy/share/rosservice/package.xml;/opt/ros/groovy/share/dynamic_reconfigure/package.xml;/opt/ros/groovy/share/bond/package.xml;/opt/ros/groovy/share/smclib/package.xml;/opt/ros/groovy/share/bondcpp/package.xml;/opt/ros/groovy/share/nodelet/package.xml;/opt/ros/groovy/share/openni_camera/package.xml;/opt/ros/groovy/share/orocos_kdl/package.xml;/opt/ros/groovy/stacks/orocos_kinematics_dynamics/python_orocos_kdl/manifest.xml;/opt/ros/groovy/stacks/orocos_kinematics_dynamics/kdl/manifest.xml;/opt/ros/groovy/share/tf/package.xml;/opt/ros/groovy/stacks/openni_tracker/manifest.xml;/opt/ros/groovy/share/gencpp/package.xml;/opt/ros/groovy/share/genlisp/package.xml;/opt/ros/groovy/share/message_generation/package.xml;/opt/ros/groovy/share/actionlib_msgs/package.xml;/opt/ros/groovy/share/rosclean/package.xml;/opt/ros/groovy/share/rosmaster/package.xml;/opt/ros/groovy/share/rosout/package.xml;/opt/ros/groovy/share/rosparam/package.xml;/opt/ros/groovy/share/roslaunch/package.xml;/opt/ros/groovy/share/rosunit/package.xml;/opt/ros/groovy/share/rostest/package.xml;/opt/ros/groovy/share/actionlib/package.xml;/opt/ros/groovy/stacks/hector_worldmodel/hector_worldmodel_msgs/manifest.xml;/opt/ros/groovy/share/opencv2/package.xml;/opt/ros/groovy/share/cv_bridge/package.xml;/opt/ros/groovy/share/nodelet_topic_tools/package.xml;/opt/ros/groovy/share/flann/package.xml;/opt/ros/groovy/share/pcl_msgs/package.xml;/opt/ros/groovy/share/pcl/package.xml;/opt/ros/groovy/share/pcl_ros/package.xml;/opt/ros/groovy/share/pcl_conversions/package.xml;/opt/ros/groovy/stacks/hector_worldmodel/hector_worldmodel_msgs/msg_gen/generated;/opt/ros/groovy/stacks/hector_worldmodel/hector_worldmodel_msgs/srv_gen/generated
 Human_intention_temp:INTERNAL=
 //ADVANCED property for variable: OpenCV_3RDPARTY_LIB_DIR_DBG
 OpenCV_3RDPARTY_LIB_DIR_DBG-ADVANCED:INTERNAL=1
@@ -499,17 +818,170 @@ OpenCV_CONFIG_PATH-ADVANCED:INTERNAL=1
 OpenCV_LIB_DIR_DBG-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: OpenCV_LIB_DIR_OPT
 OpenCV_LIB_DIR_OPT-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PCL_COMMON_LIBRARY
+PCL_COMMON_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PCL_COMMON_LIBRARY_DEBUG
+PCL_COMMON_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PCL_FEATURES_LIBRARY
+PCL_FEATURES_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PCL_FEATURES_LIBRARY_DEBUG
+PCL_FEATURES_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PCL_FILTERS_LIBRARY
+PCL_FILTERS_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PCL_FILTERS_LIBRARY_DEBUG
+PCL_FILTERS_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PCL_IO_LIBRARY
+PCL_IO_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PCL_IO_LIBRARY_DEBUG
+PCL_IO_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PCL_KDTREE_LIBRARY
+PCL_KDTREE_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PCL_KDTREE_LIBRARY_DEBUG
+PCL_KDTREE_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PCL_KEYPOINTS_LIBRARY
+PCL_KEYPOINTS_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PCL_KEYPOINTS_LIBRARY_DEBUG
+PCL_KEYPOINTS_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PCL_OCTREE_LIBRARY
+PCL_OCTREE_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PCL_OCTREE_LIBRARY_DEBUG
+PCL_OCTREE_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PCL_REGISTRATION_LIBRARY
+PCL_REGISTRATION_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PCL_REGISTRATION_LIBRARY_DEBUG
+PCL_REGISTRATION_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PCL_SAMPLE_CONSENSUS_LIBRARY
+PCL_SAMPLE_CONSENSUS_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PCL_SAMPLE_CONSENSUS_LIBRARY_DEBUG
+PCL_SAMPLE_CONSENSUS_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PCL_SEARCH_LIBRARY
+PCL_SEARCH_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PCL_SEARCH_LIBRARY_DEBUG
+PCL_SEARCH_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PCL_SEGMENTATION_LIBRARY
+PCL_SEGMENTATION_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PCL_SEGMENTATION_LIBRARY_DEBUG
+PCL_SEGMENTATION_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PCL_SURFACE_LIBRARY
+PCL_SURFACE_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PCL_SURFACE_LIBRARY_DEBUG
+PCL_SURFACE_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PCL_TRACKING_LIBRARY
+PCL_TRACKING_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PCL_TRACKING_LIBRARY_DEBUG
+PCL_TRACKING_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PCL_VISUALIZATION_LIBRARY
+PCL_VISUALIZATION_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PCL_VISUALIZATION_LIBRARY_DEBUG
+PCL_VISUALIZATION_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+PC_EIGEN_CFLAGS:INTERNAL=-I/usr/include/eigen3
+PC_EIGEN_CFLAGS_I:INTERNAL=
+PC_EIGEN_CFLAGS_OTHER:INTERNAL=
+PC_EIGEN_FOUND:INTERNAL=1
+PC_EIGEN_INCLUDEDIR:INTERNAL=
+PC_EIGEN_INCLUDE_DIRS:INTERNAL=/usr/include/eigen3
+PC_EIGEN_LDFLAGS:INTERNAL=
+PC_EIGEN_LDFLAGS_OTHER:INTERNAL=
+PC_EIGEN_LIBDIR:INTERNAL=
+PC_EIGEN_LIBRARIES:INTERNAL=
+PC_EIGEN_LIBRARY_DIRS:INTERNAL=
+PC_EIGEN_LIBS:INTERNAL=
+PC_EIGEN_LIBS_L:INTERNAL=
+PC_EIGEN_LIBS_OTHER:INTERNAL=
+PC_EIGEN_LIBS_PATHS:INTERNAL=
+PC_EIGEN_PREFIX:INTERNAL=
+PC_EIGEN_STATIC_CFLAGS:INTERNAL=-I/usr/include/eigen3
+PC_EIGEN_STATIC_CFLAGS_I:INTERNAL=
+PC_EIGEN_STATIC_CFLAGS_OTHER:INTERNAL=
+PC_EIGEN_STATIC_INCLUDE_DIRS:INTERNAL=/usr/include/eigen3
+PC_EIGEN_STATIC_LDFLAGS:INTERNAL=
+PC_EIGEN_STATIC_LDFLAGS_OTHER:INTERNAL=
+PC_EIGEN_STATIC_LIBDIR:INTERNAL=
+PC_EIGEN_STATIC_LIBRARIES:INTERNAL=
+PC_EIGEN_STATIC_LIBRARY_DIRS:INTERNAL=
+PC_EIGEN_STATIC_LIBS:INTERNAL=
+PC_EIGEN_STATIC_LIBS_L:INTERNAL=
+PC_EIGEN_STATIC_LIBS_OTHER:INTERNAL=
+PC_EIGEN_STATIC_LIBS_PATHS:INTERNAL=
+PC_EIGEN_VERSION:INTERNAL=3.0.5
+PC_EIGEN_eigen3_INCLUDEDIR:INTERNAL=
+PC_EIGEN_eigen3_LIBDIR:INTERNAL=
+PC_EIGEN_eigen3_PREFIX:INTERNAL=
+PC_EIGEN_eigen3_VERSION:INTERNAL=
+PC_FLANN_CFLAGS:INTERNAL=
+PC_FLANN_CFLAGS_I:INTERNAL=
+PC_FLANN_CFLAGS_OTHER:INTERNAL=
+PC_FLANN_FOUND:INTERNAL=1
+PC_FLANN_INCLUDEDIR:INTERNAL=
+PC_FLANN_INCLUDE_DIRS:INTERNAL=
+PC_FLANN_LDFLAGS:INTERNAL=-L/opt/ros/groovy/lib
+PC_FLANN_LDFLAGS_OTHER:INTERNAL=
+PC_FLANN_LIBDIR:INTERNAL=
+PC_FLANN_LIBRARIES:INTERNAL=
+PC_FLANN_LIBRARY_DIRS:INTERNAL=/opt/ros/groovy/lib
+PC_FLANN_LIBS:INTERNAL=
+PC_FLANN_LIBS_L:INTERNAL=
+PC_FLANN_LIBS_OTHER:INTERNAL=
+PC_FLANN_LIBS_PATHS:INTERNAL=
+PC_FLANN_PREFIX:INTERNAL=/opt/ros/groovy
+PC_FLANN_STATIC_CFLAGS:INTERNAL=
+PC_FLANN_STATIC_CFLAGS_I:INTERNAL=
+PC_FLANN_STATIC_CFLAGS_OTHER:INTERNAL=
+PC_FLANN_STATIC_INCLUDE_DIRS:INTERNAL=
+PC_FLANN_STATIC_LDFLAGS:INTERNAL=-L/opt/ros/groovy/lib
+PC_FLANN_STATIC_LDFLAGS_OTHER:INTERNAL=
+PC_FLANN_STATIC_LIBDIR:INTERNAL=
+PC_FLANN_STATIC_LIBRARIES:INTERNAL=
+PC_FLANN_STATIC_LIBRARY_DIRS:INTERNAL=/opt/ros/groovy/lib
+PC_FLANN_STATIC_LIBS:INTERNAL=
+PC_FLANN_STATIC_LIBS_L:INTERNAL=
+PC_FLANN_STATIC_LIBS_OTHER:INTERNAL=
+PC_FLANN_STATIC_LIBS_PATHS:INTERNAL=
+PC_FLANN_VERSION:INTERNAL=1.7.1
+PC_FLANN_flann_INCLUDEDIR:INTERNAL=
+PC_FLANN_flann_LIBDIR:INTERNAL=
+PC_FLANN_flann_PREFIX:INTERNAL=
+PC_FLANN_flann_VERSION:INTERNAL=
+PC_OPENNI_CFLAGS:INTERNAL=
+PC_OPENNI_CFLAGS_I:INTERNAL=
+PC_OPENNI_CFLAGS_OTHER:INTERNAL=
+PC_OPENNI_FOUND:INTERNAL=
+PC_OPENNI_INCLUDEDIR:INTERNAL=
+PC_OPENNI_LIBDIR:INTERNAL=
+PC_OPENNI_LIBS:INTERNAL=
+PC_OPENNI_LIBS_L:INTERNAL=
+PC_OPENNI_LIBS_OTHER:INTERNAL=
+PC_OPENNI_LIBS_PATHS:INTERNAL=
+PC_OPENNI_PREFIX:INTERNAL=
+PC_OPENNI_STATIC_CFLAGS:INTERNAL=
+PC_OPENNI_STATIC_CFLAGS_I:INTERNAL=
+PC_OPENNI_STATIC_CFLAGS_OTHER:INTERNAL=
+PC_OPENNI_STATIC_LIBDIR:INTERNAL=
+PC_OPENNI_STATIC_LIBS:INTERNAL=
+PC_OPENNI_STATIC_LIBS_L:INTERNAL=
+PC_OPENNI_STATIC_LIBS_OTHER:INTERNAL=
+PC_OPENNI_STATIC_LIBS_PATHS:INTERNAL=
+PC_OPENNI_VERSION:INTERNAL=
+PC_OPENNI_openni-dev_INCLUDEDIR:INTERNAL=
+PC_OPENNI_openni-dev_LIBDIR:INTERNAL=
+PC_OPENNI_openni-dev_PREFIX:INTERNAL=
+PC_OPENNI_openni-dev_VERSION:INTERNAL=
+//ADVANCED property for variable: PKG_CONFIG_EXECUTABLE
+PKG_CONFIG_EXECUTABLE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: PYTHON_EXECUTABLE
 PYTHON_EXECUTABLE-ADVANCED:INTERNAL=1
 //This needs to be in PYTHONPATH when 'setup.py install' is called.
 //  And it needs to match.  But setuptools won't tell us where
 // it will install things.
 PYTHON_INSTALL_DIR:INTERNAL=lib/python2.7/dist-packages
+__pkg_config_checked_PC_EIGEN:INTERNAL=1
+__pkg_config_checked_PC_FLANN:INTERNAL=1
+__pkg_config_checked_PC_OPENNI:INTERNAL=1
 _rosbuild_EXPORTS:INTERNAL=
-_rosbuild_cached_flag_time:INTERNAL=1453129114.9
+_rosbuild_cached_flag_time:INTERNAL=1468851876.47
 _roslang_LANGS:INTERNAL=roslisp
-_rospack_deps_manifests_invoke_result:INTERNAL=/opt/ros/groovy/share/genmsg/package.xml;/opt/ros/groovy/share/genpy/package.xml;/opt/ros/groovy/share/rosgraph/package.xml;/opt/ros/groovy/share/cpp_common/package.xml;/opt/ros/groovy/share/rostime/package.xml;/opt/ros/groovy/share/roscpp_traits/package.xml;/opt/ros/groovy/share/roscpp_serialization/package.xml;/opt/ros/groovy/share/message_runtime/package.xml;/opt/ros/groovy/share/std_msgs/package.xml;/opt/ros/groovy/share/rosgraph_msgs/package.xml;/opt/ros/groovy/share/catkin/package.xml;/opt/ros/groovy/share/rospack/package.xml;/opt/ros/groovy/share/roslib/package.xml;/opt/ros/groovy/share/rospy/package.xml;/opt/ros/groovy/share/rosconsole/package.xml;/opt/ros/groovy/share/xmlrpcpp/package.xml;/opt/ros/groovy/share/roscpp/package.xml;/opt/ros/groovy/share/geometry_msgs/package.xml;/opt/ros/groovy/share/visualization_msgs/package.xml;/opt/ros/groovy/share/sensor_msgs/package.xml;/opt/ros/groovy/share/camera_calibration_parsers/package.xml;/opt/ros/groovy/share/message_filters/package.xml;/opt/ros/groovy/share/console_bridge/package.xml;/opt/ros/groovy/share/class_loader/package.xml;/opt/ros/groovy/share/pluginlib/package.xml;/opt/ros/groovy/share/image_transport/package.xml;/opt/ros/groovy/share/camera_info_manager/package.xml;/opt/ros/groovy/share/topic_tools/package.xml;/opt/ros/groovy/share/rosbag/package.xml;/opt/ros/groovy/share/rosmsg/package.xml;/opt/ros/groovy/share/rosservice/package.xml;/opt/ros/groovy/share/dynamic_reconfigure/package.xml;/opt/ros/groovy/share/bond/package.xml;/opt/ros/groovy/share/smclib/package.xml;/opt/ros/groovy/share/bondcpp/package.xml;/opt/ros/groovy/share/nodelet/package.xml;/opt/ros/groovy/share/openni_camera/package.xml;/opt/ros/groovy/share/orocos_kdl/package.xml;/opt/ros/groovy/stacks/orocos_kinematics_dynamics/python_orocos_kdl/manifest.xml;/opt/ros/groovy/stacks/orocos_kinematics_dynamics/kdl/manifest.xml;/opt/ros/groovy/share/tf/package.xml;/opt/ros/groovy/stacks/openni_tracker/manifest.xml;/opt/ros/groovy/share/gencpp/package.xml;/opt/ros/groovy/share/genlisp/package.xml;/opt/ros/groovy/share/message_generation/package.xml;/opt/ros/groovy/share/actionlib_msgs/package.xml;/opt/ros/groovy/share/rosclean/package.xml;/opt/ros/groovy/share/rosmaster/package.xml;/opt/ros/groovy/share/rosout/package.xml;/opt/ros/groovy/share/rosparam/package.xml;/opt/ros/groovy/share/roslaunch/package.xml;/opt/ros/groovy/share/rosunit/package.xml;/opt/ros/groovy/share/rostest/package.xml;/opt/ros/groovy/share/actionlib/package.xml
-_rospack_msgsrv_gen_invoke_result:INTERNAL=
+_rospack_deps_manifests_invoke_result:INTERNAL=/opt/ros/groovy/share/genmsg/package.xml;/opt/ros/groovy/share/genpy/package.xml;/opt/ros/groovy/share/rosgraph/package.xml;/opt/ros/groovy/share/cpp_common/package.xml;/opt/ros/groovy/share/rostime/package.xml;/opt/ros/groovy/share/roscpp_traits/package.xml;/opt/ros/groovy/share/roscpp_serialization/package.xml;/opt/ros/groovy/share/message_runtime/package.xml;/opt/ros/groovy/share/std_msgs/package.xml;/opt/ros/groovy/share/rosgraph_msgs/package.xml;/opt/ros/groovy/share/catkin/package.xml;/opt/ros/groovy/share/rospack/package.xml;/opt/ros/groovy/share/roslib/package.xml;/opt/ros/groovy/share/rospy/package.xml;/opt/ros/groovy/share/rosconsole/package.xml;/opt/ros/groovy/share/xmlrpcpp/package.xml;/opt/ros/groovy/share/roscpp/package.xml;/opt/ros/groovy/share/geometry_msgs/package.xml;/opt/ros/groovy/share/visualization_msgs/package.xml;/opt/ros/groovy/share/sensor_msgs/package.xml;/opt/ros/groovy/share/camera_calibration_parsers/package.xml;/opt/ros/groovy/share/message_filters/package.xml;/opt/ros/groovy/share/console_bridge/package.xml;/opt/ros/groovy/share/class_loader/package.xml;/opt/ros/groovy/share/pluginlib/package.xml;/opt/ros/groovy/share/image_transport/package.xml;/opt/ros/groovy/share/camera_info_manager/package.xml;/opt/ros/groovy/share/topic_tools/package.xml;/opt/ros/groovy/share/rosbag/package.xml;/opt/ros/groovy/share/rosmsg/package.xml;/opt/ros/groovy/share/rosservice/package.xml;/opt/ros/groovy/share/dynamic_reconfigure/package.xml;/opt/ros/groovy/share/bond/package.xml;/opt/ros/groovy/share/smclib/package.xml;/opt/ros/groovy/share/bondcpp/package.xml;/opt/ros/groovy/share/nodelet/package.xml;/opt/ros/groovy/share/openni_camera/package.xml;/opt/ros/groovy/share/orocos_kdl/package.xml;/opt/ros/groovy/stacks/orocos_kinematics_dynamics/python_orocos_kdl/manifest.xml;/opt/ros/groovy/stacks/orocos_kinematics_dynamics/kdl/manifest.xml;/opt/ros/groovy/share/tf/package.xml;/opt/ros/groovy/stacks/openni_tracker/manifest.xml;/opt/ros/groovy/share/gencpp/package.xml;/opt/ros/groovy/share/genlisp/package.xml;/opt/ros/groovy/share/message_generation/package.xml;/opt/ros/groovy/share/actionlib_msgs/package.xml;/opt/ros/groovy/share/rosclean/package.xml;/opt/ros/groovy/share/rosmaster/package.xml;/opt/ros/groovy/share/rosout/package.xml;/opt/ros/groovy/share/rosparam/package.xml;/opt/ros/groovy/share/roslaunch/package.xml;/opt/ros/groovy/share/rosunit/package.xml;/opt/ros/groovy/share/rostest/package.xml;/opt/ros/groovy/share/actionlib/package.xml;/opt/ros/groovy/stacks/hector_worldmodel/hector_worldmodel_msgs/manifest.xml;/opt/ros/groovy/share/opencv2/package.xml;/opt/ros/groovy/share/cv_bridge/package.xml;/opt/ros/groovy/share/nodelet_topic_tools/package.xml;/opt/ros/groovy/share/flann/package.xml;/opt/ros/groovy/share/pcl_msgs/package.xml;/opt/ros/groovy/share/pcl/package.xml;/opt/ros/groovy/share/pcl_ros/package.xml;/opt/ros/groovy/share/pcl_conversions/package.xml
+_rospack_msgsrv_gen_invoke_result:INTERNAL=/opt/ros/groovy/stacks/hector_worldmodel/hector_worldmodel_msgs/msg_gen/generated;/opt/ros/groovy/stacks/hector_worldmodel/hector_worldmodel_msgs/srv_gen/generated
 roslib_path:INTERNAL=/opt/ros/groovy/share/roslib
 roslisp_CMAKE:INTERNAL=/opt/ros/groovy/share/roslisp/rosbuild/roslisp.cmake
 

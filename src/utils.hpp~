@@ -1,3 +1,12 @@
+/*****************************************************************************
+*                                                                            *
+*  //Copyright (c) 2015, Vibekananda Dutta, WUT
+  // Faculty of Power and Aeronautical Engineering (MEiL)/ZTMiR Laboratory
+  // Warsaw University of Technology
+ //  All rights reserved.
+*                                                                            *
+*****************************************************************************/
+
 #ifndef __UTILS_HPP__
 #define __UTILS_HPP__
 

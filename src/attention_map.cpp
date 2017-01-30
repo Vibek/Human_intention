@@ -1,20 +1,20 @@
 /*****************************************************************************
 *                                                                            *
-*  //Copyright (c) 2015, Vibekananda Dutta, WUT
+*  //Copyright (c) 2016, Vibekananda Dutta, WUT
   // Faculty of Power and Aeronautical Engineering (MEiL)/ZTMiR Laboratory
   // Warsaw University of Technology
  //  All rights reserved.
 *                                                                            *
 *****************************************************************************/
+#include <GL/glut.h>
 
 #include "attention_map.hpp"
 #include "trajectory.h"
-#include <GL/glut.h>
 #include "BezierCurve.hpp"
 #include "utils.hpp"
 
-int g_kernel_size = 75;
-float g_fade_time = 2.0;
+int g_kernel_size = 15;
+float g_fade_time = 0.5;
 float g_base_intensity = 0.1;
 float g_max_transparency = 0.6;
 bool g_linear_kernel = false;
@@ -44,23 +44,31 @@ void AttentionMap::CollectHeatPoints(XnSkeletonJoint eJoint, std::vector<XnPoint
 	History *history;
 	if (GetHistoryForJoint (eJoint, &history))
 	{
+		// heat points for hands
 		if (history->IsStationary() == false)
 		{
 			history->GetPointsNewerThanTime (m_last_update_time, g_heat_points);
 		}
 
-		if (history->IsNearTarget())
+		// heat points for trajectory to target
+		if (history->IsStationary() == false)
 		{
 			g_bezier_ctrl_pts.clear();
-			history->GetApproachCurveControlPoints(g_bezier_ctrl_pts);
 
-			BezierCurveGen curve(g_bezier_ctrl_pts);
-
-			XnPoint3D pt;
-			while(curve.next_point(pt))
+			for (int t = TARGET_HEAD; t < history->GetNumObjectsOfInterest(); ++t)
 			{
-				g_heat_points.push_back(pt);
-			};
+				if (!history->IsNearTarget(t)) continue; // if this target is not near, then skip it
+
+				history->GetApproachCurveControlPoints(t, g_bezier_ctrl_pts);
+
+				BezierCurveGen curve(g_bezier_ctrl_pts, g_bezier_segments);
+
+				XnPoint3D pt;
+				while(curve.next_point(pt))
+				{
+					g_heat_points.push_back(pt);
+				};
+			}
 		}
 	}
 }
@@ -144,7 +152,7 @@ void AttentionMap::overlay(unsigned char* pDestImage, int imageWidth, int imageH
 
 	for (int r = 0; r < m_heatmap.rows; ++r)
 	{
-		//Vec3b* f_ptr = (Vec3b *)pDestImage;
+		
 		float* h_ptr = temp_map.ptr<float>(r);
 		for (int c = 0; c < m_heatmap.cols; ++c)
 		{
@@ -155,13 +163,12 @@ void AttentionMap::overlay(unsigned char* pDestImage, int imageWidth, int imageH
 				const Vec3b i_color = Vec3b(pDestImage[0], pDestImage[1], pDestImage[2]);
 
 				const Vec3b heat_color = 
-					hsv_to_bgr(interpolate_hsv(g_heat_color2, g_heat_color1, heat_mix));
+					hsv_to_bgr(interpolate_hsv(g_heat_color1, g_heat_color2, heat_mix));
 
 				const float heat_mix2 = std::min(heat_mix, g_max_transparency);
 
 				const Vec3b final_color = interpolate(i_color, heat_color, heat_mix2);
 				
-				//f_ptr[c] = final_color;
 				pDestImage[0] = final_color[0];
 				pDestImage[1] = final_color[1];
 				pDestImage[2] = final_color[2];
@@ -220,5 +227,3 @@ void AttentionMap::create_kernel()
 		m_kernel = coeffs * coeffs.t();
 	}
 }
-
-

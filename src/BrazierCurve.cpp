@@ -7,21 +7,25 @@
 *                                                                            *
 *****************************************************************************/
 
+//OpenGl libraries
 #include <GL/glut.h>
+
+//C++ libraries
 #include <std_msgs/String.h>
 #include <std_msgs/Header.h>
 #include <fstream>
 #include <stdio.h>
-#include "KinectDisplay.h"
 #include <stdlib.h>
 #include <math.h>
+
+#include "KinectDisplay.h"
 #include "BezierCurve.hpp"
 
 // Draw the circle in the required joint 
 
 void DrawCircle(xn::UserGenerator& userGenerator,
               xn::DepthGenerator& depthGenerator,
-              XnUserID player, XnSkeletonJoint eJoint, float radius, XnFloat *color3f) 
+              XnUserID player, XnSkeletonJoint eJoint, float radius, const XnFloat *color3f) 
 { 
 
 	XnSkeletonJointPosition joint;
@@ -34,6 +38,13 @@ void DrawCircle(xn::UserGenerator& userGenerator,
     	XnPoint3D pt;
 	pt = joint.position;
         depthGenerator.ConvertRealWorldToProjective(1, &pt, &pt);
+        
+
+	DrawCircleOnScreen(pt, radius, color3f);
+}
+
+void DrawCircleOnScreen(XnPoint3D pt, float radius, const XnFloat *color3f) 
+{ 
         float cx = pt.X;
 	float cy = pt.Y;
         float r = radius;
@@ -53,7 +64,77 @@ void DrawCircle(xn::UserGenerator& userGenerator,
 		glVertex2f(x +cx , y + cy);//output vertex 
 
 	} 
-	glEnd(); 
+	glEnd();
+}
+
+void DrawTransparentCircleOnScreen(XnPoint3D pt, float radius, const XnFloat *color4f)
+{
+	float cx = pt.X;
+	float cy = pt.Y;
+        float r = radius;
+	int num_segments = 16;
+
+	glColor4f(color4f[0], color4f[1], color4f[2], color4f[3]);
+
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+	glBegin(GL_TRIANGLE_FAN); 
+	glVertex2f(cx , cy);
+	for(int i = 0; i <= num_segments; i++) 
+	{ 
+		float theta = 2.0f * 3.1415926f * float(i) / float(num_segments);//get the current angle 
+
+		float x = r * cosf(theta);//calculate the x component 
+		float y = r * sinf(theta);//calculate the y component 
+
+		glVertex2f(x +cx , y + cy);//output vertex 
+
+	} 
+	glEnd();
+
+	glDisable(GL_BLEND);
+}
+
+void DrawRectangleOnScreen(XnPoint3D pt, float width, float height, const XnFloat *color3f)
+{
+	float x = pt.X - width * 0.5f;
+	float y = pt.Y - height * 0.5f;
+
+	float ptsX[4] = {x, x + width, x + width, x};
+	float ptsY[4] = {y, y, y + height, y + height};
+
+	glColor3f(color3f[0], color3f[1], color3f[2]);
+
+	glBegin(GL_TRIANGLE_FAN); 
+		glVertex2f(ptsX[0] , ptsY[0]);
+		glVertex2f(ptsX[1] , ptsY[1]);
+		glVertex2f(ptsX[2] , ptsY[2]);
+		glVertex2f(ptsX[3] , ptsY[3]);
+	glEnd();
+}
+
+void DrawTransparentRectangleOnScreen(XnPoint3D pt, float width, float height, const XnFloat *color4f)
+{
+	float x = pt.X - width * 0.5f;
+	float y = pt.Y - height * 0.5f;
+
+	float ptsX[4] = {x, x + width, x + width, x};
+	float ptsY[4] = {y, y, y + height, y + height};
+
+	glColor4f(color4f[0], color4f[1], color4f[2], color4f[3]);
+
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+	glBegin(GL_TRIANGLE_FAN); 
+		glVertex2f(ptsX[0] , ptsY[0]);
+		glVertex2f(ptsX[1] , ptsY[1]);
+		glVertex2f(ptsX[2] , ptsY[2]);
+		glVertex2f(ptsX[3] , ptsY[3]);
+	glEnd();
+
+	glDisable(GL_BLEND);
 }
 
 
@@ -97,11 +178,11 @@ bool BezierCurveGen::next_point(XnPoint3D &pt)
 	return true;
 }
 
-//
-
-
-void DrawBezierCurve(const std::vector<XnPoint3D> &controlPoints, int numPoints){
+// Draw BezierCurve
+void DrawBezierCurve(const std::vector<XnPoint3D> &controlPoints, const XnFloat *color3f, int lineWidth, int numPoints){
 	char strLabel[256];
+	GLfloat width = 6;
+
 	sprintf(strLabel, "[%.2f, %.2f], [%.2f, %.2f], [%.2f, %.2f], [%.2f, %.2f]",
 		controlPoints[0].X, controlPoints[0].Y,
 		controlPoints[1].X, controlPoints[1].Y,
@@ -111,7 +192,10 @@ void DrawBezierCurve(const std::vector<XnPoint3D> &controlPoints, int numPoints)
         glRasterPos2i(20, 300);
         glPrintString(GLUT_BITMAP_HELVETICA_18, strLabel);
 
-	glColor3f(0, 0, 0);
+	glColor3f(color3f[0], color3f[1], color3f[2]);
+	glLineWidth(lineWidth);
+
+	//glBegin(GL_LINES);
 	glBegin(GL_LINE_STRIP);
 	
 	BezierCurveGen curve(controlPoints, numPoints);

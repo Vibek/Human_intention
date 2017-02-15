@@ -1,4 +1,4 @@
-Track and display human motion intention using ROS, OpenCV, OpenNI and OpenGL.
+Recognition of human motion intention.
 =======
 # Intention_Recognition_Human_Robot_Interaction
 This respository is the part of Human Intention project using Kinect contains ROS packages. The projects includes the following:

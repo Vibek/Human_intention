@@ -3,19 +3,19 @@ Track and display human motion intention using ROS, OpenCV, OpenNI and OpenGL.
 # Intention_Recognition_Human_Robot_Interaction
 This respository is the part of Human Intention project using Kinect contains ROS packages. The projects includes the following:
 
-1. A modified ROS packages for human skeleton detection in both Depth and RGB frames.
-2. Detection the human motion intention and using inverse kinematics to introduced left and right hand destination goal points.
-3. Introduced activity based intention recognition, e.g  Drinking.
-4. Defined the activity with color map like stationary  (Yellow), movement (Blue) and close to goal (Red).
-5. Generated anticipate trajectory depends on current activity. In this work, we defined threshold to determined the anticipatary trajectory.
-6. Save the left and right hand joint position, velocity and anticipate trajectory in csv file.
-7. We visualize the skeleton and hand trajectory in RVIZ
-8. We introduced attention map to visualize the predictive trajectory.
-9. We proposed a algorithm which generate the attention using linear interpolate and Gaussian Blur method. 
+A modified ROS packages for human skeleton detection in both Depth and RGB frames.
+Recognizing human intention based of object affordance and scene context in human-object relation.
+Introduced actions prediction based of an activity is beign performed.
+Defining the hand movements stationary (Yellow), moving (Blue) and close to goal (Red).
+Generated anticipate trajectory based on distance preference and angular prefernce tacking into account the relative human-object psoition.
+Write the data of both left and right hands joint position, both hands velocity, whole body joints position and anticipated trajectory position in to csv files.
+We visualized the skeleton and hand trajectory in RVIZ.
+We introduced attention map (heat-map) around the predicted trajectory w.r.t. visualize a future action.
+We proposed a algorithm based on State automaton.
+The software platform used in this works: ROS, OpenNI, OpenGL, OpenCV, Python, C++
+We experimeted with 6 different datasets performed both in office environment and laboratory envionment in our university.
+Mobile Robot used in this work is developed by Adept Mobile Robot. Model: SeekurJr with manipulator.
 
-The proposed attention map is used to visualize the motion intention, which will help to perform the tasks in more meaningful way by mobile robot.
+Due to the limited space, we can't upload the dataset. One can write an email requesting the dataset at vibek@meil.pw.edu.pl
 
-Mobile Robot used in this work is developed by Adept Mobile Robot.
-Model: SeekurJr with manipulator.
-
-
+Few datasets are uploaded in Github, you can find out https://github.com/Vibek/WUT_Datasets

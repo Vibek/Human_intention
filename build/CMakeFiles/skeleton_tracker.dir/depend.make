@@ -645,6 +645,7 @@ CMakeFiles/skeleton_tracker.dir/src/skeleton_tracker.cpp.o: ../msg_gen/cpp/inclu
 CMakeFiles/skeleton_tracker.dir/src/skeleton_tracker.cpp.o: ../msg_gen/cpp/include/Human_intention/Skeleton.h
 CMakeFiles/skeleton_tracker.dir/src/skeleton_tracker.cpp.o: ../src/KinectController.h
 CMakeFiles/skeleton_tracker.dir/src/skeleton_tracker.cpp.o: ../src/KinectDisplay.h
+CMakeFiles/skeleton_tracker.dir/src/skeleton_tracker.cpp.o: ../src/OutputData.h
 CMakeFiles/skeleton_tracker.dir/src/skeleton_tracker.cpp.o: ../src/attention_map.hpp
 CMakeFiles/skeleton_tracker.dir/src/skeleton_tracker.cpp.o: ../src/find_objects.h
 CMakeFiles/skeleton_tracker.dir/src/skeleton_tracker.cpp.o: ../src/find_objects_base.h

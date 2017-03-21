@@ -342,7 +342,7 @@ void SkeletonTracker::processKinect(KinectController &kinect_controller)
 					    } 
  
           handtrajectory(UserGenerator, depthGenerator, user, XN_SKEL_RIGHT_HAND, true); 
-	  	  handtrajectory(UserGenerator, depthGenerator, user, XN_SKEL_LEFT_HAND, true);           
+	  handtrajectory(UserGenerator, depthGenerator, user, XN_SKEL_LEFT_HAND, true);           
           publishTransform(kinect_controller, user, XN_SKEL_HEAD,           fixed_frame, "head", g_skel);
           publishTransform(kinect_controller, user, XN_SKEL_NECK,           fixed_frame, "neck", g_skel);
           publishTransform(kinect_controller, user, XN_SKEL_TORSO,          fixed_frame, "torso", g_skel);
@@ -830,7 +830,7 @@ void glutDepthDisplay (void)
     UpdateObjectsOfInterestWorldPositions(depthMD);
 
     kinect_display_drawDepthMapGL(depthMD, sceneMD);
-	kinect_display_drawSkeletonGL(g_kinect_controller.getUserGenerator(),
+    kinect_display_drawSkeletonGL(g_kinect_controller.getUserGenerator(),
                                 g_kinect_controller.getDepthGenerator(), true);  
          
 	glutSwapBuffers();
@@ -855,7 +855,7 @@ void glutRgbDisplay (void)
     glDisable(GL_TEXTURE_2D);
   
     kinect_display_drawRgbMapGL(imageMD, g_attention_map);//, GetObjectsFinder());
-	kinect_display_drawSkeletonGL(g_kinect_controller.getUserGenerator(),
+    kinect_display_drawSkeletonGL(g_kinect_controller.getUserGenerator(),
                                 g_kinect_controller.getDepthGenerator(), false); 
 
 	DrawObjectsOfInterestWorldPositions();
@@ -883,18 +883,29 @@ void DrawObjectsOfInterestWorldPositions()
     for (int i = 0; i < NumObjectsOfInterest; ++i)
     {
     	XnPoint3D pt = gObjectsOfInterestPosWorld[i];
+	XnPoint3D pt1 = gObjectsOfInterestPosWorld[i+1];
 
+	OutputData::ScopedFileStreamForAppend fs2("Object_1");
+	ofstream &object_file = fs2.GetStream();
+	OutputData::ScopedFileStreamForAppend fs3("Object_2");
+	ofstream &objects_file = fs3.GetStream();
+	
         DrawTransparentRectangleOnScreen(gObjectsOfInterestPosProj[i], 20, 20, gObjectsOfInterestselectedState[i]? transp_colors[4] : transp_colors[3]);
-
+	object_file << pt.X/1000.0f<<","<<pt.Y/1000.0f<<","<<pt.Z/1000.0f <<"\r\n";
+	objects_file << pt1.X/1000.0f<<","<<pt1.Y/1000.0f<<","<<pt1.Z/1000.0f <<"\r\n";
+	
 	sprintf(strLabel, "OOI(%d) :(%.1fm, %.1fm, %.1fm) ", (i + 1), pt.X/1000.0f, pt.Y/1000.0f, pt.Z/1000.0f); 
         glRasterPos2i(20, 160 + 20 * i);
         glPrintString(GLUT_BITMAP_HELVETICA_18, strLabel);
     }
 
+    OutputData::ScopedFileStreamForAppend fs2("mouse_point");
+    ofstream &mouse_file = fs2.GetStream();
 
-    //sprintf(strLabel, "Mouse(%d, %d)", gMouseX, gMouseY); 
-    //glRasterPos2i(20, 250);
-    //glPrintString(GLUT_BITMAP_HELVETICA_18, strLabel);
+    sprintf(strLabel, "Mouse(%d, %d)", gMouseX, gMouseY); // I am checking the mouse position
+    mouse_file << gMouseX<<","<<gMouseY<<"\r\n";
+    glRasterPos2i(20, 250);
+    glPrintString(GLUT_BITMAP_HELVETICA_18, strLabel);
 }
 
 void SetObjectOfInterestSelected(int objectIndex, bool flag)

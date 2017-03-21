@@ -182,6 +182,10 @@ bool BezierCurveGen::next_point(XnPoint3D &pt)
 void DrawBezierCurve(const std::vector<XnPoint3D> &controlPoints, const XnFloat *color3f, int lineWidth, int numPoints){
 	char strLabel[256];
 	GLfloat width = 6;
+	
+	OutputData::ScopedFileStreamForAppend fs2("predicted_trajectory");
+	ofstream &predict_file = fs2.GetStream();
+	predict_file <<	controlPoints[0].X/1000.0f <<","<< controlPoints[0].Y/1000.0f <<"\r\n" << controlPoints[1].X/1000.0f <<","<< controlPoints[1].Y/1000.0f <<"\r\n" << controlPoints[2].X/1000.0f <<","<< controlPoints[2].Y/1000.0f <<"\r\n" <<controlPoints[3].X/1000.0f <<","<< controlPoints[3].Y/1000.0f <<"\r\n";
 
 	sprintf(strLabel, "[%.2f, %.2f], [%.2f, %.2f], [%.2f, %.2f], [%.2f, %.2f]",
 		controlPoints[0].X, controlPoints[0].Y,

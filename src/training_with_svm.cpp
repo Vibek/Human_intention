@@ -34,7 +34,7 @@ int main()
 
 //--------------------- 1. Set up training data from CSV file ----------------------------------
 
-    string train_filename = "/home/latifanjum/fuerte_workspace/sandbox/SVM_training_and_testing_package/trainingTestingData/3Joints_Track/trainingData_June17/trainingData_June17.csv";
+    string train_filename = "/home/fuerte_workspace/sandbox/SVM_training_and_testing_package/trainingTestingData/3Joints_Track/trainingData_June17/trainingData_June17.csv";
     
     CvMLData train_data;
 	

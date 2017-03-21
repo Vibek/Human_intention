@@ -25,7 +25,7 @@ int main()
 
 //--------------------- 1. Set up test data from CSV file ----------------------------------
 
-    string test_filename = "/home/latifanjum/fuerte_workspace/sandbox/SVM_training_and_testing_package/trainingTestingData/3Joints_Track/testData_June17/testData_June17.csv";
+    string test_filename = "/home/fuerte_workspace/sandbox/SVM_training_and_testing_package/trainingTestingData/3Joints_Track/testData_June17/testData_June17.csv";
       
     CvMLData test_data;
 	

@@ -4,7 +4,7 @@
 #include "ros/ros.h"
 //Use image_transport for publishing and subscribing to images in ROS
 #include <cv_bridge/cv_bridge.h>
-//Include some useful constants for image encoding. Refer to: http://www.ros.org/doc/api/sensor_msgs/html/namespacesensor__msgs_1_1image__encodings.html for more info.
+//Include some useful constants for image encoding. 
 #include <sensor_msgs/image_encodings.h>
 //Include headers for OpenCV Image processing
 #include <opencv2/imgproc/imgproc.hpp>

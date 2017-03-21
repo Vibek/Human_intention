@@ -776,7 +776,7 @@ void kinect_display_drawSkeletonGL(xn::UserGenerator& userGenerator,
 	userGenerator.GetUsers(aUsers, nUsers);
 	for (int i = 0; i < nUsers; ++i)
 	{
-		// Update targets for hand history objects: This section need to be carefully workour. We need to add some constant point and check the trajectory.
+		// Update targets for hand history objects: This section need to be carefully workout. We need to add some constant point and check the trajectory.
 		{
 			XnSkeletonJointPosition headJoint;
 			userGenerator.GetSkeletonCap().GetSkeletonJointPosition(aUsers[i], XN_SKEL_HEAD, headJoint);
@@ -934,10 +934,10 @@ void kinect_display_drawSkeletonGL(xn::UserGenerator& userGenerator,
                            if (EnableLeftHand) handtrajectory(userGenerator, depthGenerator, aUsers[i], XN_SKEL_LEFT_HAND, isDepthPass);
 
                            Distance3D(userGenerator, depthGenerator, aUsers[i], XN_SKEL_HEAD, XN_SKEL_RIGHT_HAND);
-			               Distance3D(userGenerator, depthGenerator, aUsers[i], XN_SKEL_HEAD, XN_SKEL_LEFT_HAND);
+			   Distance3D(userGenerator, depthGenerator, aUsers[i], XN_SKEL_HEAD, XN_SKEL_LEFT_HAND);
                           
-			               DrawCircle(userGenerator, depthGenerator, aUsers[i], XN_SKEL_RIGHT_HAND, 10, g_RightHandPositionHistory.Color());
-			               DrawCircle(userGenerator, depthGenerator, aUsers[i], XN_SKEL_LEFT_HAND, 10, g_LeftHandPositionHistory.Color());
+			   DrawCircle(userGenerator, depthGenerator, aUsers[i], XN_SKEL_RIGHT_HAND, 10, g_RightHandPositionHistory.Color());
+			   DrawCircle(userGenerator, depthGenerator, aUsers[i], XN_SKEL_LEFT_HAND, 10, g_LeftHandPositionHistory.Color());
 
 			   int ObjectNearLeftHand = -10;
 			   int ObjectNearRightHand = -10; 
@@ -985,7 +985,7 @@ void kinect_display_drawSkeletonGL(xn::UserGenerator& userGenerator,
 
 				   	for (int t = TARGET_HEAD; t < NumObjectsOfInterest; ++t)
 					{
-						if (IsAnyTargetNearRightHand && !IsNearTargetRightHand[t]) continue;					
+						if (IsAnyTargetNearRightHand && !IsNearTargetRightHand[t]) continue;	// Need to check over here and play with it				
 
 						g_temp_points.clear();
 						g_RightHandPositionHistory.GetApproachCurveControlPoints(t, g_temp_points);
@@ -1066,7 +1066,7 @@ void kinect_display_drawSkeletonGL(xn::UserGenerator& userGenerator,
 				   		DrawBezierCurve(g_temp_points, traj_colors[colorIndex], lineWidth, g_bezier_segments);
 					}
 
-					sprintf(strLabel, "PREDICTION: REACHING"); 
+					sprintf(strLabel, "PREDICTING..."); 
 				        glColor3f(1.f,0.f,0.f);
 				        glRasterPos2i(280, 400);
 				        glPrintString(GLUT_BITMAP_HELVETICA_18, strLabel);
@@ -1099,7 +1099,4 @@ void kinect_display_drawSkeletonGL(xn::UserGenerator& userGenerator,
 }
  
 }
-
-        
-	
 

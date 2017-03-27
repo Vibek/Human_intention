@@ -20,10 +20,17 @@ plt.close('all')
 # plot with various axes scales
 plt.figure(1)
 
+with open('/home/vibek/Human_intention/src/Train_model/Potential_map/RightHand_drink.csv','r') as in_file, open('/home/vibek/Human_intention/src/Train_model/Potential_map/RightHand_drink_w.csv','w') as out_file:
+ seen = set()
+ for line in in_file:
+	if line in seen: continue
+	seen.add(line)
+	out_file.write(line)
+
 matplotlib.rcParams['xtick.direction'] = 'out'
 matplotlib.rcParams['ytick.direction'] = 'out'
 
-data = np.genfromtxt('/home/vibek/Human_intention/src/Train_model/Potential_map/chair_right_w.csv', delimiter=',')
+data = np.genfromtxt('/home/vibek/Human_intention/src/Train_model/Potential_map/RightHand_drink_w.csv', delimiter=',')
 X = data[:,0]
 Y = data[:,1]
 Z = data[:,2]
@@ -37,9 +44,9 @@ zi = rbf(xi,yi)
 plt.contourf(xi, yi, zi, cmap=plt.cm.hot, aspect='auto')
 plt.colorbar()  
 cp = plt.contour(xi, yi, zi)
-plt.clabel(cp, inline=True, fontsize=10)
-plt.title('Potentail Map (Pulling a Chair)', size=15)
-plt.xlabel("X", size=12)
-plt.ylabel("Y", size=12)
-plt.tick_params(labelsize=10)
+plt.clabel(cp, inline=True, fontsize=12)
+plt.title('Potential Map (Drinking)', size=20)
+plt.xlabel("X", size=15)
+plt.ylabel("Y", size=15)
+plt.tick_params(labelsize=15)
 plt.show()

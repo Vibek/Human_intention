@@ -1,4 +1,4 @@
-Recognition of human motion intention.
+Recognition of human intentional actions.
 =======
 # Intention_Recognition_Human_Robot_Interaction
 This respository is the part of Human Intention project using Kinect contains ROS packages. The projects includes the following:

@@ -30,8 +30,8 @@
 #include "KinectDisplay.h"
 #include "trajectory.h"
 
-#define PI              3.14159265359
-#define fps             30
+#define PI                  3.14159265359
+#define fps                 30
 #define MAX_DEPTH	    10000
 #define MAX_RGB		    10000
 
@@ -41,6 +41,7 @@ XnBool g_bDrawSkeleton = TRUE;
 XnBool g_bPrintID = TRUE;
 XnBool g_bPrintState = TRUE;
 XnBool g_bPrintFrameID = FALSE;
+XnBool g_bMarkJoints = FALSE;
 
 extern xn::ImageGenerator ImageGenerator;
 
@@ -155,10 +156,9 @@ void kinect_display_drawDepthMapGL(const xn::DepthMetaData& dmd, const xn::Scene
 		texWidth =  getClosestPowerOfTwo(dmd.XRes());
 		texHeight = getClosestPowerOfTwo(dmd.YRes());
 
-		printf("Initializing depth texture: width = %d, height = %d\n", texWidth, texHeight);
 		depthTexID = initTexture((void**)&pDepthTexBuf,texWidth, texHeight) ;
+		printf("Initialized depth Image: width = %d, height = %d\n", texWidth, texHeight);
 
-		printf("Initialized depth texture: width = %d, height = %d\n", texWidth, texHeight);
 		bInitialized = true;
 
 		topLeftX = dmd.XRes();
@@ -273,99 +273,6 @@ void kinect_display_drawDepthMapGL(const xn::DepthMetaData& dmd, const xn::Scene
 	glDisable(GL_TEXTURE_2D);
 }
 
-/*** Here is the main thing to work with to change in RGB image and show the skeleton on RGB image frame ***/
-/*
-void kinect_display_drawRgbMapGL(const xn::ImageMetaData& imd, AttentionMap &attention_map)//, ObjectsFinderBase &objectsFinder) 
-{
-	static bool bInitialized = false;	
-	static GLuint rgbTexID;
-	static unsigned char* pRgbTexBuf;
-	static int texWidth, texHeight;
-
-  	float topLeftX;
-  	float topLeftY;
-  	float bottomRightY;
-  	float bottomRightX;
-	float texXpos;
-	float texYpos;
-       
-	if(!bInitialized)
-	{
-
-		texWidth =  getClosestPowerOfTwo(imd.XRes());
-		texHeight = getClosestPowerOfTwo(imd.YRes());
-
-		printf("Initializing RGB texture: width = %d, height = %d\n", texWidth, texHeight);
-		rgbTexID = initTexture((void**)&pRgbTexBuf,texWidth, texHeight) ;
-
-		printf("Initialized RGB texture: width = %d, height = %d\n", texWidth, texHeight);
-		bInitialized = true;
-
-		topLeftX = imd.XRes();
-		topLeftY = 0;
-		bottomRightY = imd.YRes();
-		bottomRightX = 0;
-		texXpos =(float)imd.XRes()/texWidth;
-		texYpos  =(float)imd.YRes()/texHeight;
-
-		memset(texcoords, 0, 8*sizeof(float));
-		texcoords[0] = texXpos, texcoords[1] = texYpos, texcoords[2] = texXpos, texcoords[7] = texYpos;
-
-	}
-	unsigned int nX = 0;
-	unsigned int nY = 0;
-	XnUInt16 g_nXRes = imd.XRes();
-	XnUInt16 g_nYRes = imd.YRes();
- 	ObjectsFinderBase &objectsFinder;
-	int sizes[2] = {g_nYRes, g_nXRes};
-	Mat objectsMat = objectsFinder.detectObjects(Mat(2, sizes, CV_8UC3, (void*) imd.RGB24Data()));
-
-	unsigned char* pDestImage = pRgbTexBuf;
-	if (g_bDrawPixels)
-	{
-		for (int r = 0; r < objectsMat.rows; ++r)
-		{
-			unsigned char* r_ptr = objectsMat.ptr<unsigned char>(r);
-
-			for (int c = 0; c < objectsMat.cols; ++c)
-			{
-				pDestImage[0] = 0;
-				pDestImage[1] = 0;
-				pDestImage[2] = 0;
-
-				if (g_bDrawBackground)
-				{
-					pDestImage[0] = r_ptr[0];
-					pDestImage[1] = r_ptr[1];
-					pDestImage[2] = r_ptr[2];
-				}
-
-				r_ptr+=3;
-				pDestImage+=3;
-			}
-
-			pDestImage += (texWidth - g_nXRes) *3;
-		}
-	}
-	else
-	{
-		xnOSMemSet(pRgbTexBuf, 0, 3*2*g_nXRes*g_nYRes);
-	}
-
-
-	attention_map.overlay(pRgbTexBuf, texWidth, texHeight);	
-
-
-	glBindTexture(GL_TEXTURE_2D, rgbTexID);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, texWidth, texHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, pRgbTexBuf);
-
-	// Display the OpenGL texture map
-	glColor4f(0.75,0.75,0.75,1);
-
-	glEnable(GL_TEXTURE_2D);
-	DrawTexture(imd.XRes(),imd.YRes(),0,0);	
-	glDisable(GL_TEXTURE_2D);
-}*/
 void kinect_display_drawRgbMapGL(const xn::ImageMetaData& imd, AttentionMap &attention_map) // I need to check with imageMetaData
 {
 	static bool bInitialized = false;	
@@ -386,10 +293,9 @@ void kinect_display_drawRgbMapGL(const xn::ImageMetaData& imd, AttentionMap &att
 		texWidth =  getClosestPowerOfTwo(imd.XRes());
 		texHeight = getClosestPowerOfTwo(imd.YRes());
 
-		printf("Initializing depth texture: width = %d, height = %d\n", texWidth, texHeight);
 		rgbTexID = initTexture((void**)&pRgbTexBuf,texWidth, texHeight) ;
+		printf("Initialized RGB Image: width = %d, height = %d\n", texWidth, texHeight);
 
-		printf("Initialized depth texture: width = %d, height = %d\n", texWidth, texHeight);
 		bInitialized = true;
 
 		topLeftX = imd.XRes();
@@ -504,6 +410,11 @@ void DrawJoint(xn::UserGenerator& userGenerator,
 		printf("not tracked!\n");
 		return;
 	}
+ if (!userGenerator.GetSkeletonCap().IsJointActive(eJoint))
+	{
+		return;
+	}
+
      XnSkeletonJointPosition joint;
      userGenerator.GetSkeletonCap().GetSkeletonJointPosition(player, eJoint, joint);
       if (joint.fConfidence < 0.5){
@@ -523,7 +434,7 @@ const char *GetJointName (XnSkeletonJoint eJoint)
 	{
 	case XN_SKEL_HEAD: return "head";
 	case XN_SKEL_NECK: return "neck";
-    case XN_SKEL_LEFT_SHOULDER: return "left shoulder";
+        case XN_SKEL_LEFT_SHOULDER: return "left shoulder";
 	case XN_SKEL_LEFT_ELBOW: return "left elbow";
 	case XN_SKEL_RIGHT_SHOULDER: return "right shoulder";
 	case XN_SKEL_RIGHT_ELBOW: return "right elbow";
@@ -615,10 +526,10 @@ void Distance3D(xn::UserGenerator& userGenerator,
 	float distance3D = sqrt(v.X * v.X + v.Y * v.Y + v.Z * v.Z);
 
 	float dist = sqrt(distance3D * distance3D) * 0.001f;
-	sprintf(strLabel, " Distance between %s", GetJointName(eJoint1), "and %s", GetJointName(eJoint2),":(%.03fm) ", dist);
-    glColor3f(1.f,1.f,1.f);
-	glRasterPos2i(20, (eJoint2 == XN_SKEL_RIGHT_HAND)? 80 : 110);
-	glPrintString(GLUT_BITMAP_HELVETICA_18, strLabel);	
+	//sprintf(strLabel, " Distance between %s", GetJointName(eJoint1), "and %s", GetJointName(eJoint2),":(%.03fm) ", dist);
+    //glColor3f(1.f,1.f,1.f);
+	//glRasterPos2i(20, (eJoint2 == XN_SKEL_RIGHT_HAND)? 80 : 110);
+	//glPrintString(GLUT_BITMAP_HELVETICA_18, strLabel);	
         
 }
 
@@ -823,6 +734,7 @@ void kinect_display_drawSkeletonGL(xn::UserGenerator& userGenerator,
 			else if (userGenerator.GetSkeletonCap().IsTracking(aUsers[i]))
 			{
 				// Tracking
+				
 				sprintf(strLabel, "%d - Tracking", aUsers[i]);
 
                            
@@ -850,8 +762,8 @@ void kinect_display_drawSkeletonGL(xn::UserGenerator& userGenerator,
 		{
 		  
                   	
-            glLineWidth(width);
-            glBegin(GL_LINES);
+            		glLineWidth(width);
+            		glBegin(GL_LINES);
 			glColor4f(1-Colors[aUsers[i]%nColors][0], 1-Colors[aUsers[i]%nColors][1], 1-Colors[aUsers[i]%nColors][2], 1);
 			DrawLimb(userGenerator, depthGenerator, aUsers[i], XN_SKEL_HEAD, XN_SKEL_NECK);
                        
@@ -875,11 +787,11 @@ void kinect_display_drawSkeletonGL(xn::UserGenerator& userGenerator,
 			DrawLimb(userGenerator, depthGenerator, aUsers[i], XN_SKEL_RIGHT_KNEE, XN_SKEL_RIGHT_FOOT);
 
 			DrawLimb(userGenerator, depthGenerator, aUsers[i], XN_SKEL_LEFT_HIP, XN_SKEL_RIGHT_HIP);
-            glEnd();                        
+            		glEnd();                        
 
-            glBegin(GL_POINTS);
-            glColor3f(1.f, 0.f, 0.f);
-            glPointSize(1000.0);
+            		glBegin(GL_POINTS);
+            		glColor3f(1.f, 0.f, 0.f);
+            		glPointSize(1000.0);
                         
                            DrawJoint(userGenerator, depthGenerator, aUsers[i], XN_SKEL_HEAD);
                           
@@ -903,7 +815,7 @@ void kinect_display_drawSkeletonGL(xn::UserGenerator& userGenerator,
                            DrawJoint(userGenerator, depthGenerator, aUsers[i], XN_SKEL_RIGHT_HAND);
                            DrawJoint(userGenerator, depthGenerator, aUsers[i], XN_SKEL_LEFT_HAND);
 
-			glEnd();
+			   glEnd();
 			
                            DrawPoint(userGenerator, depthGenerator, aUsers[i], XN_SKEL_HEAD, csv_file);
                           
@@ -1099,4 +1011,100 @@ void kinect_display_drawSkeletonGL(xn::UserGenerator& userGenerator,
 }
  
 }
+
+
+
+/*** Here is the main thing to work with to change in RGB image and show the skeleton on RGB image frame ***/
+/*
+void kinect_display_drawRgbMapGL(const xn::ImageMetaData& imd, AttentionMap &attention_map)//, ObjectsFinderBase &objectsFinder) 
+{
+	static bool bInitialized = false;	
+	static GLuint rgbTexID;
+	static unsigned char* pRgbTexBuf;
+	static int texWidth, texHeight;
+
+  	float topLeftX;
+  	float topLeftY;
+  	float bottomRightY;
+  	float bottomRightX;
+	float texXpos;
+	float texYpos;
+       
+	if(!bInitialized)
+	{
+
+		texWidth =  getClosestPowerOfTwo(imd.XRes());
+		texHeight = getClosestPowerOfTwo(imd.YRes());
+
+		printf("Initializing RGB texture: width = %d, height = %d\n", texWidth, texHeight);
+		rgbTexID = initTexture((void**)&pRgbTexBuf,texWidth, texHeight) ;
+
+		printf("Initialized RGB texture: width = %d, height = %d\n", texWidth, texHeight);
+		bInitialized = true;
+
+		topLeftX = imd.XRes();
+		topLeftY = 0;
+		bottomRightY = imd.YRes();
+		bottomRightX = 0;
+		texXpos =(float)imd.XRes()/texWidth;
+		texYpos  =(float)imd.YRes()/texHeight;
+
+		memset(texcoords, 0, 8*sizeof(float));
+		texcoords[0] = texXpos, texcoords[1] = texYpos, texcoords[2] = texXpos, texcoords[7] = texYpos;
+
+	}
+	unsigned int nX = 0;
+	unsigned int nY = 0;
+	XnUInt16 g_nXRes = imd.XRes();
+	XnUInt16 g_nYRes = imd.YRes();
+ 	ObjectsFinderBase &objectsFinder;
+	int sizes[2] = {g_nYRes, g_nXRes};
+	Mat objectsMat = objectsFinder.detectObjects(Mat(2, sizes, CV_8UC3, (void*) imd.RGB24Data()));
+
+	unsigned char* pDestImage = pRgbTexBuf;
+	if (g_bDrawPixels)
+	{
+		for (int r = 0; r < objectsMat.rows; ++r)
+		{
+			unsigned char* r_ptr = objectsMat.ptr<unsigned char>(r);
+
+			for (int c = 0; c < objectsMat.cols; ++c)
+			{
+				pDestImage[0] = 0;
+				pDestImage[1] = 0;
+				pDestImage[2] = 0;
+
+				if (g_bDrawBackground)
+				{
+					pDestImage[0] = r_ptr[0];
+					pDestImage[1] = r_ptr[1];
+					pDestImage[2] = r_ptr[2];
+				}
+
+				r_ptr+=3;
+				pDestImage+=3;
+			}
+
+			pDestImage += (texWidth - g_nXRes) *3;
+		}
+	}
+	else
+	{
+		xnOSMemSet(pRgbTexBuf, 0, 3*2*g_nXRes*g_nYRes);
+	}
+
+
+	attention_map.overlay(pRgbTexBuf, texWidth, texHeight);	
+
+
+	glBindTexture(GL_TEXTURE_2D, rgbTexID);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, texWidth, texHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, pRgbTexBuf);
+
+	// Display the OpenGL texture map
+	glColor4f(0.75,0.75,0.75,1);
+
+	glEnable(GL_TEXTURE_2D);
+	DrawTexture(imd.XRes(),imd.YRes(),0,0);	
+	glDisable(GL_TEXTURE_2D);
+}*/
 

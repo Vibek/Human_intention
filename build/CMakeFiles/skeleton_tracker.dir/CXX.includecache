@@ -6,31 +6,23 @@
 
 #IncludeRegexTransform: 
 
-/home/vibek/Human_intention/src/BezierCurve.hpp
-XnV3DVector.h
+/home/vibek/Human_intention/src/KinectController.cpp
+XnOpenNI.h
 -
-vector
--
-
-/home/vibek/Human_intention/src/BrazierCurve.cpp
-GL/glut.h
--
-std_msgs/String.h
--
-std_msgs/Header.h
--
-fstream
--
-stdio.h
--
-stdlib.h
--
-math.h
+XnCodecIDs.h
 -
 KinectDisplay.h
 /home/vibek/Human_intention/src/KinectDisplay.h
-BezierCurve.hpp
-/home/vibek/Human_intention/src/BezierCurve.hpp
+KinectController.h
+/home/vibek/Human_intention/src/KinectController.h
+
+/home/vibek/Human_intention/src/KinectController.h
+XnCppWrapper.h
+-
+XnCyclicStackT.h
+-
+XnHashT.h
+-
 
 /home/vibek/Human_intention/src/KinectDisplay.h
 ros/ros.h
@@ -1144,22 +1136,6 @@ ros/builtin_message_traits.h
 ros/message_operations.h
 -
 
-/opt/ros/groovy/include/std_msgs/String.h
-string
--
-vector
--
-map
--
-ros/types.h
--
-ros/serialization.h
--
-ros/builtin_message_traits.h
--
-ros/message_operations.h
--
-
 /usr/include/ni/IXnNodeAllocator.h
 
 /usr/include/ni/Linux-Arm/../Linux-x86/XnPlatformLinux-x86.h
@@ -1238,6 +1214,10 @@ XnOpenNI.h
 XnCodecIDs.h
 -
 
+/usr/include/ni/XnCyclicStackT.h
+XnStackT.h
+/usr/include/ni/XnStackT.h
+
 /usr/include/ni/XnDataTypes.h
 XnOS.h
 /usr/include/ni/XnOS.h
@@ -1260,6 +1240,12 @@ XnOSCpp.h
 XnList.h
 /usr/include/ni/XnList.h
 
+/usr/include/ni/XnHashT.h
+XnOS.h
+-
+XnListT.h
+-
+
 /usr/include/ni/XnLicensing.h
 XnTypes.h
 -
@@ -1274,6 +1260,14 @@ XnNodeAllocator.h
 XnNode.h
 -
 XnStatusCodes.h
+-
+
+/usr/include/ni/XnListT.h
+XnPlatform.h
+-
+XnDataTypes.h
+-
+XnOS.h
 -
 
 /usr/include/ni/XnMacros.h
@@ -1387,6 +1381,10 @@ XnTypes.h
 /usr/include/ni/XnQueue.h
 XnList.h
 /usr/include/ni/XnList.h
+
+/usr/include/ni/XnStackT.h
+XnListT.h
+/usr/include/ni/XnListT.h
 
 /usr/include/ni/XnStatus.h
 XnPlatform.h

@@ -14,6 +14,8 @@
 #include "KinectDisplay.h"
 #include "KinectController.h"
 
+#define XN_CALIBRATION_FILE_NAME "UserCalibration.bin"
+
 
 #define CHECK_RC(nRetVal, what)										\
 	if (nRetVal != XN_STATUS_OK)									\
@@ -31,14 +33,15 @@
 		return (nRetVal);						\
 	}
 
-xn::Context KinectController::g_Context;
-//xn::Context		context;
+xn::Context        KinectController::g_Context;
 xn::DepthGenerator KinectController::g_DepthGenerator;
-xn::UserGenerator KinectController::g_UserGenerator;
+xn::UserGenerator  KinectController::g_UserGenerator;
 xn::ImageGenerator KinectController::g_ImageGenerator;
 
 XnBool KinectController::g_bNeedPose = FALSE;
 XnChar KinectController::g_strPose[20] = "";
+
+XnBool KinectController::g_bhascal = FALSE;
 
 KinectController::KinectController()
 {
@@ -69,15 +72,32 @@ xn::Context& KinectController::getContext()
 void XN_CALLBACK_TYPE User_NewUser(xn::UserGenerator& generator, XnUserID nId, void* pCookie)
 {
 	printf("New User %d\n", nId);
-	// New user found
-	if (KinectController::g_bNeedPose)
-	{
+	
+     //if (KinectController::g_bhascal)
+	//{
+		// Calibration succeeded
+		KinectController::g_UserGenerator.GetSkeletonCap().LoadCalibrationDataFromFile(nId, XN_CALIBRATION_FILE_NAME);
+		KinectController::g_UserGenerator.GetPoseDetectionCap().StopPoseDetection(nId);		
+		KinectController::g_UserGenerator.GetSkeletonCap().StartTracking(nId);		
+		printf("Calibration data has been Loaded!\n");
+		
+		
+	//}
+// Detected first user: request calibration pose detection
+     //else
+	//{		// New user found
+	  if (KinectController::g_bNeedPose)
+	   {
+		
 		KinectController::g_UserGenerator.GetPoseDetectionCap().StartPoseDetection(KinectController::g_strPose, nId);
-	}
-	else
-	{
+				
+	   }
+
+	  else
+	    {
 		KinectController::g_UserGenerator.GetSkeletonCap().RequestCalibration(nId, TRUE);
-	}
+	    } 
+	//}       
 }
 
 // Callback: An existing user was lost
@@ -90,8 +110,22 @@ void XN_CALLBACK_TYPE User_LostUser(xn::UserGenerator& generator, XnUserID nId, 
 void XN_CALLBACK_TYPE UserPose_PoseDetected(xn::PoseDetectionCapability& capability, const XnChar* strPose, XnUserID nId, void* pCookie)
 {
 	printf("Pose %s detected for user %d\n", strPose, nId);
-	KinectController::g_UserGenerator.GetPoseDetectionCap().StopPoseDetection(nId);
-	KinectController::g_UserGenerator.GetSkeletonCap().RequestCalibration(nId, TRUE);
+	
+// If we already calibrated on a user, just load that calibration
+   // if (KinectController::g_bhascal)
+	//{
+		// Calibration succeeded
+		KinectController::g_UserGenerator.GetSkeletonCap().LoadCalibrationDataFromFile(nId, XN_CALIBRATION_FILE_NAME);
+		KinectController::g_UserGenerator.GetPoseDetectionCap().StopPoseDetection(nId);	
+		KinectController::g_UserGenerator.GetSkeletonCap().StartTracking(nId);
+		printf("Calibration data has been Loaded!\n");
+		
+		
+	//}
+    // else
+      //  {
+	    KinectController::g_UserGenerator.GetSkeletonCap().RequestCalibration(nId, TRUE);
+	//}
 }
 
 // Callback: Started calibration
@@ -103,16 +137,20 @@ void XN_CALLBACK_TYPE UserCalibration_CalibrationStart(xn::SkeletonCapability& c
 // Callback: Finished calibration
 void XN_CALLBACK_TYPE UserCalibration_CalibrationEnd(xn::SkeletonCapability& capability, XnUserID nId, XnBool bSuccess, void* pCookie)
 {
+	
 	if (bSuccess)
 	{
-		// Calibration succeeded
-		printf("Calibration complete, start tracking user %d\n", nId);
+		// Save the user's calibration
+		//KinectController::g_bhascal = true;		
+		printf("Calibration data has been saved!\n");		
 		KinectController::g_UserGenerator.GetSkeletonCap().StartTracking(nId);
+		KinectController::g_UserGenerator.GetSkeletonCap().SaveCalibrationDataToFile(nId, XN_CALIBRATION_FILE_NAME);		
 	}
 	else
 	{
 		// Calibration failed
 		printf("Calibration failed for user %d\n", nId);
+		printf("Saving calibration data has failed!\n");
 		if (KinectController::g_bNeedPose)
 		{
 			KinectController::g_UserGenerator.GetPoseDetectionCap().StartPoseDetection(KinectController::g_strPose, nId);
@@ -215,3 +253,17 @@ int KinectController::shutdown()
 	g_Context.Shutdown();
   return 0;
 }
+
+
+/****** Improtant functions which can use for various activities *****/
+/*
+
+		virtual XnStatus SaveCalibrationDataToFile(XnUserID user, const XnChar* strFileName) = 0;
+		virtual XnStatus LoadCalibrationDataFromFile(XnUserID user, const XnChar* strFileName) = 0;
+		virtual XnStatus SaveCalibrationData(XnUserID user, XnUInt32 nSlot) = 0;
+		virtual XnStatus LoadCalibrationData(XnUserID user, XnUInt32 nSlot) = 0;
+		virtual XnStatus ClearCalibrationData(XnUInt32 nSlot) = 0;
+		virtual XnBool IsCalibrationData(XnUInt32 nSlot) = 0;
+		virtual XnStatus StartTracking(XnUserID user) = 0;
+		virtual XnStatus StopTracking(XnUserID user) = 0;
+*/

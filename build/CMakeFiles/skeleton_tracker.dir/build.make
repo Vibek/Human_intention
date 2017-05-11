@@ -615,6 +615,10 @@ skeleton_tracker_EXTERNAL_OBJECTS =
 ../bin/skeleton_tracker: /opt/ros/groovy/lib/libopencv_core.so.2.4.9
 ../bin/skeleton_tracker: /opt/ros/groovy/lib/libopencv_contrib.so.2.4.9
 ../bin/skeleton_tracker: /opt/ros/groovy/lib/libopencv_calib3d.so.2.4.9
+../bin/skeleton_tracker: /usr/lib/i386-linux-gnu/libQtGui.so
+../bin/skeleton_tracker: /usr/lib/i386-linux-gnu/libQtCore.so
+../bin/skeleton_tracker: /usr/lib/i386-linux-gnu/libQtGui.so
+../bin/skeleton_tracker: /usr/lib/i386-linux-gnu/libQtCore.so
 ../bin/skeleton_tracker: /opt/ros/groovy/lib/libopencv_nonfree.so.2.4.9
 ../bin/skeleton_tracker: /opt/ros/groovy/lib/libopencv_gpu.so.2.4.9
 ../bin/skeleton_tracker: /opt/ros/groovy/lib/libopencv_photo.so.2.4.9

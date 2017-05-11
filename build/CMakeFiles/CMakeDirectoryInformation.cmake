@@ -22,8 +22,12 @@ SET(CMAKE_C_INCLUDE_PATH
   "/usr/include/vtk-5.8"
   "/usr/include/qhull"
   "../msg_gen/cpp/include"
+  "/usr/include/qt4"
+  "/usr/include/qt4/QtGui"
+  "/usr/include/qt4/QtCore"
   "/usr/include/openni"
   "/usr/include/nite"
+  "/usr/include/qwtplot3d-qt4"
   )
 SET(CMAKE_CXX_INCLUDE_PATH ${CMAKE_C_INCLUDE_PATH})
 SET(CMAKE_Fortran_INCLUDE_PATH ${CMAKE_C_INCLUDE_PATH})

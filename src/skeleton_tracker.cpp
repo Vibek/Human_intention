@@ -8,7 +8,7 @@
 *****************************************************************************/
 
 #include "skeleton_tracker.h"
-//#include <pcl/io/openni_grabber.h>
+
 
 bool publish_kinect_tf_ = false;
 bool right_arm_enabled_ = false; 
@@ -26,8 +26,10 @@ using Human_intention::Goal;
 Human_intention::Pose odomPose;
 Twist  vel;
 
-xn::Context	g_context;
-xn::ScriptNode	g_scriptNode;
+xn::Context	   g_context;
+xn::ScriptNode	   g_scriptNode;
+xn::DepthGenerator g_DepthGenerator;
+xn::UserGenerator  g_UserGenerator;
 
 std::string OutputData::PostFix;
 std::string OutputData::CsvExtension; 
@@ -50,20 +52,6 @@ void SkeletonTracker::init()
 
 	enable_joint_group_sub_ = n.subscribe("enable_joint_group", 10, &SkeletonTracker::enableJointGroupCB, this);
         robotpose_sub = n.subscribe<nav_msgs::Odometry>("/RosAria/pose", 1, &SkeletonTracker::getRobotPose, this);
-/*
-        //depth_sub_ = n.subscribe<sensor_msgs::PointCloud2>("/camera/depth_registered/points", 1, &pointCallback);
-	interface = NULL;
-	ObjectFinderPCL *pclFinder = dynamic_cast<ObjectFinderPCL *>(&GetObjectsFinder());
-	if (pclFinder != NULL)
-	{
-		interface = new pcl::OpenNIGrabber();
-       		
-		boost::function<void (const pcl::PointCloud<pcl::PointXYZ>::ConstPtr&)> f =
-         	boost::bind (&ObjectFinderPCL::processPoint, pclFinder, _1);
-
-       		interface->registerCallback (f);
-       		interface->start ();
-	}*/
 
         skeleton_pub_ = n.advertise<Human_intention::Skeleton>("/skeleton", rate);
 	marker_pub = n.advertise<visualization_msgs::Marker>("/trajectory", 100);
@@ -235,16 +223,16 @@ void SkeletonTracker::getRobotPose(const nav_msgs::Odometry::ConstPtr& robot_pos
 
           marker.pose.position.x = odomPose.x;
           marker.pose.position.y = odomPose.y;
-	      marker.pose.position.z = 0;
+	  marker.pose.position.z = 0;
           marker.pose.orientation = tf::createQuaternionMsgFromRollPitchYaw(0, 0, odomPose.theta); 
 	      
           marker.scale.x = 1.0;
-	      marker.scale.y = 1.0;
-	      marker.scale.z = 1.0;
+	  marker.scale.y = 1.0;
+	  marker.scale.z = 1.0;
           marker.color.g = 1.0f;
           marker.color.a = 1.0;             
 	     
-	      marker.lifetime = ros::Duration();
+	  marker.lifetime = ros::Duration();
 
           // Publish the marker
           while (robot_model_pub.getNumSubscribers() >0) 
@@ -683,15 +671,14 @@ void SkeletonTracker::processKinect(KinectController &kinect_controller)
     geometry_msgs::Point torso_destination;
     torso_destination.x = -torso.z() / 1000.0;
     torso_destination.y = -torso.x() / 1000.0;
-    //robot_destination.z = torso.y() / 1000.0;
     torso_destination.z = torso_pitch;
     torso_destination_pub_.publish(torso_destination);
 
-          g_skel.user_id = user;
-	      g_skel.header.stamp = ros::Time::now();
-	      g_skel.header.frame_id = fixed_frame;
-          skeleton_pub_.publish(g_skel);
-	      cmdVelPub.publish(vel);
+          	g_skel.user_id = user;
+	      	g_skel.header.stamp = ros::Time::now();
+	      	g_skel.header.frame_id = fixed_frame;
+          	skeleton_pub_.publish(g_skel);
+	      	cmdVelPub.publish(vel);
 
               //Visualize the trajectory of right hand in RVIZ
 	      visualization_msgs::Marker points;
@@ -701,14 +688,14 @@ void SkeletonTracker::processKinect(KinectController &kinect_controller)
 	      points.type = visualization_msgs::Marker::POINTS;
 	      // LINE_STRIP/LINE_LIST markers use only the x component of scale, for the line width
               points.scale.x = 0.03;
-	          points.scale.y = 0.03;
+	      points.scale.y = 0.03;
               points.color.r = 1.0;
               points.color.a = 0.5;
               XnPoint3D pt;
 		 for (int k = 0; k < g_RightHandPositionHistory.Size(); ++k) {
 				     g_RightHandPositionHistory.GetValueScreen (k, pt);
 				     geometry_msgs::Point p;
-                     p.x = pt.Z/1000;
+                     		 p.x = pt.Z/1000;
         			 p.y = pt.Y/1000;
         			 p.z = pt.X/1000;  
         			 points.points.push_back(p);
@@ -770,7 +757,53 @@ void SkeletonTracker::enableJointGroupCB(const Human_intention::EnableJointGroup
 }
 
 
-#define GL_WIN_SIZE_X 640
+#define XN_CALIBRATION_FILE_NAME "UserCalibration.bin"
+
+// Save calibration to file
+void SaveCalibration()
+{
+	XnUserID aUserIDs[3] = {0};
+	XnUInt16 nUsers = 3;
+	g_UserGenerator.GetUsers(aUserIDs, nUsers);
+	for (int i = 0; i < nUsers; ++i)
+	{
+		// Find a user who is already calibrated
+		if (g_UserGenerator.GetSkeletonCap().IsCalibrated(aUserIDs[i]))
+		{
+			// Save user's calibration to file
+			g_UserGenerator.GetSkeletonCap().SaveCalibrationDataToFile(aUserIDs[i], XN_CALIBRATION_FILE_NAME);
+			printf("aaaaaa");
+			break;
+		}
+	}
+}
+// Load calibration from file
+void LoadCalibration()
+{
+	XnUserID aUserIDs[20] = {0};
+	XnUInt16 nUsers = 20;
+	g_UserGenerator.GetUsers(aUserIDs, nUsers);
+	for (int i = 0; i < nUsers; ++i)
+	{
+		// Find a user who isn't calibrated or currently in pose
+		if (g_UserGenerator.GetSkeletonCap().IsCalibrated(aUserIDs[i])) continue;
+		if (g_UserGenerator.GetSkeletonCap().IsCalibrating(aUserIDs[i])) continue;
+
+		// Load user's calibration from file
+		XnStatus rc = g_UserGenerator.GetSkeletonCap().LoadCalibrationDataFromFile(aUserIDs[i], XN_CALIBRATION_FILE_NAME);
+		printf("bbbbb");
+		if (rc == XN_STATUS_OK)
+		{
+			// Make sure state is coherent
+			g_UserGenerator.GetPoseDetectionCap().StopPoseDetection(aUserIDs[i]);
+			g_UserGenerator.GetSkeletonCap().StartTracking(aUserIDs[i]);
+		}
+		break;
+	}
+}
+
+
+#define GL_WIN_SIZE_X 720
 #define GL_WIN_SIZE_Y 480
 
 KinectController g_kinect_controller;
@@ -824,7 +857,7 @@ void glutDepthDisplay (void)
 
 	glOrtho(0, depthMD.XRes(), depthMD.YRes(), 0, -1.0, 1.0);
   
-    glDisable(GL_TEXTURE_2D);
+    	glDisable(GL_TEXTURE_2D);
 
     //GetObjectsFinder().processDepth(depthMD.Data());  
     UpdateObjectsOfInterestWorldPositions(depthMD);
@@ -901,11 +934,11 @@ void DrawObjectsOfInterestWorldPositions()
 
     OutputData::ScopedFileStreamForAppend fs2("mouse_point");
     ofstream &mouse_file = fs2.GetStream();
-
+/*
     sprintf(strLabel, "Mouse(%d, %d)", gMouseX, gMouseY); // I am checking the mouse position
     mouse_file << gMouseX<<","<<gMouseY<<"\r\n";
     glRasterPos2i(20, 250);
-    glPrintString(GLUT_BITMAP_HELVETICA_18, strLabel);
+    glPrintString(GLUT_BITMAP_HELVETICA_18, strLabel); */
 }
 
 void SetObjectOfInterestSelected(int objectIndex, bool flag)
@@ -986,6 +1019,14 @@ void glutKeyboard (unsigned char key, int x, int y)
     case '2':
     	SetObjectOfInterestProjPos(1);
     	break;
+	
+    case 's':
+	SaveCalibration();
+	break;
+
+    case 'l':
+	LoadCalibration();
+	break; 
 	}
 }
 
@@ -1017,7 +1058,7 @@ int main(int argc, char** argv)
 
   // TODO... read these values from ini file
   const int fps = 30;
-  const int width = 640;
+  const int width = 720;
   const int height = 480;
 
   //GetObjectsFinder().init(width, height);

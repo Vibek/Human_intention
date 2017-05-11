@@ -68,7 +68,9 @@
 #include <XnV3DVector.h>
 #include <XnCppWrapper.h>
 
-
+#include <QDebug>
+#include <QObject>
+#include <qwt3d_volumeplot.h>
 
 #define PI 3.14159265359
 #ifndef HALFPI

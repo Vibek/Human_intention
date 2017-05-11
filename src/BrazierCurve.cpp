@@ -186,7 +186,7 @@ void DrawBezierCurve(const std::vector<XnPoint3D> &controlPoints, const XnFloat 
 	OutputData::ScopedFileStreamForAppend fs2("predicted_trajectory");
 	ofstream &predict_file = fs2.GetStream();
 	predict_file <<	controlPoints[0].X/1000.0f <<","<< controlPoints[0].Y/1000.0f <<"\r\n" << controlPoints[1].X/1000.0f <<","<< controlPoints[1].Y/1000.0f <<"\r\n" << controlPoints[2].X/1000.0f <<","<< controlPoints[2].Y/1000.0f <<"\r\n" <<controlPoints[3].X/1000.0f <<","<< controlPoints[3].Y/1000.0f <<"\r\n";
-
+/*
 	sprintf(strLabel, "[%.2f, %.2f], [%.2f, %.2f], [%.2f, %.2f], [%.2f, %.2f]",
 		controlPoints[0].X, controlPoints[0].Y,
 		controlPoints[1].X, controlPoints[1].Y,
@@ -194,7 +194,7 @@ void DrawBezierCurve(const std::vector<XnPoint3D> &controlPoints, const XnFloat 
 		controlPoints[3].X, controlPoints[3].Y); 
         glColor3f(1.f,1.f,1.f);
         glRasterPos2i(20, 300);
-        glPrintString(GLUT_BITMAP_HELVETICA_18, strLabel);
+        glPrintString(GLUT_BITMAP_HELVETICA_18, strLabel); */
 
 	glColor3f(color3f[0], color3f[1], color3f[2]);
 	glLineWidth(lineWidth);

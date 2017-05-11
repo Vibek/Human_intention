@@ -5,12 +5,15 @@ SET(CMAKE_DEPENDS_LANGUAGES
 
 # Preprocessor definitions for this target.
 SET(CMAKE_TARGET_DEFINITIONS
+  "QT_GUI_LIB"
+  "QT_CORE_LIB"
   "DISABLE_OPENNI"
   "DISABLE_OPENNI"
   "EIGEN_USE_NEW_STDVECTOR"
   "EIGEN_YES_I_KNOW_SPARSE_MODULE_IS_NOT_STABLE_YET"
   "FLANN_STATIC"
   "qh_QHpointer"
+  "QT_NO_DEBUG"
   )
 
 # Targets to which this target links.

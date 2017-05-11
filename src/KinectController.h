@@ -33,10 +33,11 @@ class KinectController
   public:
 		static xn::Context g_Context;
 		static xn::DepthGenerator g_DepthGenerator;
-		static xn::UserGenerator g_UserGenerator;
+		static xn::UserGenerator  g_UserGenerator;
 		static xn::ImageGenerator g_ImageGenerator;
                 static xn::HandsGenerator g_HandsGenerator;
 		static XnBool g_bNeedPose;
+		static XnBool g_bhascal;
 		static XnChar g_strPose[20];
                 
 };

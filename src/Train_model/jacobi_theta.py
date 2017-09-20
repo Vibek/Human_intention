@@ -17,16 +17,14 @@ def jacobi(mu, var, x, k):
 '''___Main function___'''
 
 mu = np.array([[4.0, -2.0, 1.0], [1.0, -3.0, 2.0], [-1.0, 2.0, 6.0]])
-car = [1.0, 2.0, 3.0]
+var = [1.0, 2.0, 3.0]
 x = [1.0, 1.0, 1.0]
 k = 25
-
+n =4
 print("\n\ninit"),
 print(x)
 print("")
 x = jacobi(mu, var, x, k)
 print("\nSol "),
 print(x)
-print("Act "),
-print solve(A, b)
-print("\n")
+

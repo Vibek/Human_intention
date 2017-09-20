@@ -27,7 +27,7 @@
 #define HISTORY_SIZE		10
 #define HISTORY_DRAW_SIZE	HISTORY_SIZE
 
-#define TARGET_HEAD		-1
+#define TARGET_HEAD		0
 
 struct History {
 	History (int size = HISTORY_SIZE)

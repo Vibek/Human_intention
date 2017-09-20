@@ -871,12 +871,20 @@ void kinect_display_drawSkeletonGL(xn::UserGenerator& userGenerator,
 				bool IsNearTargetRightHand[NumObjectsOfInterest];
 				for (int t = TARGET_HEAD; t < NumObjectsOfInterest; ++t)
 				{
+					if (IsAnyTargetNearRightHand && !IsNearTargetRightHand[t]) continue;	// Need to check over here and play with it		
+					g_temp_points.clear();
+					g_RightHandPositionHistory.GetApproachCurveControlPoints(t, g_temp_points);		
 					IsNearTargetRightHand[t] = g_RightHandPositionHistory.IsNearTarget(t);
+					
+					int colorIndex, lineWidth;
 					if (IsNearTargetRightHand[t])
 					{
 						IsAnyTargetNearRightHand = true;
 						ObjectNearRightHand = t;
+						colorIndex = 0;
+						lineWidth = 6;
 					}
+				DrawBezierCurve(g_temp_points, traj_colors[colorIndex], lineWidth, g_bezier_segments);
 				}
 				
 				if (ObjectNearRightHand != -10)
@@ -888,14 +896,14 @@ void kinect_display_drawSkeletonGL(xn::UserGenerator& userGenerator,
 				{
 					handnear_file << 0;
 				}
-				handnear_file << "\r\n";
+					handnear_file << "\r\n";
 
 				   //if (g_RightHandPositionHistory.IsNearTarget())
 				   if (g_RightHandPositionHistory.IsStationary() == false)
 				   {
 					hand_file << "1";
 
-				   	for (int t = TARGET_HEAD; t < NumObjectsOfInterest; ++t)
+				  /* 	for (int t = TARGET_HEAD; t < NumObjectsOfInterest; ++t)
 					{
 						if (IsAnyTargetNearRightHand && !IsNearTargetRightHand[t]) continue;	// Need to check over here and play with it				
 
@@ -910,7 +918,7 @@ void kinect_display_drawSkeletonGL(xn::UserGenerator& userGenerator,
 							lineWidth = 6;
 						}
 						DrawBezierCurve(g_temp_points, traj_colors[colorIndex], lineWidth, g_bezier_segments);
-					}
+					}*/
 
 					sprintf(strLabel, " PREDICTING.."); 
 				        glColor3f(1.f,0.f,0.f);
@@ -922,7 +930,7 @@ void kinect_display_drawSkeletonGL(xn::UserGenerator& userGenerator,
 				   {
 					hand_file << "0";
 				   }
-				   hand_file << "\r\n";
+				   	hand_file << "\r\n";
 			    }
 
 			    if (EnableLeftHand)
@@ -937,12 +945,21 @@ void kinect_display_drawSkeletonGL(xn::UserGenerator& userGenerator,
 				bool IsNearTargetLeftHand[NumObjectsOfInterest];
 				for (int t = TARGET_HEAD; t < NumObjectsOfInterest; ++t)
 				{
+					if (IsAnyTargetNearLeftHand && !IsNearTargetLeftHand[t]) continue;
+
+					g_temp_points.clear();
+					g_LeftHandPositionHistory.GetApproachCurveControlPoints(t, g_temp_points);
 					IsNearTargetLeftHand[t] = g_LeftHandPositionHistory.IsNearTarget(t);
+
+					int colorIndex, lineWidth;
 					if (IsNearTargetLeftHand[t])
 					{
 						IsAnyTargetNearLeftHand = true;
 						ObjectNearLeftHand = t;
+						colorIndex = 0;
+						lineWidth = 6;
 					}
+					DrawBezierCurve(g_temp_points, traj_colors[colorIndex], lineWidth, g_bezier_segments);
 				}
 
 				if (ObjectNearLeftHand != -10)
@@ -961,7 +978,7 @@ void kinect_display_drawSkeletonGL(xn::UserGenerator& userGenerator,
 				   {
 					hand_file << "1";
 
-				   	for (int t = TARGET_HEAD; t < NumObjectsOfInterest; ++t)
+				 /*  	for (int t = TARGET_HEAD; t < NumObjectsOfInterest; ++t)
 					{
 						if (IsAnyTargetNearLeftHand && !IsNearTargetLeftHand[t]) continue;
 
@@ -976,7 +993,7 @@ void kinect_display_drawSkeletonGL(xn::UserGenerator& userGenerator,
 							lineWidth = 6;
 						}
 				   		DrawBezierCurve(g_temp_points, traj_colors[colorIndex], lineWidth, g_bezier_segments);
-					}
+					}*/
 
 					sprintf(strLabel, "PREDICTING..."); 
 				        glColor3f(1.f,0.f,0.f);

@@ -23,6 +23,12 @@ x31=[0.22, 0.27, 0.56, 0.59, 0.59, 0.55, 0.61];
 x32=[0.20, 0.20, 0.38, 0.43, 0.43, 0.47, 0.56];
 x33=[0.18, 0.22, 0.25, 0.28, 0.35, 0.40, 0.44];
 
+x4 =[0.39, 0.50, 0.58, 0.58, 0.69, 0.79, 0.87];
+x41=[0.20, 0.29, 0.56, 0.69, 0.57, 0.59, 0.63];
+x42=[0.20, 0.20, 0.35, 0.43, 0.49, 0.47, 0.58];
+x43=[0.15, 0.22, 0.25, 0.38, 0.35, 0.42, 0.48];
+
+
 plt.figure(1)
 plt.plot(y,x,  '-bs', lw= 2, label='Our Method');
 plt.plot(y,x1, '-g^', lw= 2, label='HMM');
@@ -68,6 +74,18 @@ plt.plot(y,x33, '-m*', lw= 2, label='chance');
 plt.axis([0, 350, 0, 1])
 plt.legend(loc='upper left');
 plt.title("# CAD2 dataset", size=20);
+plt.xlabel('frames', size=15);
+plt.ylabel('accuracy', size=15);
+plt.tick_params(labelsize=13);
+
+plt.figure(5)
+plt.plot(y,x4, '-bs',  lw= 2, label='Our Method');
+plt.plot(y,x41, '-g^', lw= 2, label='HMM');
+plt.plot(y,x42, '-ro', lw= 2, label='linear SVM');
+plt.plot(y,x43, '-m*', lw= 2, label='chance');
+plt.axis([0, 350, 0, 1])
+plt.legend(loc='upper left');
+plt.title("# RGBD-HuDaAct1 dataset", size=20);
 plt.xlabel('frames', size=15);
 plt.ylabel('accuracy', size=15);
 plt.tick_params(labelsize=13);

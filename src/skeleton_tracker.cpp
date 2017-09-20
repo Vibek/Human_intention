@@ -202,12 +202,12 @@ void SkeletonTracker::handtrajectory(xn::UserGenerator& userGenerator,
 void SkeletonTracker::getRobotPose(const nav_msgs::Odometry::ConstPtr& robot_pose)
 {
  
- ROS_INFO("ROS_ERROR...............");
+ ROS_INFO("ROS_ERROR.!!!");
  odomPose.header.stamp = ros::Time::now();
  odomPose.x = robot_pose->pose.pose.position.x;
  odomPose.y = robot_pose->pose.pose.position.y;
  odomPose.theta =  tf::getYaw(robot_pose->pose.pose.orientation);
- ROS_DEBUG("Robot current position:! x: %.2f, y: %.2f, theta: %.2f---", odomPose.x, odomPose.y, odomPose.theta);
+ ROS_DEBUG("Robot current position:! x: %.2f, y: %.2f, theta: %.2f", odomPose.x, odomPose.y, odomPose.theta);
  pose_pub.publish(odomPose);
           
          static uint32_t count = 0;
@@ -296,9 +296,9 @@ void SkeletonTracker::processKinect(KinectController &kinect_controller)
 					else if(g_RightHandPositionHistory.Speed()>150 && g_LeftHandPositionHistory.Speed()>150)
 					  {
 						 
-						 ROS_INFO("Robot is moving....");
+						 ROS_INFO("Robot is moving");
 						 ros::Duration(1.0).sleep(); // sleep for 1 second
-						 ROS_INFO("Robot.....");
+						 ROS_INFO("Robot");
 						 
 					    }	
 					else if(g_RightHandPositionHistory.Speed()>150){
@@ -318,7 +318,7 @@ void SkeletonTracker::processKinect(KinectController &kinect_controller)
 							}
 						else if(dist <=1.5 && dist >=1.0)
 							{
-								ROS_INFO("I am rounding ...");
+								ROS_INFO("I am rounding");
 								vel.linear.x = 0.0;
 								vel.angular.z = 0.1;
 							}

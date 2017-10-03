@@ -1,4 +1,4 @@
-Recognition of human intentional actions based RGBD videos
+Recognition of human intentional actions based on RGBD videos
 =======
 # Intention_Recognition_Human_Robot_Interaction
 This respository is the part of Human Intention project using Kinect contains ROS packages. The projects includes the following:
@@ -18,13 +18,13 @@ This respository is the part of Human Intention project using Kinect contains RO
 Mobile Robot used in this work is developed by Adept Mobile Robot.
 Model: SeekurJr with manipulator.
 
-======================================================== Dataset ============================================================
+================================== Dataset ===================================
 
 WUT-ZTMiR human activity dataset is available at https://ztmir.meil.pw.edu.pl/web/eng/Pracownicy/Vibekananda-Dutta-M.Sc
 
 
 
-============================================== More details about this code available at ======================================
+============================ More details about this code available at ============================
 
 Dutta, Vibekananda, and Teresa Zielinska. "Action prediction based on physically grounded object affordances in human-object interactions." In Robot Motion and Control (RoMoCo), 2017 11th International Workshop on, pp. 47-52. IEEE, 2017.
 

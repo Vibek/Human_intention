@@ -24,7 +24,7 @@ WUT-ZTMiR human activity dataset is available at https://ztmir.meil.pw.edu.pl/we
 
 
 
-============================ More details about this code available at ============================
+============================ More details about this work available at ============================
 
 Dutta, Vibekananda, and Teresa Zielinska. "Action prediction based on physically grounded object affordances in human-object interactions." In Robot Motion and Control (RoMoCo), 2017 11th International Workshop on, pp. 47-52. IEEE, 2017.
 
